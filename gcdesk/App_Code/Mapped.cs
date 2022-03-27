@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 
 //Importa funções do MySQL
 using MySql.Data.MySqlClient;
@@ -53,10 +52,4 @@ using System.Configuration;
 
 
 
-        public Mapped()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
     }

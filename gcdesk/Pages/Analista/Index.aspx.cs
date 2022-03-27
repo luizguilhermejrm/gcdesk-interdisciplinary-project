@@ -9,9 +9,10 @@ public partial class _Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int id = Convert.ToInt32( Session["ID"]);
+        int id = Convert.ToInt32(Session["ID"]);
         PersonBD bd = new PersonBD();
         Person person = bd.Select(id);
+        string title = lblTitle.Text;
 
         if (!IsAdministrador(person.TypeAccess))
         {
@@ -19,7 +20,7 @@ public partial class _Index : System.Web.UI.Page
         }
         else
         {
-           lblTitle.Text = "Bem vindo (Administrador) : " + person.Email;
+           title = "Bem vindo (Administrador) : " + person.Email;
         }
     }
 

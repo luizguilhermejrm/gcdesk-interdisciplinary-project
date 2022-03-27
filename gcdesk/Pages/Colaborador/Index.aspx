@@ -15,8 +15,8 @@
 <body class="hold-transition login-page">
     <p>Colaborador</p>
     <form runat="server">
-        <asp:Label ID="lblTitle" Text="Tela do Colaborador" />
-        <asp:LinkButton ID="lblLogout" Text="Sair" />
+        <asp:Label ID="lblTitle" runat="server" Text="Tela do Colaborador" />
+        <asp:LinkButton ID="lblLogout" runat="server" Text="Sair" />
     </form>
 
      <!-- jQuery -->

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
+
 /// <summary>
 /// Summary description for PessoaBD
 /// </summary>
@@ -17,7 +19,7 @@ public class PersonBD
         objConexao = Mapped.Connection();
         objCommand = Mapped.Command("SELECT * FROM login WHERE log_email = ?email and log_senha = ?password", objConexao);
         objCommand.Parameters.Add(Mapped.Parameter("?email", email));
-        objCommand.Parameters.Add(Mapped.Parameter("?senha", password));
+        objCommand.Parameters.Add(Mapped.Parameter("?password", password));
         objDataReader = objCommand.ExecuteReader();
 
         while (objDataReader.Read())

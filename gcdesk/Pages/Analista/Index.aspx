@@ -15,6 +15,11 @@
 <body class="hold-transition login-page">
     <p>Analista</p>
 
+    <form runat="server">
+        <asp:Label ID="lblTitle" runat="server" Text="" />
+        <asp:LinkButton ID="lblLogout" runat="server" Text="Sair" />
+    </form>
+
      <!-- jQuery -->
      <script src="../../plugins/jquery/jquery.min.js"></script>
      <!-- Bootstrap 4 -->

@@ -6,12 +6,7 @@
     <meta name="author" content="Luiz Henrique Romão de Carvalho, Luiz Guilherme José Ribeiro Moreira e Aureo Alexandre Bueno Azevedo Filho">
     <meta name="description" content="Projeto Interdisciplinar">
     <meta name="keywords" content="Atendimento ao Usuário e gestão de chamados">
-     <!-- Font Awesome -->
-     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-     <!-- icheck bootstrap -->
-     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="dist/css/adminlte.min.css.map">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
     
     <title>GCDesk - Login </title>
 </head>
@@ -30,20 +25,9 @@
             <form runat="server">
               <div class="input-group mb-3">
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email" TextMode="Email" />
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <span class="fas fa-envelope"></span>
-                  </div>
-                </div>
               </div>
               <div class="input-group mb-3">
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Senha"
-                                TextMode="Password"></asp:TextBox>
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <span class="fas fa-lock"></span>
-                  </div>
-                </div>
+                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Senha" TextMode="Password" />
               </div>
               <div class="row">
                 <!-- /.col -->
@@ -61,11 +45,7 @@
       </div>
       <!-- /.login-box -->
 
-     <!-- jQuery -->
-     <script src="plugins/jquery/jquery.min.js"></script>
-     <!-- Bootstrap 4 -->
-     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-     <!-- AdminLTE App -->
-     <script src="dist/js/adminlte.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/bootstrap.min.js.map"></script>
 </body>
 </html>

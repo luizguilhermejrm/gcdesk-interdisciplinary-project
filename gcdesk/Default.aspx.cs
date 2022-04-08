@@ -21,10 +21,10 @@ public partial class _Default : System.Web.UI.Page
         }
         return retorno;
     }
-    private bool UsuarioEncontrado(Person person)
+    private bool UsuarioEncontrado(User user)
     {
         bool retorno = false;
-        if (person != null)
+        if (user != null)
         {
            retorno = true;
         }
@@ -34,7 +34,7 @@ public partial class _Default : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         string email = txtEmail.Text.Trim();
-        string password = txtPassword.Text.Trim();
+        string password = Function.HashText(txtPassword.Text.Trim());
 
         if (!IsPreenchido(email))
         {
@@ -50,19 +50,19 @@ public partial class _Default : System.Web.UI.Page
             return;
         }
 
-        PersonBD bd = new PersonBD();
-        Person person = new Person();
-        person = bd.Autentica(email, password);
-        if (!UsuarioEncontrado(person))
+        UserBD bd = new UserBD();
+        User user = new User();
+        user = bd.Autentica(email, password);
+        if (!UsuarioEncontrado(user))
         {
             lblMsg.Text = "Usuário não encontrado";
             txtEmail.Focus();
             return;
         }
 
-        Session["ID"] = person.Id;
+        Session["ID"] = user.Id;
 
-        switch (person.TypeAccess)
+        switch (user.TypeAccess)
         {
             case 0:
             Response.Redirect("Pages/Analista/Index.aspx");

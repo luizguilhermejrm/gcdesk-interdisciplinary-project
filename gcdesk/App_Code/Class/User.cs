@@ -5,14 +5,14 @@ using System.Web;
 /// <summary>
 /// Summary description for Pessoa
 /// </summary>
-public class Person
+public class User
 {
     public int Id { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
     public int TypeAccess { get; set; }
     public int Status { get; set; }
-    public Person()
+    public User()
     {
     //
     // TODO: Add constructor logic here

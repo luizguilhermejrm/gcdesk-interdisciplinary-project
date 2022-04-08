@@ -7,11 +7,11 @@ using System.Data;
 /// <summary>
 /// Summary description for PessoaBD
 /// </summary>
-public class PersonBD
+public class UserBD
 {
-    public Person Autentica(string email, string password)
+    public User Autentica(string email, string password)
     {
-        Person obj = null;
+        User obj = null;
         System.Data.IDbConnection objConexao;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
@@ -24,10 +24,11 @@ public class PersonBD
 
         while (objDataReader.Read())
         {
-            obj = new Person();
+            obj = new User();
             obj.Id = Convert.ToInt32(objDataReader["log_id"]);
             obj.Email = Convert.ToString(objDataReader["log_email"]);
             obj.TypeAccess = Convert.ToInt32(objDataReader["log_nivelAcesso"]);
+            obj.Password = objDataReader["log_senha"].ToString();
         }
         objDataReader.Close();
         objConexao.Close();
@@ -36,9 +37,9 @@ public class PersonBD
         objDataReader.Dispose();
         return obj;
     }
-    public Person Select(int id)
+    public User Select(int id)
     {
-        Person obj = null;
+        User obj = null;
         System.Data.IDbConnection objConexao;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
@@ -49,7 +50,7 @@ public class PersonBD
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
-            obj = new Person();
+            obj = new User();
             obj.Id = Convert.ToInt32(objDataReader["log_id"]);
             obj.Email = Convert.ToString(objDataReader["log_email"]);
             obj.TypeAccess = Convert.ToInt32(objDataReader["log_nivelAcesso"]);
@@ -61,7 +62,7 @@ public class PersonBD
         objDataReader.Dispose();
         return obj;
     }
-    public PersonBD()
+    public UserBD()
     {
     //
     // TODO: Add constructor logic here

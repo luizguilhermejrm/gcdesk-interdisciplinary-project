@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 /// <summary>
 /// Summary description for Pessoa
+/// Class of User 
 /// </summary>
 public class User
 {

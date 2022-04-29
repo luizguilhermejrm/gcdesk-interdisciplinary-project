@@ -1,9 +1,10 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="_Index" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head runat="server">
-     <!-- Font Awesome -->
+    <meta charset="utf-8">
+    <!-- Font Awesome -->
      <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
      <!-- icheck bootstrap -->
      <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">

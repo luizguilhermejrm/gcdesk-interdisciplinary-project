@@ -65,11 +65,11 @@ public partial class _Default : System.Web.UI.Page
         switch (user.TypeAccess)
         {
             case 0:
-            Response.Redirect("Pages/Analista/Index.aspx");
+            Response.Redirect("Pages/Sistema/Analista/Index.aspx");
             break;
 
             case 1:
-            Response.Redirect("Pages/Colaborador/Index.aspx");
+            Response.Redirect("Pages/Sistema/Colaborador/Index.aspx");
             break;
 
             default:

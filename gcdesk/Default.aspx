@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head runat="server">
+    <meta charset="utf-8">
     <meta name="author" content="Luiz Henrique Romão de Carvalho, Luiz Guilherme José Ribeiro Moreira e Aureo Alexandre Bueno Azevedo Filho">
     <meta name="description" content="Projeto Interdisciplinar">
     <meta name="keywords" content="Atendimento ao Usuário e gestão de chamados">

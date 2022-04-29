@@ -10,8 +10,8 @@ public partial class _Index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         int id = Convert.ToInt32(Session["ID"]);
-        PersonBD bd = new PersonBD();
-        Person person = bd.Select(id);
+        UserBD bd = new UserBD();
+        User person = bd.Select(id);
         string title = lblTitle.Text;
 
         if (!IsAdministrador(person.TypeAccess))

@@ -4,25 +4,21 @@
 <html lang="pt-br">
 <head runat="server">
     <meta charset="utf-8">
-     <!-- Font Awesome -->
-     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-     <!-- icheck bootstrap -->
-     <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css.map">
-    
+     <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
     <title>Page 404 - NotFound </title>
 </head>
-<body class="hold-transition login-page">
-    <p>Teste Error</p>
+<body class="hold-transition login-page bg-danger p-5">
+    
+
+    <div class="alert alert-danger text-center" role="alert">
+        <h1 class="fw-light">Error 404</h1>
+    </div>
+
     <form runat="server">
     </form>
 
-     <!-- jQuery -->
-     <script src="../../plugins/jquery/jquery.min.js"></script>
-     <!-- Bootstrap 4 -->
-     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-     <!-- AdminLTE App -->
-     <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js.map"></script>
 </body>
 </html>

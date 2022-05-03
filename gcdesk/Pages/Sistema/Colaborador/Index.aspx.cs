@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,20 +10,20 @@ public partial class _Index : System.Web.UI.Page
     {
         int id = Convert.ToInt32(Session["ID"]);
         UserBD bd = new UserBD();
-        User person = bd.Select(id);
+        User user = bd.Select(id);
         string title = lblTitle.Text;
 
-        if (!IsAdministrador(person.TypeAccess))
+        if (!IsAdministrator(user.TypeAccess))
         {
-        Response.Redirect("../Erro/AcessoNegado.aspx");
+           Response.Redirect("../../Default.aspx");
         }
         else
         {
-           title = "Bem vindo (Administrador) : " + person.Email;
+           title = "Bem vindo (Colaborador) : " + user.Email;
         }
     }
 
-    private bool IsAdministrador(int tipo)
+    private bool IsAdministrator(int tipo)
     {
         bool retorno = false;
         if (tipo == 0)
@@ -33,4 +32,5 @@ public partial class _Index : System.Web.UI.Page
         }
         return retorno;
     }
+    
 }

@@ -9,7 +9,7 @@ using System.Data;
 /// </summary>
 public class UserBD
 {
-    public User Autentica(string email, string password)
+    public User Authenticate(string email, string password)
     {
         User obj = null;
         System.Data.IDbConnection objConexao;

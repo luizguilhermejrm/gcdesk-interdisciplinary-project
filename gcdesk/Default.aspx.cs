@@ -12,7 +12,7 @@ public partial class _Default : System.Web.UI.Page
 
     }
 
-    private bool IsPreenchido(string str)
+    private bool IsComplete(string str)
     {
         bool retorno = false;
         if (str != string.Empty)
@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
         }
         return retorno;
     }
-    private bool UsuarioEncontrado(User user)
+    private bool UserFound(User user)
     {
         bool retorno = false;
         if (user != null)
@@ -36,14 +36,14 @@ public partial class _Default : System.Web.UI.Page
         string email = txtEmail.Text.Trim();
         string password = Function.HashText(txtPassword.Text.Trim());
 
-        if (!IsPreenchido(email))
+        if (!IsComplete(email))
         {
             lblMsg.Text = "Preencha o email";
             txtEmail.Focus();
             return;
         }
 
-        if (!IsPreenchido(password))
+        if (!IsComplete(password))
         {
             lblMsg.Text = "Preencha a senha";
             txtPassword.Focus();
@@ -52,8 +52,8 @@ public partial class _Default : System.Web.UI.Page
 
         UserBD bd = new UserBD();
         User user = new User();
-        user = bd.Autentica(email, password);
-        if (!UsuarioEncontrado(user))
+        user = bd.Authenticate(email, password);
+        if (!UserFound(user))
         {
             lblMsg.Text = "Usuário não encontrado";
             txtEmail.Focus();

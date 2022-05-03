@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,7 +14,7 @@ public partial class _Index : System.Web.UI.Page
         User user = bd.Select(id);
         string title = lblTitle.Text;
 
-        if (!IsAdministrator(user.TypeAccess))
+        if (!IsCollaborator(user.TypeAccess))
         {
            Response.Redirect("../../Default.aspx");
         }
@@ -23,10 +24,10 @@ public partial class _Index : System.Web.UI.Page
         }
     }
 
-    private bool IsAdministrator(int tipo)
+    private bool IsCollaborator(int tipo)
     {
         bool retorno = false;
-        if (tipo == 0)
+        if (tipo == 1)
         {
             retorno = true;
         }

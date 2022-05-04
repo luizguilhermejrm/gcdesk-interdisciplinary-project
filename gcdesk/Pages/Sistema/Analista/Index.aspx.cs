@@ -12,7 +12,7 @@ public partial class _Index : System.Web.UI.Page
         int id = Convert.ToInt32(Session["ID"]);
         UserBD bd = new UserBD();
         User user = bd.Select(id);
-        string title = lblTitle.Text;
+        string lblEmail = lblEmail.Text;
 
         if (!IsAdministrator(user.TypeAccess))
         {
@@ -20,7 +20,7 @@ public partial class _Index : System.Web.UI.Page
         }
         else
         {
-           title = "Bem vindo (Administrador) : " + user.Email;
+           lblEmail = "Bem vindo (Administrador) : " + user.Email;
         }
     }
 

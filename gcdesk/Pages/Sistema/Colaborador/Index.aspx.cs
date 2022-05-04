@@ -14,7 +14,7 @@ public partial class _Index : System.Web.UI.Page
         User user = bd.Select(id);
         string title = lblTitle.Text;
 
-        if (!IsCollaborator(user.TypeAccess))
+        if (!IsAdministrator(user.TypeAccess))
         {
            Response.Redirect("../../Default.aspx");
         }
@@ -24,7 +24,7 @@ public partial class _Index : System.Web.UI.Page
         }
     }
 
-    private bool IsCollaborator(int tipo)
+    private bool IsAdministrator(int tipo)
     {
         bool retorno = false;
         if (tipo == 1)

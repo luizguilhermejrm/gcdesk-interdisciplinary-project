@@ -12,7 +12,7 @@
     <p>Analista</p>
 
     <form runat="server">
-        <asp:Label ID="lblTitle" runat="server" Text="" />
+        <asp:Label ID="lblEmail" runat="server" Text="" />
         <asp:LinkButton ID="lblLogout" runat="server" Text="Sair" />
     </form>
 

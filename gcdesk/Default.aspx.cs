@@ -47,6 +47,7 @@ public partial class _Default : System.Web.UI.Page
         {
             lblMsg.Text = "Preencha a senha";
             txtPassword.Focus();
+            //Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "<script>$('#modal_aviso').modal('show');</script>", false);
             return;
         }
 

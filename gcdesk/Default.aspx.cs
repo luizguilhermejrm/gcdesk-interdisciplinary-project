@@ -61,7 +61,7 @@ public partial class _Default : System.Web.UI.Page
             return;
         }
 
-        Session["ID"] = user.Id;
+        Session["ID"] = user.UserId;
 
         switch (user.TypeAccess)
         {

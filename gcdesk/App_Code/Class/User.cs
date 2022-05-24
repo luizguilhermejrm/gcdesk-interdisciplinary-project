@@ -8,22 +8,24 @@ using System.Web;
 /// </summary>
 public class User
 {
-    
-    public int Id { get; set; }
-    public int Name { get; set; }
-    public int Position { get; set; }
-    public int Status { get; set; }
-    public int TypeAnalist { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public int TypeAccess { get; set; }
-    public int FirstLogin { get; set; }
-    public int Depart_id { get; set; }
+    public int UserId { get; set; }
 
-    public User()
-    {
-    //
-    // TODO: Add constructor logic here
-    //
-    }
+    public int Name { get; set; }
+
+    public int Position { get; set; }
+
+    public int StatusUser { get; set; }
+
+    public int TypeAnalist { get; set; }
+
+    public string Email { get; set; }
+
+    public string Password { get; set; }
+
+    public int TypeAccess { get; set; }
+
+    public int FirstLogin { get; set; }
+
+    public int DepartId { get; set; }
+
 }

@@ -1,20 +1,7 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="_Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Pages_Sistema_Analista_Index" %>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head runat="server">
-    <meta charset="utf-8">
-
-    
-    <title>Analista </title>
-</head>
-<body class="hold-transition login-page">
-    <p>Analista</p>
-
-    <form runat="server">
-        <asp:Label ID="lblEmail" runat="server" Text="" />
-        <asp:LinkButton ID="lblLogout" runat="server" Text="Sair" />
-    </form>
-
-</body>
-</html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:Label ID="lblTitle" runat="server" Text="" />
+</asp:Content>

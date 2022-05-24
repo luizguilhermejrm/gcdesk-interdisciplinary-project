@@ -25,7 +25,7 @@ public class UserBD
         while (objDataReader.Read())
         {
             obj = new User();
-            obj.Id = Convert.ToInt32(objDataReader["user_id"]);
+            obj.UserId = Convert.ToInt32(objDataReader["user_id"]);
             obj.Email = Convert.ToString(objDataReader["user_email"]);
             obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
             obj.FirstLogin = Convert.ToInt32(objDataReader["user_firstLogin"]);
@@ -52,7 +52,7 @@ public class UserBD
         while (objDataReader.Read())
         {
             obj = new User();
-            obj.Id = Convert.ToInt32(objDataReader["user_id"]);
+            obj.UserId = Convert.ToInt32(objDataReader["user_id"]);
             obj.Email = Convert.ToString(objDataReader["user_email"]);
             obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
             obj.FirstLogin = Convert.ToInt32(objDataReader["user_firstLogin"]);
@@ -64,10 +64,5 @@ public class UserBD
         objDataReader.Dispose();
         return obj;
     }
-    public UserBD()
-    {
-    //
-    // TODO: Add constructor logic here
-    //
-    }
+
 }

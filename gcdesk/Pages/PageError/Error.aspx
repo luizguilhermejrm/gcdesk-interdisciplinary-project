@@ -8,14 +8,33 @@
 
     <title>Page Error</title>
 </head>
-<body class="hold-transition login-page bg-light p-5">
+<body class="vh-100">
 
-    <div class="alert alert-warning text-center" role="alert">
-        <h1 class="fw-light">Error</h1>
+    <div class="bg-light h-50">
+    </div>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="card shadow p-4 " style="width: 1100px;">
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="text-primary fw-normal mb-4">GC Desk</h1>
+                            <h6><b>Oops.</b> Erro no servidor</h6>
+                            <p>Desculpe, o servidor encontrou um erro interno e não conseguiu concluir sua solicitação.</p>
+                            <p>Isso é tudo que sabemos.</p>
+                            <a class="btn btn-primary">Voltar</a>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="../../image/PageError.svg" class="img-fluid mt-5" alt="Imagem background de Error 404.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white h-50">
     </div>
 
-    <form runat="server">
-    </form>
 
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/bootstrap.min.js.map"></script>

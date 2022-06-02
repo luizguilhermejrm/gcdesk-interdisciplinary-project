@@ -7,14 +7,15 @@
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/default.css" />
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../fontawesome/css/all.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-light bg-light border border-default">
-        <a class="navbar-brand ps-3 me-0" href="#">GC Desk</a>
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white">
+        <a class="navbar-brand ps-3 me-0 my-auto text-black fs-4 fw-bold" href="#"><img src="../../../image/LogoPerson.png" class="img-fluid w-25 d-inline-block align-text-top" /> <span class="text-primary">GC</span> Desk</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-4 my-2 my-md-0 ">
             <div class="input-group">
@@ -59,13 +60,13 @@
             </li>
         </ul>
     </nav>
-    <div id="layoutSidenav">
+    <div id="layoutSidenav" class="bg-light">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-light border border-default" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-light bg-primary-low" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
-                    <div class="nav rounded bg-secondary m-3">
+                    <div class="nav rounded bg-primary m-3">
                         <a class="nav-link p-2" href="#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt mx-2 fs-6 text-light"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line mx-2 fs-6 text-light"></i></div>
                             <span class="text-light">Dashboard</span>
                         </a>
                     </div>
@@ -79,7 +80,7 @@
                     </asp:ContentPlaceHolder>
                 </form>
             </div>
-            <footer class="py-4 bg-light mt-auto border-top border-default">
+            <footer class="py-4 bg-white mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; GC Desk 2022</div>

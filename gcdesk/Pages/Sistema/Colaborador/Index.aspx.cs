@@ -20,7 +20,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         }
         else
         {
-            lblTitle.Text = user.Email;
+            //lblTitle.Text = user.Email;
         }
 
         txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");

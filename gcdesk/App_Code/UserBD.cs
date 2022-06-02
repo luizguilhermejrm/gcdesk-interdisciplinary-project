@@ -31,6 +31,8 @@ public class UserBD
             obj.FirstLogin = Convert.ToInt32(objDataReader["user_firstLogin"]);
             obj.Password = objDataReader["user_password"].ToString();
         }
+
+        
         objDataReader.Close();
         objConexao.Close();
         objCommand.Dispose();
@@ -65,4 +67,5 @@ public class UserBD
         return obj;
     }
 
+  
 }

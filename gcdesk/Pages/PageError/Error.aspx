@@ -13,7 +13,7 @@
     <div class="bg-light h-50">
     </div>
     <div class="position-absolute top-50 start-50 translate-middle">
-        <div class="card shadow p-4 " style="width: 1100px;">
+        <div class="card shadow p-5 p-xxl-5">
             <div class="card-body">
                 <div class="container">
                     <div class="row">

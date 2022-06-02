@@ -6,42 +6,19 @@
     <section id="pageHeader">
         <div class="container-fluid">
             <div class="row d-flex justify-content-between">
-                <div class="col-auto">
+                <div class="col-auto mb-2">
                     <asp:LinkButton ID="btn" CssClass="btn btn-primary  mt-3" OnClick="btn_Click" runat="server"><i class="fas fa-tachometer-alt mx-1 fs-6 me-3"></i>Criar chamado</asp:LinkButton>
                 </div>
-                <div class="col-auto">
-                    <div id="lblMsgSuccess" runat="server" visible="false">
-                        <div class="alert alert-success alert-dismissible fade show d-flex align-items-center mb-0 mt-3 px-3 py-2 ms-auto" role="alert">
-                            <svg class="bi flex-shrink-0 me-3" width="16" height="16" role="img" aria-label="Success:">
-                                <use xlink:href="#check-circle-fill" />
-                            </svg>
-                            <div class="me-3">
-                                Cadastrado com sucesso! 
-                            </div>
-                            <i class="fa-solid fa-close mt-1" data-bs-dismiss="alert"></i>
-                        </div>
-                    </div>
-                    <div id="lblMsgError" runat="server" visible="false">
-                        <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center mb-0 mt-3 px-3 py-2 ms-auto" role="alert">
-                            <svg class="bi flex-shrink-0 me-3" width="16" height="16" role="img" aria-label="Danger:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div class="me-3">
-                                Erro ao cadastrar!
-                            </div>
-                            <i class="fa-solid fa-close mt-1" data-bs-dismiss="alert"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <p class="fs-3 mb-5">
-                Resumo do colaborador: 
+
+                <hr />
+                <p class="fs-3 mb-5">
+                    Resumo do colaborador: 
                 <asp:Label ID="lblTitle" runat="server" Text="" />
-            </p>
-        </div>
+                </p>
+            </div>
     </section>
     <section id="pageContent">
+         <asp:Label ID="lblCdTicket" runat="server" />
         <div class="container">
             <div class="row">
                 <div class="col-md-4 my-1 d-flex justify-content-center">
@@ -117,102 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <%-- <div class="col-md-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Últimos chamados
-                        </div>
-                        <div class="card-body overflow-auto" style="height: 400px">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover" id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Descrição</th>
-                                            <th>Status</th>
-                                            <th>Aberto</th>
-                                            <th>Fechado</th>
-                                            <th>Analista</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Senha não entra</td>
-                                            <td>Fechado</td>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>João Alves</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>--%>
-                <div class="col-md-6">
+               <%-- <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
@@ -273,12 +155,76 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>--%><%-- <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Notificações recentes
                         </div>
+                        <div class="card-body overflow-auto" style="height: 400px">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="mt-3" style="width: 70px; height: 70px;">
+                                                    <img class="rounded-circle" src="https://picsum.photos/70" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row mx-0">
+                                                    <p class="fw-bold">Assunto<span class="badge bg-primary rounded-pill ms-3">Novo</span></p>
+                                                    <p class="d-inline-block" style="white-space: nowrap; width: 40em; overflow: hidden; text-overflow: ellipsis;">
+                                                        Praeterea iterest quasdam iterest quasdam iterest quasdam iterest iterest quasdam iterest.
+                                                    </p>
+                                                    <span class="text-muted">há 1 min</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="mt-3" style="width: 70px; height: 70px;">
+                                                    <img class="rounded-circle" src="https://picsum.photos/70" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row mx-0">
+                                                    <p class="fw-bold">Assunto<span class="badge bg-primary rounded-pill ms-3">Novo</span></p>
+                                                    <p class="d-inline-block" style="white-space: nowrap; width: 40em; overflow: hidden; text-overflow: ellipsis;">
+                                                        Praeterea iterest quasdam iterest quasdam iterest quasdam iterest iterest quasdam iterest.
+                                                    </p>
+                                                    <span class="text-muted">há 1 min</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="mt-3" style="width: 70px; height: 70px;">
+                                                    <img class="rounded-circle" src="https://picsum.photos/70" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row mx-0">
+                                                    <p class="fw-bold">Assunto<span class="badge bg-primary rounded-pill ms-3">Novo</span></p>
+                                                    <p class="d-inline-block" style="white-space: nowrap; width: 40em; overflow: hidden; text-overflow: ellipsis;">
+                                                        Praeterea iterest quasdam iterest quasdam iterest quasdam iterest iterest quasdam iterest.
+                                                    </p>
+                                                    <span class="text-muted">há 1 min</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>--%>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
     <div class="modal fade" id="exampleModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -287,9 +233,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Qual o seu problema" TextMode="SingleLine" />
-                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3" placeholder="Localização" TextMode="SingleLine" />
-                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3" placeholder="Tempo Aberto" TextMode="DateTime" />
+                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Descreva a sua solicitação..." TextMode="SingleLine" required />
+                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3" placeholder="Localização..." TextMode="SingleLine" required />
+                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3" placeholder="Horario em que foi aberto..." TextMode="DateTime" required />
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -298,6 +244,27 @@
             </div>
         </div>
     </div>
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
     <script src="../../../js/bootstrap.min.js"></script>
+    <script>
+        window.onload = (event) => {
+            let myAlert = document.querySelector('.toast');
+            let bsAlert = new bootstrap.Toast(myAlert);
+            bsAlert.show();
+        }
+    </script>
 </asp:Content>
 

@@ -58,13 +58,39 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         tic.Localization = txtLocal.Text;
         tic.OpenTime = txtData.Text;
 
+
+
         if (TicketBD.Insert(tic) == 0)
         {
-            lblMsgSuccess.Visible = true;
+            lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Chamado criado com sucesso.
+                                      </div>
+                                   </div>
+                                </div> ";
+
         }
         else
         {
-            lblMsgError.Visible = true;
+            lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Nao foi possivel criar o Chamado.
+                                      </div>
+                                   </div>
+                                </div> ";
+
         }
     }
 

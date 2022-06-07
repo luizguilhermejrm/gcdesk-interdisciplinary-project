@@ -15,14 +15,15 @@
                     </div>
                     <div class="card-body overflow-auto" style="height: 400px">
                         <div class="table-responsive">
-                            <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover border-top-0 border-start-0 border-end-0">
+                            <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0" OnRowDataBound="gdvTickets_RowDataBound" OnRowCommand="gdvTickets_RowCommand">
                                 <Columns>
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_localization" HeaderText="Localização" />
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_openTime" HeaderText="Horário de abertura" />
-                                    <asp:TemplateField HeaderText="Acao">
+                                    <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_status" HeaderText="Status" />
+                                    <asp:TemplateField HeaderText="Acao" ItemStyle-CssClass="py-4">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="lkbUpdate" runat="server" Text="" CommandArgument='<% #Bind("tic_id") %>'>
+                                            <asp:LinkButton ID="lkbUpdate" runat="server" CommandArgument='<% #Bind("tic_id") %>'>
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -33,7 +34,6 @@
                 </div>
             </div>
 
-
             <div class="modal fade" id="idModal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -42,14 +42,14 @@
                             <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar chamado</h5>
                         </div>
                         <div class="modal-body">
-                            <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Descreva a sua solicitação" TextMode="SingleLine" required />
-                            <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Localização" TextMode="SingleLine" required />
-                            <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Horario em que foi aberto" TextMode="DateTime" required />
+                          <h5>Erro na alteração.</h5>
                         </div>
                         <div class="modal-footer border-0">
-                            <asp:Button ID="btnTicket" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnTicket_Click" />
+                            <%--<asp:Button ID="btnTicket" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnTicket_Click" />--%>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </asp:Content>

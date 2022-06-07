@@ -50,19 +50,18 @@ public class TicketBD
         return ds;
     }
 
-    public static int UpdateTicket(int idTicket, string description, string localization,int typeTicket,int status,string openTime, string closeTime, int grade, int user_id,int ana_id)
+    public static int UpdateTicket(int valor, int codTicket)
     {
         try
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"UPDATE ticket SET tic_description=?description, tic_localization=?localization, tic_typeTicket=?typeTicket, tic_status=?status, tic_openTime=?openTime, tic_closeTime=?closeTime, tic_grade=?grade, user_id=?user_id, ana_analisty_id=?ana_id WHERE tic_id=idTicket;";
+            string sql = @"UPDATE ticket SET tic_status=?valor WHERE tic_id=?cod;";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
-            dbCommand.Parameters.Add(Mapped.Parameter("?description", description));
-            dbCommand.Parameters.Add(Mapped.Parameter("?localization", localization));
-            dbCommand.Parameters.Add(Mapped.Parameter("?openTime", openTime));
+            dbCommand.Parameters.Add(Mapped.Parameter("?valor", valor));
+            dbCommand.Parameters.Add(Mapped.Parameter("?cod", codTicket));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();
@@ -72,8 +71,6 @@ public class TicketBD
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.StackTrace);
-
             return -2;
         }
     }

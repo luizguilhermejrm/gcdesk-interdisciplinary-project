@@ -50,6 +50,26 @@ public class TicketBD
         return ds;
     }
 
+    public DataSet SelecionarIndividual(String ticketID)
+    {
+        DataSet ds = new DataSet();
+        Ticket ticket = new Ticket();
+
+        IDbConnection objConexao;
+        IDbCommand objComando;
+        IDataAdapter objAdapter;
+        objConexao = Mapped.Connection();
+        string sql = "SELECT * FROM ticket WHERE tic_id=?cod;";
+        objComando = Mapped.Command(sql, objConexao);
+        objAdapter = Mapped.Adapter(objComando);
+        objComando.Parameters.Add(Mapped.Parameter("?cod", ticketID));
+        objAdapter.Fill(ds);
+        objComando.Dispose();
+        objConexao.Close();
+        objConexao.Dispose();
+        return ds;
+    }
+
     public static int UpdateTicket(int valor, int codTicket)
     {
         try

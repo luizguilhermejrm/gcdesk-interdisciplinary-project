@@ -27,7 +27,10 @@ public partial class Pages_Sistema_Analista_Index : System.Web.UI.Page
         LoadTickets();
         if (gdvTickets.Rows.Count > 0)
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+
     }
+    
 
     private bool IsAnalisty(int tipo)
     {
@@ -73,6 +76,35 @@ public partial class Pages_Sistema_Analista_Index : System.Web.UI.Page
                 e.Row.Cells[3].Text = "<i class='text-success fa fa-check'></i>";
             }
         }
+
+    }
+
+     
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {});" +
+           "document.onreadystatechange = function () {" +
+           " myModal.show();" +
+           "};", true);
+
+        long objetoID = Convert.ToInt64((sender as LinkButton).CommandArgument);
+
+        string ticketID = objetoID.ToString();
+        lblId.Text = ticketID;
+
+
+        //TicketBD ticket = new TicketBD();
+        //ticket.SelecionarIndividualTicket(ticketID);
+
+        Ticket tic = new Ticket();
+        tic.Description = lblDescricao.Text;
+
+
+
+
+
+
     }
 
     protected void gdvTickets_RowCommand(object sender, GridViewCommandEventArgs e)

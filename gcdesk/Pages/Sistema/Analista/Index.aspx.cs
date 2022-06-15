@@ -45,7 +45,7 @@ public partial class Pages_Sistema_Analista_Index : System.Web.UI.Page
 
     void LoadTickets()
     {
-        DataSet dsTicket = TicketBD.SelecionarTodos();
+        DataSet dsTicket = TicketBD.Select();
         int qtd = dsTicket.Tables[0].Rows.Count;
         gdvTickets.Visible = false;
         if (qtd > 0)

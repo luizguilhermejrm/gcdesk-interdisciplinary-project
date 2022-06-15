@@ -28,25 +28,25 @@ using System.Configuration;
         }
 
         //Executa comando no BD
-        public static IDbCommand Command(string query, IDbConnection conexao)
+        public static IDbCommand Command(string query, IDbConnection conection)
         {
-            IDbCommand comando = conexao.CreateCommand();
-            comando.CommandText = query;
-            return comando;
+            IDbCommand command = conection.CreateCommand();
+            command.CommandText = query;
+            return command;
         }
 
         //Retorna um Adapter (SELECT)
-        public static IDataAdapter Adapter(IDbCommand comando)
+        public static IDataAdapter Adapter(IDbCommand command)
         {
             IDbDataAdapter adap = new MySqlDataAdapter();
-            adap.SelectCommand = comando;
+            adap.SelectCommand = command;
             return adap;
         }
 
         //Cria parametro da SQL
-        public static IDbDataParameter Parameter(string nome, object valor)
+        public static IDbDataParameter Parameter(string name, object value)
         {
-            return new MySqlParameter(nome, valor);
+            return new MySqlParameter(name, value);
         
         }
 

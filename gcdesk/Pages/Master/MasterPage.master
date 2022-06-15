@@ -1,0 +1,114 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Pages_Master_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/default.css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../fontawesome/css/all.min.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-light bg-white">
+        <a class="navbar-brand ps-3 me-0 my-auto text-black fs-4 fw-bold" href="#"><img src="../../../image/LogoPerson.png" class="img-fluid w-25 d-inline-block align-text-top" /> <span class="text-primary">GC</span> Desk</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+        <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-4 my-2 my-md-0 ">
+            <div class="input-group">
+                <div class="input-group-text border"><i class="fa-solid fa-magnifying-glass "></i></div>
+                <input class="form-control border" placeholder="Busca" />
+            </div>
+        </div>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle border rounded bg-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Configuração</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sair</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle border rounded bg-white" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bell"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1" style="max-width: 500px;">
+                    <li class="dropdown-item">
+                        <div class="row">
+                            <p class="fw-bold">Assunto <span class="badge bg-primary rounded-pill">Novo</span></p>
+                            <br />
+                            <p class="d-inline-block text-truncate" style="max-width: 500px;">Praeterea iterest quasdam iterest quasdam iterest quasdam iterest quasdam iterest quasdam. </p>
+                            <span class="text-muted ">há 1 min</span>
+                        </div>
+                    </li>
+                    <hr />
+                    <li class="dropdown-item">
+                        <div class="row">
+                            <p class="fw-bold ">Assunto <span class="badge bg-primary rounded-pill">Novo</span></p>
+                            <br />
+                            <p class="d-inline-block text-truncate" style="max-width: 500px;">Praeterea iterest quasdam iterest quasdam iterest quasdam iterest quasdam iterest quasdam. </p>
+                            <span class="text-muted ">há 1 min</span>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav" class="bg-light">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-light bg-primary-low" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav rounded bg-primary m-3">
+                        <a class="nav-link p-2" href="#">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line mx-2 fs-6 text-light"></i></div>
+                            <span class="text-light">Dashboard</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <div class="content-body container-fluid px-4 py-3">
+                <form id="form1" runat="server">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+            </div>
+            <footer class="py-4 bg-white mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; GC Desk 2022</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+    <script src="../../../js/script.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../../jquery/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datatable-plugin').DataTable();
+        });
+    </script>
+</body>
+</html>

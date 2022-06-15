@@ -1,0 +1,19 @@
+﻿.bg-primary-low {
+    background-color: #dae9ff;
+    /*Azul fraco*/
+}
+
+.bg-success-low {
+    background-color: #8cc3aa;
+    /*Alert Verde*/
+}
+
+.bg-danger-low {
+    background-color: #ee9aa2;
+    /*Alert Vermelho*/
+}
+
+.bg-warning-low {
+    background-color: #ffe083;
+    /*Alert Amarelo*/
+}

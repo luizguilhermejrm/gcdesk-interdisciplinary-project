@@ -71,7 +71,7 @@ public partial class _Default : System.Web.UI.Page
 
         if (user != null)
         {
-            Session["ID"] = user.UserId;
+            Session["USER_BD"] = user;
             switch (user.TypeAccess)
             {
                 case 0:

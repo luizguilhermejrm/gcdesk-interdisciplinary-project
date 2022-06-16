@@ -67,5 +67,29 @@ public class UserBD
         return obj;
     }
 
-  
+    public static int UpdateUserFirstLogin(User user)
+    {
+        try
+        {
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"UPDATE user SET user_firstLogin=1, user_password=?password WHERE user_id=?UserId;";
+
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?password", user.Password));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+    }
+
+
 }

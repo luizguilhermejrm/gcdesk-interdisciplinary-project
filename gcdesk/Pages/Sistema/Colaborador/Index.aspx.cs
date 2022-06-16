@@ -10,18 +10,6 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int id = Convert.ToInt32(Session["ID"]);
-        UserBD bd = new UserBD();
-        User user = bd.Select(id);
-
-        if (!IsAnalisty(user.TypeAccess))
-        {
-            Response.Redirect("../../Default.aspx");
-        }
-        else
-        {
-            //lblTitle.Text = user.Email;
-        }
 
         txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
         txtData.Attributes.Add("readonly", "true");
@@ -33,15 +21,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
     }
 
-    private bool IsAnalisty(int tipo)
-    {
-        bool retorno = false;
-        if (tipo == 1)
-        {
-            retorno = true;
-        }
-        return retorno;
-    }
+    
 
     protected void btn_Click(object sender, EventArgs e)
     {

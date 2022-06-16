@@ -21,6 +21,7 @@ public class User
     public string Email { get; set; }
 
     public string Password { get; set; }
+    public string RetypePassword { get; set; }
 
     public int TypeAccess { get; set; }
 

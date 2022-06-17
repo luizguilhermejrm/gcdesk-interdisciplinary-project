@@ -87,23 +87,31 @@
                 </footer>
             </div>
         </div>
-
-
-        <div class="modal fade" id="ModalFirstLogin" tabindex="-1">
+        <div class="modal fade" id="ModalFirstLogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <button type="button" class="btn-close mt-2 ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar chamado</h5>
+                    <div class="modal-header border rounded-0">
+                        <div class="row">
+                            <h5 class="modal-title text-center text-primary fw-bold fs-2 pt-1 mx-auto" id="exampleModalLabel">Primeiro Login</h5>
+                            <span class="modal-title text-center text-primary fw-light fs-5 mx-auto" id="exampleModalLabel1">Olá usuário, você deve mudar sua Senha</span>
+                        </div>
                     </div>
                     <div class="modal-body">
-                        <h1>Primeiro Login</h1>
-                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control bg-primary bg-opacity-25" />
-                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Digite sua nova senha..."  />
-                        <asp:TextBox ID="txtRetypePassword" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Digite novamente a senha..." />
+                        <div class="input-group mb-4">
+                            <div class="input-group-text bg-white text-primary"><i class="fa-solid fa-envelope"></i></div>
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Insira seu email" TextMode="Email" />
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-text bg-white text-primary"><i class="fa-solid fa-key"></i></div>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Insira sua nova senha" TextMode="Password" />
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-text bg-white text-primary"><i class="fa-solid fa-key"></i></div>
+                            <asp:TextBox ID="txtRetypePassword" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Insira novamente a senha" TextMode="Password" />
+                        </div>
                     </div>
-                    <div class="modal-footer border-0">
-                         <asp:Button ID="btnUpdateFirstLogin" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnUpdateFirstLogin_Click" />
+                    <div class="modal-footer ">
+                        <asp:Button ID="btnUpdateFirstLogin" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnUpdateFirstLogin_Click" />
                     </div>
                 </div>
             </div>

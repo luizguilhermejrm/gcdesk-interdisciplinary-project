@@ -9,6 +9,17 @@ public partial class Pages_Sistema_Analista_AnalystTickets_Default : System.Web.
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        User user = (User)Session["USER_BD"];
 
+        if (user != null)
+        {
+
+
+
+        }
+        else
+        {
+            Response.Redirect("../../Default.aspx");
+        }
     }
 }

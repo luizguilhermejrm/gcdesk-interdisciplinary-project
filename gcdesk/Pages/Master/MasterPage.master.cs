@@ -11,52 +11,59 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
     {
         User user = (User)Session["USER_BD"];
 
-        if (!IsPostBack)
+        if (user != null)
         {
-            if(user.FirstLogin == 0)
+            if (!IsPostBack)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('ModalFirstLogin'), {});" +
-                      "document.onreadystatechange = function () {" +
-                      " myModal.show();" +
-                      "};", true);
+                if (user.FirstLogin == 0)
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('ModalFirstLogin'), {});" +
+                          "document.onreadystatechange = function () {" +
+                          " myModal.show();" +
+                          "};", true);
+                }
             }
-        }
 
-        if (IsAnalisty(user.TypeAccess))
-        {
-            lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
-                              <a class='nav-link p-2' href='#'>
-                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
-                                 <span class='text-light'>Dashboard</span>
-                              </a>
-                            </div>
-                            <div class='nav rounded bg-primary m-3'>
-                              <a class='nav-link p-2' href='#'>
-                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6 text-light'></i></div>
-                                 <span class='text-light'>Meus Chamados</span>
-                              </a>
-                            </div>
-                            <div class='nav rounded bg-primary m-3'>
-                              <a class='nav-link p-2' href='#'>
-                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6 text-light'></i></div>
-                                 <span class='text-light'>Todos Chamados</span>
-                              </a>
-                            </div>";
-        }
-        else if (!IsAnalisty(user.TypeAccess))
-        {
-            lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
-                                  <a class='nav-link p-2' href='#'>
-                                     <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
-                                     <span class='text-light'>Dashboard</span>
-                                  </a>
-                                </div>";
-        }
-        else
+            if (IsAnalisty(user.TypeAccess))
+            {
+                lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/Index.aspx'>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
+                                         <span class='text-light'>Dashboard</span>
+                                      </a>
+                                    </div>
+                                    <div class='nav rounded bg-primary m-3'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AnalystTickets/Default.aspx'>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6 text-light'></i></div>
+                                         <span class='text-light'>Meus Chamados</span>
+                                      </a>
+                                    </div>
+                                    <div class='nav rounded bg-primary m-3'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AllTickets/Default.aspx'>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6 text-light'></i></div>
+                                         <span class='text-light'>Todos Chamados</span>
+                                      </a>
+                                    </div>";
+            }
+            else if (!IsAnalisty(user.TypeAccess))
+            {
+                lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
+                                      <a class='nav-link p-2' href='#'>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
+                                         <span class='text-light'>Dashboard</span>
+                                      </a>
+                                    </div>";
+            }
+            else
+            {
+                Response.Redirect("../PageError/Error404.aspx");
+            }
+
+
+        }else
         {
             Response.Redirect("../PageError/Error404.aspx");
         }
-
 
 
     }
@@ -77,13 +84,13 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
         User user = (User)Session["USER_BD"];
 
         user.Email = txtEmail.Text;
-        user.Password = Function.HashText(txtPassword.Text); 
+        user.Password = Function.HashText(txtPassword.Text);
         user.RetypePassword = Function.HashText(txtRetypePassword.Text);
 
 
         if (user.Password == user.RetypePassword)
         {
-            
+
             if (UserBD.UpdateUserFirstLogin(user) == 0)
             {
                 lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>

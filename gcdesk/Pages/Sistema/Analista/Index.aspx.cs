@@ -6,24 +6,87 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class Pages_Sistema_Analista_Index : System.Web.UI.Page
+public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        User user = (User)Session["USER_BD"];
 
-        LoadTickets();
-        if (gdvTickets.Rows.Count > 0)
-            gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (user != null)
+        {
+            txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
+            txtData.Attributes.Add("readonly", "true");
+
+            TicketBD Tbd = new TicketBD();
+
+            CarregarTickets();
+            if (gdvTickets.Rows.Count > 0)
+                gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+
+        }
+        else
+        {
+            Response.Redirect("../Pages/PageError/Error404.aspx");
+        }
 
 
     }
-    
-
-    
 
 
-    void LoadTickets()
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {});" +
+           "document.onreadystatechange = function () {" +
+           " myModal.show();" +
+           "};", true);
+    }
+
+    protected void btnTicket_Click(object sender, EventArgs e)
+    {
+        Ticket tic = new Ticket();
+        tic.Description = txtProblem.Text;
+        tic.Localization = txtLocal.Text;
+        tic.OpenTime = txtData.Text;
+
+
+
+        if (TicketBD.Insert(tic) == 0)
+        {
+            lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Chamado criado com sucesso.
+                                      </div>
+                                   </div>
+                                </div> ";
+
+        }
+        else
+        {
+            lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Nao foi possivel criar o Chamado.
+                                      </div>
+                                   </div>
+                                </div> ";
+
+        }
+    }
+
+    void CarregarTickets()
     {
         DataSet dsTicket = TicketBD.Select();
         int qtd = dsTicket.Tables[0].Rows.Count;
@@ -37,73 +100,4 @@ public partial class Pages_Sistema_Analista_Index : System.Web.UI.Page
         }
     }
 
-    protected void gdvTickets_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            LinkButton lkb = new LinkButton();
-            lkb = (LinkButton)e.Row.Cells[4].FindControl("lkbUpdate");
-            if (e.Row.Cells[3].Text == "0")
-            {
-                lkb.Text = "<i class='text-info fas fa-sync'></i>";
-                lkb.CommandName = "ativar";
-                e.Row.Cells[3].Text = "<i class='text-danger fa fa-times'></i> ";
-            }
-            else
-            {
-                lkb.Text = "<i class='text-info fas fa-sync'></i>";
-                lkb.CommandName = "inativar";
-                e.Row.Cells[3].Text = "<i class='text-success fa fa-check'></i>";
-            }
-        }
-
-    }
-
-     
-
-    protected void btn_Click(object sender, EventArgs e)
-    {
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {});" +
-           "document.onreadystatechange = function () {" +
-           " myModal.show();" +
-           "};", true);
-
-        long objetoID = Convert.ToInt64((sender as LinkButton).CommandArgument);
-
-        string ticketID = objetoID.ToString();
-        lblId.Text = ticketID;
-
-
-        //TicketBD ticket = new TicketBD();
-        //ticket.SelecionarIndividualTicket(ticketID);
-
-        Ticket tic = new Ticket();
-        tic.Description = lblDescricao.Text;
-
-
-
-
-
-
-    }
-
-    protected void gdvTickets_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
-        int status = 0;
-        if (e.CommandName == "ativar")
-        {
-            status = 1; 
-        } 
-      
-        if (TicketBD.UpdateTicket(status, codigoTicket) == 0)
-        {
-            LoadTickets();
-        }
-        else
-        {
-            //Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "$('#idModal').modal('show')", true);
-        }
-
-    }
 }

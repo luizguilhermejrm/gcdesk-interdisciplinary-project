@@ -76,16 +76,15 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
         UserBD userBd = new UserBD();
         User user = (User)Session["USER_BD"];
 
-        userBd.Select(Convert.ToInt32(user.UserId));
-       
         user.Email = txtEmail.Text;
-        user.Password = txtPassword.Text;
-        user.RetypePassword = txtRetypePassword.Text;
-        
+        user.Password = Function.HashText(txtPassword.Text); 
+        user.RetypePassword = Function.HashText(txtRetypePassword.Text);
 
-        if(user.Password == user.RetypePassword)
+
+        if (user.Password == user.RetypePassword)
         {
-            if(userBd.UpdateUserFirstLogin(user))
+            
+            if (UserBD.UpdateUserFirstLogin(user) == 0)
             {
                 lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                               <div class='toast'>
@@ -100,7 +99,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                                                </div>
                                             </div> ";
             }
-            else 
+            else
             {
                 lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                               <div class='toast'>
@@ -115,7 +114,8 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                                                </div>
                                             </div> ";
             }
-        }else
+        }
+        else
         {
             lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                               <div class='toast'>

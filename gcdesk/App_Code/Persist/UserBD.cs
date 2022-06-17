@@ -73,11 +73,12 @@ public class UserBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"UPDATE user SET user_firstLogin=1, user_password=?password WHERE user_id=?UserId;";
+            string sql = @"UPDATE user SET user_firstLogin=1, user_password=?password WHERE user_id=?userId;";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?password", user.Password));
+            dbCommand.Parameters.Add(Mapped.Parameter("?userId", user.UserId));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();

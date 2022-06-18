@@ -138,4 +138,14 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                                             </div> ";
         }
     }
+
+    protected void lbExit_click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Session.Clear();
+        Session.RemoveAll();
+        Response.Redirect("../../../Default.aspx");
+
+    }
+
 }

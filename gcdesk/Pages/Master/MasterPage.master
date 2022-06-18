@@ -35,7 +35,8 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">Sair</a></li>
+                        <li><asp:LinkButton ID="btn" CssClass="dropdown-item" OnClick="lbExit_click" runat="server">Sair</asp:LinkButton></li>
+
                     </ul>
                 </li>
             </ul>

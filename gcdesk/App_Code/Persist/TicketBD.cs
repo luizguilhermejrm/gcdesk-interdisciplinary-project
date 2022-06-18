@@ -50,8 +50,79 @@ public class TicketBD
         }
     }
 
-   
+    public String SelectFinished(int id)
+    {
+        Ticket obj = new Ticket();
 
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=2", objConexao);
+        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj.TicketId = Convert.ToInt32(objDataReader["TOTAL"]);
+   
+        }
+        string resultado = Convert.ToString( obj.TicketId);
+        objDataReader.Close();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        objDataReader.Dispose();
+        return resultado;
+    }
+
+    public String SelectProgress(int id)
+    {
+        Ticket obj = new Ticket();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=1", objConexao);
+        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj.TicketId = Convert.ToInt32(objDataReader["TOTAL"]);
+
+        }
+        string resultado = Convert.ToString(obj.TicketId);
+        objDataReader.Close();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        objDataReader.Dispose();
+        return resultado;
+    }
+    public String SelectOpen(int id)
+    {
+        Ticket obj = new Ticket();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=0", objConexao);
+        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj.TicketId = Convert.ToInt32(objDataReader["TOTAL"]);
+
+        }
+        string resultado = Convert.ToString(obj.TicketId);
+        objDataReader.Close();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        objDataReader.Dispose();
+        return resultado;
+    }
     public DataSet SelectOne(String ticketID)
     {
         DataSet ds = new DataSet();

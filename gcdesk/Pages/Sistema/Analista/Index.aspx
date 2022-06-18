@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
    
     <section id="pageContent">
+        <asp:Label id="lblCdTicket" runat="server" Text=""></asp:Label>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 my-1 d-flex justify-content-center">

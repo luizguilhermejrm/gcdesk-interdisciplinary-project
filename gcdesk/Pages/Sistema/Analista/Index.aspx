@@ -69,7 +69,7 @@
                             Últimos chamados
                         </div>
                         <div class="card-body overflow-auto" style="height: 400px">
-                            <div class="table-responsive">
+                            <div class="table-responsive p-3">
                                 <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />

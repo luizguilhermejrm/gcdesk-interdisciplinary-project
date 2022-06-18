@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Master/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Pages_Sistema_Analista_AllTickets_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Master/MasterPage.master" AutoEventWireup="true" CodeFile="AllTickets.aspx.cs" Inherits="Pages_Sistema_Analista_AllTickets_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -16,7 +16,7 @@
                         Últimos chamados
                     </div>
                     <div class="card-body overflow-auto" style="height: 400px">
-                        <div class="table-responsive">
+                        <div class="table-responsive p-3">
                             <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0" OnRowDataBound="gdvTickets_RowDataBound" OnRowCommand="gdvTickets_RowCommand">
                                 <Columns>
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />
@@ -41,23 +41,24 @@
                 </div>
             </div>
         </div>
-        <%-- Modal Atualizar --%>
-        <div class="modal fade" id="exampleModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="btn-close mt-2 ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Atualizar Dados</h5>
-                    </div>
-                    <div class="modal-body">
-                        <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
-                        <asp:Label ID="lblDescricao" runat="server" Text=""></asp:Label>
-                    </div>
+    </div>
+    <%-- Modal Atualizar --%>
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close mt-2 ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Atualizar Dados</h5>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="lblId" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblDescricao" runat="server" Text=""></asp:Label>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
 
 </asp:Content>
 

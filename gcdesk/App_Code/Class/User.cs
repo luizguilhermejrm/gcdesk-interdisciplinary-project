@@ -10,9 +10,9 @@ public class User
 {
     public int UserId { get; set; }
 
-    public int Name { get; set; }
+    public string Name { get; set; }
 
-    public int Position { get; set; }
+    public string Position { get; set; }
 
     public int StatusUser { get; set; }
 

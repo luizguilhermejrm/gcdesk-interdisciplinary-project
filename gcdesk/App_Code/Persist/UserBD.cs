@@ -92,5 +92,44 @@ public class UserBD
         }
     }
 
+    public static DataSet SelectAll()
+    {
+        DataSet ds = new DataSet();
+        System.Data.IDbConnection objConection;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objAdapter;
+        objConection = Mapped.Connection();
+        string sql = "SELECT * FROM user WHERE user_typeAccess = '1'";
+        objCommand = Mapped.Command(sql, objConection);
+        objAdapter = Mapped.Adapter(objCommand);
+        objAdapter.Fill(ds);
+        objCommand.Dispose();
+        objConection.Close();
+        objConection.Dispose();
+        return ds;
+    }
 
+    public static int Insert(User user)
+    {
+        try
+        {
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"INSERT INTO user VALUES(0, ?name, ?position, 1, null, ?email, 'TpOUtNKHa4dBsQovtGWJtg8aHBIem8TCgProWvdbda6GCdSfDkIV87aCMG3H8mKxcf/BgfiG92TWOCENb/e6KA==', 1, 0, null);";
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?name", user.Name));
+            dbCommand.Parameters.Add(Mapped.Parameter("?position", user.Position));
+            dbCommand.Parameters.Add(Mapped.Parameter("?email", user.Email));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+    }
 }

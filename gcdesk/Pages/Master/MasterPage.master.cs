@@ -33,15 +33,21 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                                       </a>
                                     </div>
                                     <div class='nav rounded bg-primary m-3'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AnalystTickets/Default.aspx'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AnalystTickets.aspx'>
                                          <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6 text-light'></i></div>
                                          <span class='text-light'>Meus Chamados</span>
                                       </a>
                                     </div>
                                     <div class='nav rounded bg-primary m-3'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AllTickets/Default.aspx'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AllTickets.aspx'>
                                          <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6 text-light'></i></div>
                                          <span class='text-light'>Todos Chamados</span>
+                                      </a>
+                                    </div>
+                                    <div class='nav rounded bg-primary m-3'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/ListCollaborator.aspx'>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-table mx-2 fs-6 text-light'></i></div>
+                                         <span class='text-light'>Tab. Colaboradores</span>
                                       </a>
                                     </div>";
             }

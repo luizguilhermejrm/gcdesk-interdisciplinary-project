@@ -22,13 +22,19 @@
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_localization" HeaderText="Localização" />
                                     <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_openTime" HeaderText="Horário de abertura" />
-                                    <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_status" HeaderText="Status" />
+                                    <asp:TemplateField HeaderText="Pegar" ItemStyle-CssClass="py-4">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lkbPegar" runat="server" CommandArgument='<% #Bind("tic_id") %>'>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <%--<asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_status" HeaderText="Status" />
                                     <asp:TemplateField HeaderText="Alterar" ItemStyle-CssClass="py-4">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lkbUpdate" runat="server" CommandArgument='<% #Bind("tic_id") %>'>
                                             </asp:LinkButton>
                                         </ItemTemplate>
-                                    </asp:TemplateField>     
+                                    </asp:TemplateField>   --%>  
                                 </Columns>
                             </asp:GridView>
                         </div>

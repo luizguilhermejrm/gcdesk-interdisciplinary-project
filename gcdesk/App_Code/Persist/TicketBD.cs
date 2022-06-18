@@ -9,16 +9,52 @@ using System.Data;
 /// </summary>
 public class TicketBD
 {
-    public static DataSet Select()
+    public static DataSet SelectTicketAnaEmpty()
     {
         DataSet ds = new DataSet();
         IDbConnection objConection;
         IDbCommand objCommand;
         IDataAdapter objAdapter;
         objConection = Mapped.Connection();
-        string sql = "SELECT * FROM ticket ORDER BY tic_openTime DESC;";
+        string sql = "SELECT * FROM ticket WHERE tic_status=0;";
         objCommand = Mapped.Command(sql, objConection);
         objAdapter = Mapped.Adapter(objCommand);
+        objAdapter.Fill(ds);
+        objCommand.Dispose();
+        objConection.Close();
+        objConection.Dispose();
+        return ds;
+    }
+
+    public static DataSet SelectTicketCollaborator(int id)
+    {
+        DataSet ds = new DataSet();
+        IDbConnection objConection;
+        IDbCommand objCommand;
+        IDataAdapter objAdapter;
+        objConection = Mapped.Connection();
+        string sql = "SELECT * FROM ticket WHERE user_id=?id;";
+        objCommand = Mapped.Command(sql, objConection);
+        objAdapter = Mapped.Adapter(objCommand);
+        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
+        objAdapter.Fill(ds);
+        objCommand.Dispose();
+        objConection.Close();
+        objConection.Dispose();
+        return ds;
+    }
+
+    public static DataSet SelectTicketAna(int id)
+    {
+        DataSet ds = new DataSet();
+        IDbConnection objConection;
+        IDbCommand objCommand;
+        IDataAdapter objAdapter;
+        objConection = Mapped.Connection();
+        string sql = "SELECT * FROM ticket WHERE ana_analisty_id=?id;";
+        objCommand = Mapped.Command(sql, objConection);
+        objAdapter = Mapped.Adapter(objCommand);
+        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objAdapter.Fill(ds);
         objCommand.Dispose();
         objConection.Close();
@@ -32,12 +68,13 @@ public class TicketBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"INSERT INTO ticket VALUES(0, ?description, ?localization, 0, 0, ?openTime, 0, 0, null, null);";
+            string sql = @"INSERT INTO ticket VALUES(0, ?description, ?localization, 0, 0, ?openTime, 0, 0, ?id, null);";
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?description", t.Description));
             dbCommand.Parameters.Add(Mapped.Parameter("?localization", t.Localization));
             dbCommand.Parameters.Add(Mapped.Parameter("?openTime", t.OpenTime));
+            dbCommand.Parameters.Add(Mapped.Parameter("?id", t.UserId));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();
@@ -201,15 +238,15 @@ public class TicketBD
         Ticket ticket = new Ticket();
 
         IDbConnection objConexao;
-        IDbCommand objComando;
+        IDbCommand objCommand;
         IDataAdapter objAdapter;
         objConexao = Mapped.Connection();
         string sql = "SELECT * FROM ticket WHERE tic_id=?cod;";
-        objComando = Mapped.Command(sql, objConexao);
-        objAdapter = Mapped.Adapter(objComando);
-        objComando.Parameters.Add(Mapped.Parameter("?cod", ticketID));
+        objCommand = Mapped.Command(sql, objConexao);
+        objAdapter = Mapped.Adapter(objCommand);
+        objCommand.Parameters.Add(Mapped.Parameter("?cod", ticketID));
         objAdapter.Fill(ds);
-        objComando.Dispose();
+        objCommand.Dispose();
         objConexao.Close();
         objConexao.Dispose();
         return ds;
@@ -226,6 +263,33 @@ public class TicketBD
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?value", value));
+            dbCommand.Parameters.Add(Mapped.Parameter("?idTicket", idTicket));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+    }
+
+    public int UpdateTicketAnaSt(int anaid, int idTicket)
+    {
+        try
+        {
+            UserBD userbd = new UserBD();
+            User user = new User();
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"UPDATE ticket SET tic_status='1', ana_analisty_id=?analista WHERE tic_id=?idTicket;";
+
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?analista", anaid));
             dbCommand.Parameters.Add(Mapped.Parameter("?idTicket", idTicket));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();

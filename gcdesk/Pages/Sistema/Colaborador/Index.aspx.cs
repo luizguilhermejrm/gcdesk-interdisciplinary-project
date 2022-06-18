@@ -19,7 +19,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         txtData.Attributes.Add("readonly", "true");
 
 
-        CarregarTickets();
+        LoadTickets();
         if (gdvTickets.Rows.Count > 0)
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
 
@@ -38,10 +38,14 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 
     protected void btnTicket_Click(object sender, EventArgs e)
     {
+        User user = (User)Session["USER_BD"];
+        int ID = user.UserId;
+
         Ticket tic = new Ticket();
         tic.Description = txtProblem.Text;
         tic.Localization = txtLocal.Text;
         tic.OpenTime = txtData.Text;
+        tic.UserId = ID;
 
         if (TicketBD.Insert(tic) == 0)
         {
@@ -77,9 +81,13 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         }
     }
 
-    void CarregarTickets()
+    void LoadTickets()
     {
-        DataSet dsTicket = TicketBD.Select();
+        User user = (User)Session["USER_BD"];
+        UserBD userBD = new UserBD();
+        int ID = user.UserId;
+
+        DataSet dsTicket = TicketBD.SelectTicketCollaborator(ID);
         int qtd = dsTicket.Tables[0].Rows.Count;
         gdvTickets.Visible = false;
         if (qtd > 0)

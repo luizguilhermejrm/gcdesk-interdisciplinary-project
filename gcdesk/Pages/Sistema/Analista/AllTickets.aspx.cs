@@ -28,7 +28,7 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
     }
     void LoadTickets()
     {
-        DataSet dsTicket = TicketBD.Select();
+        DataSet dsTicket = TicketBD.SelectTicketAnaEmpty();
         int qtd = dsTicket.Tables[0].Rows.Count;
         gdvTickets.Visible = false;
         if (qtd > 0)
@@ -44,52 +44,22 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
-            LinkButton lkb = new LinkButton();
-            lkb = (LinkButton)e.Row.Cells[4].FindControl("lkbUpdate");
-            if (e.Row.Cells[3].Text == "0" )
-            {
-                lkb.Text = "<i class='text-info fas fa-sync'></i>";
-                lkb.CommandName = "aberto";
-                e.Row.Cells[3].Text = "<i class='text-danger fa fa-times'></i> ";
-            } else if (e.Row.Cells[3].Text == "1")
-            {
-                lkb.Text = "<i class='text-info fas fa-sync'></i>";
-                lkb.CommandName = "andamento";
-                e.Row.Cells[3].Text = "<i class='text-warning fa fa-clock'></i> ";
-            }
-            else if (e.Row.Cells[3].Text == "2") 
-            {
-                lkb.Text = "<i class='text-info fas fa-sync'></i>";
-                lkb.CommandName = "fechado";
-                e.Row.Cells[3].Text = "<i class='text-success fa fa-check'></i>";
-            }
+            LinkButton lkbPegar = new LinkButton();
+            lkbPegar = (LinkButton)e.Row.Cells[3].FindControl("lkbPegar");
+
+            lkbPegar.Text = "<i class='fa-solid fa-hand'></i>";
+            lkbPegar.CommandName = "vazio";
         }
     }
 
     protected void gdvTickets_RowCommand(object sender, GridViewCommandEventArgs e)
     {
+        User user = (User)Session["USER_BD"];
+        TicketBD ticket = new TicketBD();
+        UserBD userBD = new UserBD();
+        int ID = user.UserId;
         int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
-        int status = 0;
-
-        switch (e.CommandName)
-        {
-            case "aberto":
-                status = 1;
-                break;
-            case "andamento":
-                status = 2;
-                break;
-            case "fechado":
-                status = 0;
-                break;
-            default:
-                break;
-        }
-
-        if (TicketBD.UpdateTicket(status, codigoTicket) == 0)
-        {
-            LoadTickets();
-        }
+        Convert.ToString(ticket.UpdateTicketAnaSt(ID, codigoTicket));
 
     }
 

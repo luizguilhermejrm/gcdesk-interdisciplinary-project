@@ -50,7 +50,7 @@
             <div class="modal-content">
                 <button type="button" class="btn-close mt-2 ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-header border-0">
-                    <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar chamado</h5>
+                    <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar novo Colaborador</h5>
                 </div>
                 <div class="modal-body">
                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Insira o nome" TextMode="SingleLine" required />

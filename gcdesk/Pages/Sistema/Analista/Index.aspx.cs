@@ -11,29 +11,31 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         User user = (User)Session["USER_BD"];
+        TicketBD ticket = new TicketBD();
+        UserBD userBD = new UserBD();  
+        int ID = user.UserId;
 
         if (user != null)
         {
             txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
             txtData.Attributes.Add("readonly", "true");
 
-            TicketBD Tbd = new TicketBD();
-
             CarregarTickets();
             if (gdvTickets.Rows.Count > 0)
                 gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-
         }
         else
         {
             Response.Redirect("../Pages/PageError/Error404.aspx");
         }
 
+        lblOpenCalls.Text = Convert.ToString(ticket.SelectAllOpen());
+        lblProgressCalls.Text = Convert.ToString(ticket.SelectProgressAnalyst(ID));
+        lblFinishedCalls.Text = Convert.ToString(ticket.SelectFinishedAnalyst(ID));
+        lblQuantityPerson.Text = Convert.ToString(userBD.SelectQuantityPerson());
+
 
     }
-
-
 
     protected void btn_Click(object sender, EventArgs e)
     {

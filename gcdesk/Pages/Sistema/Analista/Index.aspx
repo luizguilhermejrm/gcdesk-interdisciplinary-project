@@ -8,39 +8,7 @@
         <asp:Label id="lblCdTicket" runat="server" Text=""></asp:Label>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 my-1 d-flex justify-content-center">
-                    <div class="card w-75 text-center border-0 shadow pb-4">
-                        <div class="card-header border-0 mb-2 text-start bg-transparent">
-                            <i class="fa-regular fa-circle-question text-secondary"></i>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="rounded-circle bg-success-low" style="width: 70px; height: 70px;">
-                                <i class="fa-solid fa-circle-check text-black-50 fs-6 mt-4"></i>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-title mt-3 fs-1">01</p>
-                            <p class="card-text fs-6 fw-bold text-black-50">Chamados Finalizados</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 my-1 d-flex justify-content-center">
-                    <div class="card w-75 text-center border-0 shadow pb-4">
-                        <div class="card-header border-0 mb-2 text-start bg-transparent">
-                            <i class="fa-regular fa-circle-question text-secondary"></i>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="rounded-circle bg-danger-low" style="width: 70px; height: 70px;">
-                                <i class="fa-solid fa-clock text-black-50 fs-6 mt-4"></i>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-title mt-3 fs-1">02</p>
-                            <p class="card-text fs-6 fw-bold text-black-50">Chamados andamento</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 my-1 d-flex justify-content-center">
+                <div class="col-md-3 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
                             <i class="fa-regular fa-circle-question text-secondary"></i>
@@ -51,8 +19,56 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-title mt-3 fs-1">03</p>
-                            <p class="card-text fs-6 fw-bold text-black-50">Chamados aberto</p>
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblOpenCalls" runat="server" Text=""/>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Aberto (todos)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-1 d-flex justify-content-center">
+                    <div class="card w-75 text-center border-0 shadow pb-4">
+                        <div class="card-header border-0 mb-2 text-start bg-transparent">
+                            <i class="fa-regular fa-circle-question text-secondary"></i>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="rounded-circle bg-danger-low" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-clock text-black-50 fs-6 mt-4"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblProgressCalls" runat="server" Text=""/>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Andamento</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-1 d-flex justify-content-center">
+                    <div class="card w-75 text-center border-0 shadow pb-4">
+                        <div class="card-header border-0 mb-2 text-start bg-transparent">
+                            <i class="fa-regular fa-circle-question text-secondary"></i>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="rounded-circle bg-success-low" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-circle-check text-black-50 fs-6 mt-4"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblFinishedCalls" runat="server" Text=""/>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados Finalizados</p>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-md-3 my-1 d-flex justify-content-center">
+                    <div class="card w-75 text-center border-0 shadow pb-4">
+                        <div class="card-header border-0 mb-2 text-start bg-transparent">
+                            <i class="fa-regular fa-circle-question text-secondary"></i>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="rounded-circle bg-primary-low" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-circle-check text-black-50 fs-6 mt-4"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblQuantityPerson" runat="server" Text=""/>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Colaboradores Ativos</p>
                         </div>
                     </div>
                 </div>

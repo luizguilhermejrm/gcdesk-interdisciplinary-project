@@ -109,6 +109,30 @@ public class UserBD
         return ds;
     }
 
+    public String SelectQuantityPerson()
+    {
+        User obj = new User();
+
+        System.Data.IDbConnection objConexao;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConexao = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(user_id) TOTAL FROM user WHERE user_typeAccess =1", objConexao);
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj.UserId = Convert.ToInt32(objDataReader["TOTAL"]);
+
+        }
+        string resultado = Convert.ToString(obj.UserId);
+        objDataReader.Close();
+        objConexao.Close();
+        objCommand.Dispose();
+        objConexao.Dispose();
+        objDataReader.Dispose();
+        return resultado;
+    }
+
     public static int Insert(User user)
     {
         try

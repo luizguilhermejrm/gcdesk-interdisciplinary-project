@@ -12,8 +12,8 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
     {
 
         User user = (User)Session["USER_BD"];
-
         TicketBD Tbd = new TicketBD();
+        int ID = user.UserId;
 
         txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
         txtData.Attributes.Add("readonly", "true");
@@ -23,7 +23,6 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         if (gdvTickets.Rows.Count > 0)
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
 
-        int ID = user.UserId;
         lblFinishedCalls.Text = Convert.ToString(Tbd.SelectFinished(ID));
         lblProgressCalls.Text = Convert.ToString(Tbd.SelectProgress(ID));
         lblOpenCalls.Text = Convert.ToString(Tbd.SelectOpen(ID));

@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section id="pageHeader">
         <div class="container-fluid">
@@ -173,9 +174,17 @@
                     <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Descreva a sua solicitação" TextMode="SingleLine" required />
                     <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Localização" TextMode="SingleLine" required />
                     <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Horario em que foi aberto" TextMode="DateTime" required />
+                    <div class="form-check mt-3">
+                      <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Confirmo as informações inseridas.
+                      </label>
+                    </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <asp:Button ID="btnTicket" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnTicket_Click" />
+                    <span id="botao" style="display: none;">
+                        <asp:Button ID="btnTicket" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnTicket_Click" />
+                    </span>
                 </div>
             </div>
         </div>
@@ -192,12 +201,24 @@
         </symbol>
     </svg>
     <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../jquery/jquery.min.js"></script>
+
     <script>
         window.onload = (event) => {
             let myAlert = document.querySelector('.toast');
             let bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();
         }
+        $('input[type="checkbox"]').on('click touchstart', function () {
+            let quantCheck = $('input[type="checkbox"]:checked').length;
+
+            if (quantCheck != 0) {
+                $('#botao').css('display', 'block')
+            }
+            else {
+                $('#botao').css('display', 'none')
+            }
+        });
     </script>
 </asp:Content>
 

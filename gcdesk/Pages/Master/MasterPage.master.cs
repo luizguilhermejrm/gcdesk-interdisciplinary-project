@@ -54,7 +54,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
             else if (!IsAnalisty(user.TypeAccess))
             {
                 lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
-                                      <a class='nav-link p-2' href='#'>
+                                      <a class='nav-link p-2' href='/Pages/Sistema/Colaborador/Index.aspx'>
                                          <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
                                          <span class='text-light'>Dashboard</span>
                                       </a>

@@ -61,6 +61,21 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
         int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
         Convert.ToString(ticket.UpdateTicketAnaSt(ID, codigoTicket));
 
-    }
 
+        lblMsg.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Sucesso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Este chamado agora está em Desenvolvimento por você!
+                                      </div>
+                                   </div>
+                                </div> ";
+
+
+    }
+   
 }

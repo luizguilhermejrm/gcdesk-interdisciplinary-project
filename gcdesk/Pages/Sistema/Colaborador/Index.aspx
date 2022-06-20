@@ -14,7 +14,6 @@
                 <hr />
                 <p class="fs-3 mb-5 text-primary">
                     Resumo
-               <%-- <asp:Label ID="lblTitle" runat="server" Text="" />--%>
                 </p>
             </div>
         </div>
@@ -185,16 +184,16 @@
                     <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar chamado</h5>
                 </div>
                 <div class="modal-body">
-                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Descreva a sua solicitação" TextMode="SingleLine" required />
-                    <asp:DropDownList ID="txtTypeTicket" runat="server" CssClass="form-control mt-3" placeholder="Qual o tipo de ticket" TextMode="SingleLine" required>
-                        <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha qual o tipo de ticket" Disabled Selected/>
+                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Descreva a sua solicitação" TextMode="SingleLine" />
+                    <asp:DropDownList ID="txtTypeTicket" runat="server" CssClass="form-control mt-3" placeholder="Qual o tipo de ticket" TextMode="SingleLine" >
+                        <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha qual o tipo de ticket" Disabled="true" Selected="True"/>
                         <asp:ListItem Text="Manutenção" Value="Manutenção"/>
                         <asp:ListItem Text="Redes" Value="Redes" />
                         <asp:ListItem Text="Software" Value="Software" />
                         <asp:ListItem Text="Registro" Value="Registro" />
                     </asp:DropDownList>
-                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3" placeholder="Localização" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3" placeholder="Horario em que foi aberto" TextMode="DateTime" required />
+                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3" placeholder="Localização" TextMode="SingleLine"  />
+                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3" placeholder="Horario em que foi aberto" TextMode="DateTime" />
                     <div class="form-check mt-3">
                       <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
                       <label class="form-check-label" for="flexRadioDefault1">

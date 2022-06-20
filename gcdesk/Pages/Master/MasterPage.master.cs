@@ -109,7 +109,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
 
             if (UserBD.UpdateUserFirstLogin(user) == 0)
             {
-                lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999; '>
                                               <div class='toast'>
                                                  <div class='toast-header'>
                                                     <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -124,7 +124,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
             }
             else
             {
-                lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999;'>
                                               <div class='toast'>
                                                  <div class='toast-header'>
                                                     <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -140,7 +140,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
         }
         else
         {
-            lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+            lblMsgFirstLogin.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999;'>
                                               <div class='toast'>
                                                  <div class='toast-header'>
                                                     <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>

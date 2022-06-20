@@ -54,10 +54,11 @@
                 </div>
                 <div class="modal-body">
                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control " placeholder="Insira o nome" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3 " placeholder="Insira o email" TextMode="Email" required />
+                     <asp:TextBox ID="txtPosition" runat="server" CssClass="form-control mt-3" placeholder="Insira o Cargo do usuario" TextMode="SingleLine" required />
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3" placeholder="Insira o email" TextMode="Email" required />
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mt-3" placeholder="Insira a senha" TextMode="Password" required />
-                    <asp:DropDownList ID="ddlPositionUser" runat="server" CssClass="form-control mt-3" placeholder="Posição do Usuario" TextMode="SingleLine" >
-                        <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha o cargo do usuario" Disabled="true" Selected="True"/>
+                    <asp:DropDownList ID="ddlPositionUser" runat="server" CssClass="form-control mt-3" placeholder="Departamento do Usuario" TextMode="SingleLine" >
+                        <asp:ListItem Text="Escolha o Departamento do Usuario" Disabled="true" Selected="True"/>
                         <asp:ListItem Text="Administrativo" Value="1"/>
                         <asp:ListItem Text="Financeiro" Value="2" />
                         <asp:ListItem Text="Recursos Humanos" Value="3" />

@@ -37,6 +37,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
     {
         User user = new User();
         user.Name = txtName.Text;
+        user.Position = txtPosition.Text;
         user.Email = txtEmail.Text;
         user.Password = Function.HashText(txtPassword.Text);
         user.DepartId = Convert.ToInt32(ddlPositionUser.Text);

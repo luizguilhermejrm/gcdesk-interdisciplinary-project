@@ -92,6 +92,37 @@ public class UserBD
         }
     }
 
+    public static int UpdateUser(User user)
+    {
+        try
+        {
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst=teste,user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=1, dep_id=?depId WHERE user_id=?userId;";
+
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?name", user.Name));
+            dbCommand.Parameters.Add(Mapped.Parameter("?position", user.Position));
+            dbCommand.Parameters.Add(Mapped.Parameter("?email", user.Email));
+            dbCommand.Parameters.Add(Mapped.Parameter("?password", user.Password));
+            dbCommand.Parameters.Add(Mapped.Parameter("?depId", user.DepartId));
+            dbCommand.Parameters.Add(Mapped.Parameter("?userId", user.UserId));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+    }
+
+
+
     public static DataSet SelectAll()
     {
         DataSet ds = new DataSet();

@@ -36,6 +36,11 @@
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_name" HeaderText="Nome" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_email" HeaderText="Email" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Update" CommandArgument='<%# Bind("user_id")%>' >Alterar</asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
                             </div>

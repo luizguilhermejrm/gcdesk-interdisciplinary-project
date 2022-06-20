@@ -91,4 +91,25 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             gdvCollaborator.Visible = true;
         }
     }
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int id = 0;
+        switch (e.CommandName)
+        {
+            case "Update":
+                id = Convert.ToInt32(e.CommandArgument);
+                Session["USER_ID"] = id;
+                Response.Redirect("UpdateUser.aspx");
+                break;
+            //case "Deletar":
+            //    codigo = Convert.ToInt32(e.CommandArgument);
+            //    FuncionarioBD bd = new FuncionarioBD();
+            //    bd.Delete(codigo);
+            //    Carrega();
+            //    break;
+            default:
+                break;
+        }
+    }
 }

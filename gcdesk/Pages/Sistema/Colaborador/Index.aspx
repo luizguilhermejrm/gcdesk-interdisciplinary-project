@@ -185,9 +185,16 @@
                     <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar chamado</h5>
                 </div>
                 <div class="modal-body">
-                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Descreva a sua solicitação" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Localização" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Horario em que foi aberto" TextMode="DateTime" required />
+                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Descreva a sua solicitação" TextMode="SingleLine" required />
+                    <asp:DropDownList ID="txtTypeTicket" runat="server" CssClass="form-control mt-3" placeholder="Qual o tipo de ticket" TextMode="SingleLine" required>
+                        <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha qual o tipo de ticket" Disabled Selected/>
+                        <asp:ListItem Text="Manutenção" Value="Manutenção"/>
+                        <asp:ListItem Text="Redes" Value="Redes" />
+                        <asp:ListItem Text="Software" Value="Software" />
+                        <asp:ListItem Text="Registro" Value="Registro" />
+                    </asp:DropDownList>
+                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3" placeholder="Localização" TextMode="SingleLine" required />
+                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3" placeholder="Horario em que foi aberto" TextMode="DateTime" required />
                     <div class="form-check mt-3">
                       <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
                       <label class="form-check-label" for="flexRadioDefault1">

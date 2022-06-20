@@ -85,10 +85,11 @@ public class TicketBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"INSERT INTO ticket VALUES(0, ?description, ?localization, 0, 0, ?openTime, 0, 0, ?id, null);";
+            string sql = @"INSERT INTO ticket VALUES(0, ?description, ?localization, ?type, 0, ?openTime, 0, 0, ?id, null);";
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?description", t.Description));
+            dbCommand.Parameters.Add(Mapped.Parameter("?type", t.TypeTicket));
             dbCommand.Parameters.Add(Mapped.Parameter("?localization", t.Localization));
             dbCommand.Parameters.Add(Mapped.Parameter("?openTime", t.OpenTime));
             dbCommand.Parameters.Add(Mapped.Parameter("?id", t.UserId));

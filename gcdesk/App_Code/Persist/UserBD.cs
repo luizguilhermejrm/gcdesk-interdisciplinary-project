@@ -139,12 +139,13 @@ public class UserBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"INSERT INTO user VALUES(0, ?name, ?position, 1, null, ?email, 'TpOUtNKHa4dBsQovtGWJtg8aHBIem8TCgProWvdbda6GCdSfDkIV87aCMG3H8mKxcf/BgfiG92TWOCENb/e6KA==', 1, 0, null);";
+            string sql = @"INSERT INTO user VALUES(0, ?name, null, 1, null, ?email, ?password, 1, 0, ?depId);";
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?name", user.Name));
-            dbCommand.Parameters.Add(Mapped.Parameter("?position", user.Position));
             dbCommand.Parameters.Add(Mapped.Parameter("?email", user.Email));
+            dbCommand.Parameters.Add(Mapped.Parameter("?password", user.Password));
+            dbCommand.Parameters.Add(Mapped.Parameter("?depId", user.DepartId));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();

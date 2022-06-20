@@ -53,9 +53,17 @@
                     <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar novo Colaborador</h5>
                 </div>
                 <div class="modal-body">
-                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Insira o nome" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtPosition" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Insira a posição" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Insira o email" TextMode="Email" required />
+                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control " placeholder="Insira o nome" TextMode="SingleLine" required />
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3 " placeholder="Insira o email" TextMode="Email" required />
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mt-3" placeholder="Insira a senha" TextMode="Password" required />
+                    <asp:DropDownList ID="ddlPositionUser" runat="server" CssClass="form-control mt-3" placeholder="Posição do Usuario" TextMode="SingleLine" >
+                        <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha o cargo do usuario" Disabled="true" Selected="True"/>
+                        <asp:ListItem Text="Administrativo" Value="1"/>
+                        <asp:ListItem Text="Financeiro" Value="2" />
+                        <asp:ListItem Text="Recursos Humanos" Value="3" />
+                        <asp:ListItem Text="Setor Comercial" Value="4" />
+                        <asp:ListItem Text="Tecnologia da Informação" Value="5" />
+                    </asp:DropDownList>
                 </div>
                 <div class="modal-footer border-0">
                     <asp:Button ID="btnCollaborator" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnCollaborator_Click" />

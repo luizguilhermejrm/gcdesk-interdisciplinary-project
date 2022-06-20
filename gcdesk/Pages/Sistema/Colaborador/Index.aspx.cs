@@ -14,19 +14,27 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         User user = (User)Session["USER_BD"];
         TicketBD Tbd = new TicketBD();
 
-        txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
-        txtData.Attributes.Add("readonly", "true");
+        if (user != null)
+        {
+            txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
+            txtData.Attributes.Add("readonly", "true");
 
 
-        LoadTickets();
-        LoadNotification();
-        if (gdvTickets.Rows.Count > 0)
-            gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+            LoadTickets();
+            LoadNotification();
+            if (gdvTickets.Rows.Count > 0)
+                gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
 
-        int ID = user.UserId;
-        lblFinishedCalls.Text = Convert.ToString(Tbd.SelectFinished(ID));
-        lblProgressCalls.Text = Convert.ToString(Tbd.SelectProgress(ID));
-        lblOpenCalls.Text = Convert.ToString(Tbd.SelectOpen(ID));
+            int ID = user.UserId;
+            lblFinishedCalls.Text = Convert.ToString(Tbd.SelectFinished(ID));
+            lblProgressCalls.Text = Convert.ToString(Tbd.SelectProgress(ID));
+            lblOpenCalls.Text = Convert.ToString(Tbd.SelectOpen(ID));
+        }else
+        {
+            Response.Redirect("../Pages/PageError/Error404.aspx");
+        }
+
+        
 
     }
     protected void btn_Click(object sender, EventArgs e)
@@ -44,7 +52,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 
         Ticket tic = new Ticket();
         tic.Description = txtProblem.Text;
-        tic.TypeTicket = txtTypeTicket.Text;
+        tic.TypeTicket = ddlTypeTicket.Text;
         tic.Localization = txtLocal.Text;
         tic.OpenTime = txtData.Text;
         tic.UserId = ID;

@@ -185,7 +185,7 @@
                 </div>
                 <div class="modal-body">
                     <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Descreva a sua solicitação" TextMode="SingleLine" />
-                    <asp:DropDownList ID="txtTypeTicket" runat="server" CssClass="form-control mt-3" placeholder="Qual o tipo de ticket" TextMode="SingleLine" >
+                    <asp:DropDownList ID="ddlTypeTicket" runat="server" CssClass="form-control mt-3" placeholder="Qual o tipo de ticket" TextMode="SingleLine" >
                         <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha qual o tipo de ticket" Disabled="true" Selected="True"/>
                         <asp:ListItem Text="Manutenção" Value="Manutenção"/>
                         <asp:ListItem Text="Redes" Value="Redes" />

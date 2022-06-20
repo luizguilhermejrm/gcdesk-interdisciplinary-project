@@ -17,8 +17,6 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
             LoadTickets();
             if (gdvTickets.Rows.Count > 0)
                 gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-
         }
         else
         {

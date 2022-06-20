@@ -10,11 +10,19 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        User user = (User)Session["USER_BD"];
         UserBD userbd = new UserBD();
 
-        LoadCollaborator();
-        if (gdvCollaborator.Rows.Count > 0)
-            gdvCollaborator.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (user != null)
+        {
+            LoadCollaborator();
+            if (gdvCollaborator.Rows.Count > 0)
+                gdvCollaborator.HeaderRow.TableSection = TableRowSection.TableHeader;
+        }
+        else
+        {
+            Response.Redirect("../Pages/PageError/Error404.aspx");
+        }
     }
 
     protected void btn_Click(object sender, EventArgs e)
@@ -29,8 +37,9 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
     {
         User user = new User();
         user.Name = txtName.Text;
-        user.Position = txtPosition.Text;
         user.Email = txtEmail.Text;
+        user.Password = Function.HashText(txtPassword.Text);
+        user.DepartId = Convert.ToInt32(ddlPositionUser.Text);
 
 
 

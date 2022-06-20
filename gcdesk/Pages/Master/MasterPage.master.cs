@@ -10,6 +10,15 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         User user = (User)Session["USER_BD"];
+        lblLogado.Text = user.Email;
+
+        if (user.TypeAccess == 0)
+        {
+            lblLogadoType.Text = "Analista";
+        } else
+        {
+            lblLogadoType.Text = "Colaborador";
+        }
 
         if (user != null)
         {

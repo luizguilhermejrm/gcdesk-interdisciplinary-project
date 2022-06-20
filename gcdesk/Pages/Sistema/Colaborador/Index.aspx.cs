@@ -81,6 +81,23 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         }
     }
 
+    protected void gdvTickets_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+        if (e.Row.Cells[3].Text == "1")
+        {
+            e.Row.Cells[3].Text = "<i class='text-warning fa fa-clock'></i> ";
+        }
+        else if (e.Row.Cells[3].Text == "0")
+        {
+            e.Row.Cells[3].Text = "<i class='text-primary fa fa-spinner'></i>";
+        }
+        else if (e.Row.Cells[3].Text == "2")
+        {
+            e.Row.Cells[3].Text = "<i class='text-success fa fa-check'></i>";
+        }
+    }
+
     void LoadTickets()
     {
         User user = (User)Session["USER_BD"];

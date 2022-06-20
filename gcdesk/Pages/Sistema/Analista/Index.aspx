@@ -3,43 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-   
+
     <section id="pageContent">
-        <asp:Label id="lblCdTicket" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblCdTicket" runat="server" Text=""></asp:Label>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 my-1 d-flex justify-content-center">
-                    <div class="card w-75 text-center border-0 shadow pb-4">
-                        <div class="card-header border-0 mb-2 text-start bg-transparent">
-                            <i class="fa-regular fa-circle-question text-secondary"></i>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="rounded-circle bg-warning-low" style="width: 70px; height: 70px;">
-                                <i class="fa-solid fa-triangle-exclamation text-black-50 fs-6 mt-4"></i>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <asp:Label class="card-title mt-3 fs-1" ID="lblOpenCalls" runat="server" Text=""/>
-                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Aberto (todos)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 my-1 d-flex justify-content-center">
-                    <div class="card w-75 text-center border-0 shadow pb-4">
-                        <div class="card-header border-0 mb-2 text-start bg-transparent">
-                            <i class="fa-regular fa-circle-question text-secondary"></i>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="rounded-circle bg-danger-low" style="width: 70px; height: 70px;">
-                                <i class="fa-solid fa-clock text-black-50 fs-6 mt-4"></i>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <asp:Label class="card-title mt-3 fs-1" ID="lblProgressCalls" runat="server" Text=""/>
-                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Andamento</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-3 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
@@ -51,23 +19,55 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <asp:Label class="card-title mt-3 fs-1" ID="lblFinishedCalls" runat="server" Text=""/>
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblFinishedCalls" runat="server" Text="" />
                             <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados Finalizados</p>
                         </div>
                     </div>
                 </div>
-               <div class="col-md-3 my-1 d-flex justify-content-center">
+                <div class="col-md-3 my-1 d-flex justify-content-center">
+                    <div class="card w-75 text-center border-0 shadow pb-4">
+                        <div class="card-header border-0 mb-2 text-start bg-transparent">
+                            <i class="fa-regular fa-circle-question text-secondary"></i>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="rounded-circle bg-warning-low" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-clock text-black-50 fs-6 mt-4"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblProgressCalls" runat="server" Text="" />
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Andamento</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
                             <i class="fa-regular fa-circle-question text-secondary"></i>
                         </div>
                         <div class="d-flex justify-content-center">
                             <div class="rounded-circle bg-primary-low" style="width: 70px; height: 70px;">
-                                <i class="fa-solid fa-circle-check text-black-50 fs-6 mt-4"></i>
+                                <i class="fa-solid fa-spinner text-black-50 fs-6 mt-4"></i>
                             </div>
                         </div>
                         <div class="card-body">
-                            <asp:Label class="card-title mt-3 fs-1" ID="lblQuantityPerson" runat="server" Text=""/>
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblOpenCalls" runat="server" Text="" />
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Aberto (Todos)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 my-1 d-flex justify-content-center">
+                    <div class="card w-75 text-center border-0 shadow pb-4">
+                        <div class="card-header border-0 mb-2 text-start bg-transparent">
+                            <i class="fa-regular fa-circle-question text-secondary"></i>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="rounded-circle bg-secondary bg-opacity-50" style="width: 70px; height: 70px;">
+                                <i class="fa-solid fa-user text-black-50 fs-6 mt-4"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <asp:Label class="card-title mt-3 fs-1" ID="lblQuantityPerson" runat="server" Text="" />
                             <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Colaboradores Ativos</p>
                         </div>
                     </div>
@@ -78,26 +78,33 @@
     <section id="pageFooter">
         <div class="container-fluid">
             <div class="row mt-5">
+                <asp:Label ID="lblMsg" runat="server" />
                 <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table me-1"></i>
-                            Últimos chamados
+                            Chamados em Aberto
                         </div>
                         <div class="card-body overflow-auto" style="height: 400px">
                             <div class="table-responsive p-3">
-                                <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
+                                <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0" OnRowDataBound="gdvTickets_RowDataBound" OnRowCommand="gdvTickets_RowCommand">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_localization" HeaderText="Localização" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_openTime" HeaderText="Horário de abertura" />
+                                        <asp:TemplateField HeaderText="Pegar" ItemStyle-CssClass="py-4">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lkbPegar" runat="server" CommandArgument='<% #Bind("tic_id") %>'></asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
                             </div>
                         </div>
                     </div>
                 </div>
-               <div class="col-md-6">
+
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table-list me-1"></i>
@@ -164,24 +171,6 @@
             </div>
         </div>
     </section>
-    <div class="modal fade" id="exampleModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                    <button type="button" class="btn-close mt-2 ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-header border-0">
-                    <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar chamado</h5>
-                </div>
-                <div class="modal-body">
-                    <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Descreva a sua solicitação" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtLocal" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Localização" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtData" runat="server" CssClass="form-control mt-3 bg-primary bg-opacity-25" placeholder="Horario em que foi aberto" TextMode="DateTime" required />
-                </div>
-                <div class="modal-footer border-0">
-                    <asp:Button ID="btnTicket" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnTicket_Click" />
-                </div>
-            </div>
-        </div>
-    </div>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />

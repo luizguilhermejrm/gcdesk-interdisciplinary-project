@@ -28,7 +28,7 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
     }
     void LoadTickets()
     {
-        DataSet dsTicket = TicketBD.SelectTicketAnaEmpty();
+        DataSet dsTicket = TicketBD.SelectTicketAllAnalyst();
         int qtd = dsTicket.Tables[0].Rows.Count;
         gdvTickets.Visible = false;
         if (qtd > 0)
@@ -42,40 +42,18 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
 
     protected void gdvTickets_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-        if (e.Row.RowType == DataControlRowType.DataRow)
+        if (e.Row.Cells[5].Text == "1")
         {
-            LinkButton lkbPegar = new LinkButton();
-            lkbPegar = (LinkButton)e.Row.Cells[3].FindControl("lkbPegar");
-
-            lkbPegar.Text = "<i class='fa-solid fa-hand'></i>";
-            lkbPegar.CommandName = "vazio";
+            e.Row.Cells[5].Text = "<i class='text-warning fa fa-clock'></i> ";
+        }
+        else if (e.Row.Cells[5].Text == "0")
+        {
+            e.Row.Cells[5].Text = "<i class='text-primary fa fa-spinner'></i>";
+        }
+        else if (e.Row.Cells[5].Text == "2")
+        {
+            e.Row.Cells[5].Text = "<i class='text-success fa fa-check'></i>";
         }
     }
 
-    protected void gdvTickets_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        User user = (User)Session["USER_BD"];
-        TicketBD ticket = new TicketBD();
-        UserBD userBD = new UserBD();
-        int ID = user.UserId;
-        int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
-        Convert.ToString(ticket.UpdateTicketAnaSt(ID, codigoTicket));
-
-
-        lblMsg.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
-                                  <div class='toast'>
-                                     <div class='toast-header'>
-                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
-                                        <strong class='me-auto'>Sucesso!</strong>
-                                        <small>Agora</small>
-                                      </div>
-                                      <div class='toast-body'>
-                                        Este chamado agora está em Desenvolvimento por você!
-                                      </div>
-                                   </div>
-                                </div> ";
-
-
-    }
-   
 }

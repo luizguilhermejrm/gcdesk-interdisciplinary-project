@@ -51,7 +51,7 @@
                         </div>
                         <div class="card-body">
                             <asp:Label class="card-title mt-3 fs-1" ID="lblProgressCalls" runat="server" Text=""/>
-                            <p class="card-text fs-6 fw-bold text-black-50">Chamados andamento</p>
+                            <p class="card-text fs-6 fw-bold text-black-50">Chamados Andamento</p>
                         </div>
                     </div>
                 </div>
@@ -62,12 +62,12 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <div class="rounded-circle bg-primary-low" style="width: 70px; height: 70px;">
-                                <i class="fa-solid fa-triangle-exclamation text-black-50 fs-6 mt-4"></i>
+                                <i class="fa-solid fa-spinner text-black-50 fs-6 mt-4"></i>
                             </div>
                         </div>
                         <div class="card-body">
                             <asp:Label class="card-title mt-3 fs-1" ID="lblOpenCalls" runat="server" Text=""/>
-                            <p class="card-text fs-6 fw-bold text-black-50">Chamados aberto</p>
+                            <p class="card-text fs-6 fw-bold text-black-50">Chamados Aberto</p>
                         </div>
                     </div>
                 </div>
@@ -81,15 +81,16 @@
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table me-1"></i>
-                            Últimos chamados
+                            Todos os meus Chamados
                         </div>
                         <div class="card-body overflow-auto" style="height: 400px">
                             <div class="table-responsive p-3">
-                                <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
+                                <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0"  OnRowDataBound="gdvTickets_RowDataBound">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_localization" HeaderText="Localização" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_openTime" HeaderText="Horário de abertura" />
+                                        <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_status" HeaderText="Status" />
                                     </Columns>
                                 </asp:GridView>
                             </div>

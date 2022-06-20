@@ -9,7 +9,7 @@ using System.Data;
 /// </summary>
 public class TicketBD
 {
-    public static DataSet SelectTicketAnaEmpty()
+    public static DataSet SelectTicketOpen()
     {
         DataSet ds = new DataSet();
         IDbConnection objConection;
@@ -26,6 +26,23 @@ public class TicketBD
         return ds;
     }
 
+    public static DataSet SelectTicketAllAnalyst()
+    {
+        DataSet ds = new DataSet();
+        IDbConnection objConection;
+        IDbCommand objCommand;
+        IDataAdapter objAdapter;
+        objConection = Mapped.Connection();
+        string sql = "SELECT A.tic_id, B.user_name, A.tic_description, A.tic_localization, A.tic_openTime, A.tic_closeTime, A.tic_status FROM ticket A INNER JOIN user B ON A.ana_analisty_id = B.user_id;";
+        objCommand = Mapped.Command(sql, objConection);
+        objAdapter = Mapped.Adapter(objCommand);
+        objAdapter.Fill(ds);
+        objCommand.Dispose();
+        objConection.Close();
+        objConection.Dispose();
+        return ds;
+    }
+
     public static DataSet SelectTicketCollaborator(int id)
     {
         DataSet ds = new DataSet();
@@ -33,7 +50,7 @@ public class TicketBD
         IDbCommand objCommand;
         IDataAdapter objAdapter;
         objConection = Mapped.Connection();
-        string sql = "SELECT * FROM ticket WHERE user_id=?id;";
+        string sql = "SELECT * FROM ticket WHERE user_id=?id ORDER BY tic_id DESC;";
         objCommand = Mapped.Command(sql, objConection);
         objAdapter = Mapped.Adapter(objCommand);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
@@ -252,18 +269,19 @@ public class TicketBD
         return ds;
     }
 
-    public static int UpdateTicket(int value, int idTicket)
+    public static int UpdateTicket(int value, int idTicket, string closeTime)
     {
         try
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"UPDATE ticket SET tic_status=?value WHERE tic_id=?idTicket;";
+            string sql = @"UPDATE ticket SET tic_status=?value, tic_closeTime=?close WHERE tic_id=?idTicket;";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?value", value));
             dbCommand.Parameters.Add(Mapped.Parameter("?idTicket", idTicket));
+            dbCommand.Parameters.Add(Mapped.Parameter("?close", closeTime));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();

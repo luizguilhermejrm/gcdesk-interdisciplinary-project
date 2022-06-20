@@ -17,10 +17,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 
         if (user != null)
         {
-            txtData.Text = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
-            txtData.Attributes.Add("readonly", "true");
-
-            CarregarTickets();
+            LoadTickets();
             if (gdvTickets.Rows.Count > 0)
                 gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
@@ -45,52 +42,10 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
            "};", true);
     }
 
-    protected void btnTicket_Click(object sender, EventArgs e)
+
+    void LoadTickets()
     {
-        Ticket tic = new Ticket();
-        tic.Description = txtProblem.Text;
-        tic.Localization = txtLocal.Text;
-        tic.OpenTime = txtData.Text;
-
-
-
-        if (TicketBD.Insert(tic) == 0)
-        {
-            lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
-                                  <div class='toast'>
-                                     <div class='toast-header'>
-                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
-                                        <strong class='me-auto'>Aviso!</strong>
-                                        <small>Agora</small>
-                                      </div>
-                                      <div class='toast-body'>
-                                        Chamado criado com sucesso.
-                                      </div>
-                                   </div>
-                                </div> ";
-
-        }
-        else
-        {
-            lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
-                                  <div class='toast'>
-                                     <div class='toast-header'>
-                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
-                                        <strong class='me-auto'>Aviso!</strong>
-                                        <small>Agora</small>
-                                      </div>
-                                      <div class='toast-body'>
-                                        Nao foi possivel criar o Chamado.
-                                      </div>
-                                   </div>
-                                </div> ";
-
-        }
-    }
-
-    void CarregarTickets()
-    {
-        DataSet dsTicket = TicketBD.SelectTicketAnaEmpty();
+        DataSet dsTicket = TicketBD.SelectTicketOpen();
         int qtd = dsTicket.Tables[0].Rows.Count;
         gdvTickets.Visible = false;
         if (qtd > 0)
@@ -100,6 +55,44 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
             gdvTickets.Visible = true;
         }
+    }
+
+    protected void gdvTickets_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            LinkButton lkbPegar = new LinkButton();
+            lkbPegar = (LinkButton)e.Row.Cells[3].FindControl("lkbPegar");
+
+            lkbPegar.Text = "<i class='fa-solid fa-hand'></i>";
+            lkbPegar.CommandName = "vazio";
+        }
+    }
+
+    protected void gdvTickets_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        User user = (User)Session["USER_BD"];
+        TicketBD ticket = new TicketBD();
+        UserBD userBD = new UserBD();
+        int ID = user.UserId;
+        int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
+        Convert.ToString(ticket.UpdateTicketAnaSt(ID, codigoTicket));
+
+
+        lblMsg.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Sucesso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Este chamado agora está em Desenvolvimento por você!
+                                      </div>
+                                   </div>
+                                </div> ";
+
+
     }
 
 }

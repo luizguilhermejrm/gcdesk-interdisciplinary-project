@@ -28,5 +28,6 @@ public class User
     public int FirstLogin { get; set; }
 
     public int DepartId { get; set; }
+    public string Image { get; set; }
 
 }

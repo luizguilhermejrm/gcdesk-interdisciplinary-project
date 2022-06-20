@@ -170,7 +170,7 @@ public class UserBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"INSERT INTO user VALUES(0, ?name, ?position, 1, null, ?email, ?password, 1, 0, ?depId);";
+            string sql = @"INSERT INTO user VALUES(0, ?name, ?position, 1, null, ?email, ?password, 1, 0, ?depId, ?image);";
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
             dbCommand.Parameters.Add(Mapped.Parameter("?name", user.Name));
@@ -178,6 +178,7 @@ public class UserBD
             dbCommand.Parameters.Add(Mapped.Parameter("?email", user.Email));
             dbCommand.Parameters.Add(Mapped.Parameter("?password", user.Password));
             dbCommand.Parameters.Add(Mapped.Parameter("?depId", user.DepartId));
+            dbCommand.Parameters.Add(Mapped.Parameter("?image", user.Image));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();

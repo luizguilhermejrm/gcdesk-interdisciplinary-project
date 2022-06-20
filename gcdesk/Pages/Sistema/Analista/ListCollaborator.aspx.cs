@@ -35,18 +35,25 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
 
     protected void btnCollaborator_Click(object sender, EventArgs e)
     {
-        User user = new User();
-        user.Name = txtName.Text;
-        user.Position = txtPosition.Text;
-        user.Email = txtEmail.Text;
-        user.Password = Function.HashText(txtPassword.Text);
-        user.DepartId = Convert.ToInt32(ddlPositionUser.Text);
-
-
-
-        if (UserBD.Insert(user) == 0)
+        if (FileUpload1.HasFile)
         {
-            lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+            if (FileUpload1.PostedFile.ContentLength <= 1024000)
+            {
+                string arquivo = FileUpload1.FileName;
+                FileUpload1.SaveAs(@"C:\Users\luizg\OneDrive\Área de Trabalho\imageupload\" + arquivo);
+
+                User user = new User();
+                user.Name = txtName.Text;
+                user.Position = txtPosition.Text;
+                user.Email = txtEmail.Text;
+                user.Password = Function.HashText(txtPassword.Text);
+                user.DepartId = Convert.ToInt32(ddlPositionUser.Text);
+                user.Image = Convert.ToString(FileUpload1.FileName);
+
+
+                if (UserBD.Insert(user) == 0)
+                {
+                    lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                   <div class='toast'>
                                      <div class='toast-header'>
                                         <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -59,10 +66,10 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
                                    </div>
                                 </div> ";
 
-        }
-        else
-        {
-            lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                }
+                else
+                {
+                    lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                   <div class='toast'>
                                      <div class='toast-header'>
                                         <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -75,6 +82,17 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
                                    </div>
                                 </div> ";
 
+                }
+
+            }
+            else
+            {
+                //lblMensagem.Text = "Foto muito grande.";
+            }
+        }
+        else
+        {
+            //lblMensagem.Text = "Não há foto selecionada.";
         }
     }
 

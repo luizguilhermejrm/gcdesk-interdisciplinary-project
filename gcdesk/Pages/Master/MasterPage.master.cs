@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -38,25 +39,25 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                 lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
                                       <a class='nav-link p-2' href='/Pages/Sistema/Analista/Index.aspx'>
                                          <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'>Dashboard</span>
+                                         <span class='text-light'><b>Dashboard</b></span>
                                       </a>
                                     </div>
-                                    <div class='nav rounded bg-primary m-3'>
+                                    <div class='nav rounded m-3' style='background-color: #F5F9FF'>
                                       <a class='nav-link p-2' href='/Pages/Sistema/Analista/AnalystTickets.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'>Meus Chamados</span>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6' style='color: #3381E2'></i></div>
+                                         <span style='color: #3381E2'><b>Meus Chamados</b></span>
                                       </a>
                                     </div>
-                                    <div class='nav rounded bg-primary m-3'>
+                                    <div class='nav rounded m-3' style='background-color: #F5F9FF'>
                                       <a class='nav-link p-2' href='/Pages/Sistema/Analista/AllTickets.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'>Todos Chamados</span>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6' style='color: #3381E2'></i></div>
+                                         <span style='color: #3381E2'><b>Todos Chamados</b></span>
                                       </a>
                                     </div>
-                                    <div class='nav rounded bg-primary m-3'>
+                                    <div class='nav rounded m-3' style='background-color: #F5F9FF'>
                                       <a class='nav-link p-2' href='/Pages/Sistema/Analista/ListCollaborator.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-table mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'>Tab. Colaboradores</span>
+                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-table mx-2 fs-6' style='color: #3381E2'></i></div>
+                                         <span style='color: #3381E2; font-size:15px'><b>Tab. Colaboradores</b></span>
                                       </a>
                                     </div>";
             }
@@ -65,7 +66,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                 lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
                                       <a class='nav-link p-2' href='/Pages/Sistema/Colaborador/Index.aspx'>
                                          <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'>Dashboard</span>
+                                         <span class='text-light'><b>Dashboard</b></span>
                                       </a>
                                     </div>";
             }
@@ -159,8 +160,9 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
         Session.Abandon();
         Session.Clear();
         Session.RemoveAll();
-        Response.Redirect("../../../Default.aspx");
+        Response.Redirect("../../../Default.aspx?from=logout");
 
+       
     }
 
 }

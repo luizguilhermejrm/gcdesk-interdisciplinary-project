@@ -9,7 +9,15 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+       if(Request.QueryString!=null)
+        {
+            string fromPage = Request.QueryString["from"];
+            if (fromPage == "logout")
+            {
+                MensageExitToast();
+            }
+        }
+       
     }
 
     private bool IsComplete(string str)
@@ -115,11 +123,27 @@ public partial class _Default : System.Web.UI.Page
                              </div>
                            </div> ";
         }
+    }
 
 
+    public void MensageExitToast()
+    {
 
-
-        //Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "<script>$('#modal_aviso').modal('show');</script>", false);
+        lblExit.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                              <div class='toast'>
+                                                 <div class='toast-header'>
+                                                    <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                                    <strong class='me-auto'>Sucesso!</strong>
+                                                    <small>Agora</small>
+                                                  </div>
+                                                  <div class='toast-body'>
+                                                    Logout realizado!
+                                                  </div>
+                                               </div>
+                                            </div> ";
+        
 
     }
+
+
 }

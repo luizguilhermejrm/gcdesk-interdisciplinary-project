@@ -20,6 +20,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 
 
         LoadTickets();
+        LoadNotification();
         if (gdvTickets.Rows.Count > 0)
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
 
@@ -115,5 +116,26 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             gdvTickets.Visible = true;
         }
     }
+    void LoadNotification()
+    {
+        User user = (User)Session["USER_BD"];
+        UserBD userBD = new UserBD();
+        int ID = user.UserId;
 
+        DataSet dsNotification = NotificationBD.SelectNotification(ID);
+        int qtd = dsNotification.Tables[0].Rows.Count;
+        gdvNotification.Visible = false;
+        if (qtd > 0)
+        {
+            gdvNotification.DataSource = dsNotification.Tables[0].DefaultView;
+            gdvNotification.DataBind();
+            gdvNotification.HeaderRow.TableSection = TableRowSection.TableHeader;
+            gdvNotification.Visible = true;
+        }
+    }
+
+    protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+       
+    }
 }

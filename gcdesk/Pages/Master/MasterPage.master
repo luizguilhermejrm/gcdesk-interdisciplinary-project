@@ -50,30 +50,6 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle border rounded bg-white" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bell"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1" style="max-width: 500px;">
-                        <li class="dropdown-item">
-                            <div class="row">
-                                <p class="fw-bold">Assunto <span class="badge bg-primary rounded-pill">Novo</span></p>
-                                <br />
-                                <p class="d-inline-block text-truncate" style="max-width: 500px;">Praeterea iterest quasdam iterest quasdam iterest quasdam iterest quasdam iterest quasdam. </p>
-                                <span class="text-muted ">há 1 min</span>
-                            </div>
-                        </li>
-                        <hr />
-                        <li class="dropdown-item">
-                            <div class="row">
-                                <p class="fw-bold ">Assunto <span class="badge bg-primary rounded-pill">Novo</span></p>
-                                <br />
-                                <p class="d-inline-block text-truncate" style="max-width: 500px;">Praeterea iterest quasdam iterest quasdam iterest quasdam iterest quasdam iterest quasdam. </p>
-                                <span class="text-muted ">há 1 min</span>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </nav>
         <div id="layoutSidenav" class="bg-light">
             <div id="layoutSidenav_nav">

@@ -441,9 +441,9 @@ public class TicketBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage) 
+            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage, not_Status) 
                         VALUES ('O seu chamado foi aceito, a partir de agora está sendo desenvolvido pelo analista',
-                                'Chamado em Andamento', ?tic_id, ?timeMessage);";
+                                'Chamado em Andamento', ?tic_id, ?timeMessage, '1');";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
@@ -477,9 +477,9 @@ public class TicketBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage) 
+            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage, not_status) 
                         VALUES ('O seu chamado foi finalizado, poderia nos enviar uma avaliação por favor.',
-                                'Chamado Finalizado', ?tic_id, ?timeMessage);";
+                                'Chamado Finalizado', ?tic_id, ?timeMessage, '2');";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);

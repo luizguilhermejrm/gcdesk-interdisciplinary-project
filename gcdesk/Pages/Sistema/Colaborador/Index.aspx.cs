@@ -147,8 +147,19 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         }
     }
 
-    protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+    protected void gdvNotification_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-       
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (e.Row.Cells[0].Text == "1")
+            {
+                e.Row.Cells[0].Text = "<i class='text-warning fa fa-clock'></i>";
+
+            }
+            else if (e.Row.Cells[0].Text == "2")
+            {
+                e.Row.Cells[0].Text = "<i class='text-success fa fa-check'></i>";
+            }
+        }
     }
 }

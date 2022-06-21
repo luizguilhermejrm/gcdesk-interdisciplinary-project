@@ -40,7 +40,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             if (FileUpload1.PostedFile.ContentLength <= 1024000)
             {
                 string arquivo = FileUpload1.FileName;
-                FileUpload1.SaveAs(@"C:\Users\luizg\OneDrive\Área de Trabalho\imageupload\" + arquivo);
+                FileUpload1.SaveAs(@"D:\Faculdade\4 Semestre\gcdesk-interdisciplinary-project\gcdesk\image\" + arquivo);
 
                 User user = new User();
                 user.Name = txtName.Text;

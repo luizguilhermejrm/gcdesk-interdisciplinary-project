@@ -54,6 +54,7 @@ public partial class Pages_Sistema_Analista_AnalystTickets_Default : System.Web.
             lkb = (LinkButton)e.Row.Cells[5].FindControl("lkbUpdate");
             if (e.Row.Cells[4].Text == "1")
             {
+
                 lkb.Text = "<i class='text-info fas fa-sync'></i>";
                 lkb.CommandName = "andamento";
                 e.Row.Cells[4].Text = "<i class='text-warning fa fa-clock'></i> ";
@@ -73,8 +74,12 @@ public partial class Pages_Sistema_Analista_AnalystTickets_Default : System.Web.
 
     protected void gdvTickets_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
+        User user = (User)Session["USER_BD"];
+        TicketBD ticketBD = new TicketBD();
+
+        int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
         int status = 0;
+
         string closeTime = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
 
         switch (e.CommandName)
@@ -103,7 +108,9 @@ public partial class Pages_Sistema_Analista_AnalystTickets_Default : System.Web.
                                    </div>
                                 </div> ";
 
-        if (TicketBD.UpdateTicket(status, codigoTicket, closeTime) == 0)
+        ticketBD.InsertNotificationStatusFinished(idTicket, closeTime);
+
+        if (TicketBD.UpdateTicket(status, idTicket, closeTime) == 0)
         {
             LoadTickets();
         }

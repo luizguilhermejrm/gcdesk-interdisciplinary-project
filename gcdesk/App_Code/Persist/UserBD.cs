@@ -5,19 +5,30 @@ using System.Web;
 using System.Data;
 
 /// <summary>
-/// Summary description for UserBD
+/// 
+/// Nesta classe contém métodos relacionado a ações dos Usuários:
+///     - Selects em geral, Inserts, Updates e Autenticação.
+///     
 /// </summary>
 public class UserBD
 {
+    /// <summary>
+    /// 
+    ///  --> Metodo sendo utilizado na Default <--
+    /// 
+    /// </summary>
+    /// <param name="email"> Recebe a informação pela Sessão o email do usuario logado </param>
+    /// <param name="password"> Recebe a informação pela Sessão a senha do usuario logado </param>
+    /// <returns> Autentica o tipo do usuario (se é analista ou colaborador) e verifica se é o seu primeiro login. </returns>
     public User Authenticate(string email, string password)
     {
         User obj = null;
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
 
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT * FROM user WHERE user_email = ?email and user_password = ?password", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT * FROM user WHERE user_email = ?email and user_password = ?password", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?email", email));
         objCommand.Parameters.Add(Mapped.Parameter("?password", password));
         objDataReader = objCommand.ExecuteReader();
@@ -32,42 +43,57 @@ public class UserBD
             obj.Password = objDataReader["user_password"].ToString();
         }
 
-        
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return obj;
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na MasterPage <--
+    /// 
+    /// </summary>
+    /// <param name="id"> Recebe a informação pela Sessão o id do usuario logado </param>
+    /// <returns>Ele retorna o nome do usuário</returns>
     public String SelectNavbarUser(int id)
     {
         User obj = new User();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT user_name FROM user WHERE user_id=?id", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT user_name FROM user WHERE user_id=?id", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
-            //obj.Name = Convert.ToString(objDataReader["user_name"]);
-           // obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
             obj.Name = Convert.ToString(objDataReader["user_name"]);
         }
 
         string nome = obj.Name;
 
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return nome;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na MasterPage <--
+    /// 
+    /// Após o usuário realizar a troca de senha obrigatória, caso o status do firstLogin esteja "0",
+    /// ele muda o status para "1", atualizando no banco de dados a sua nova senha.
+    /// 
+    /// </summary>
+    /// <param name="user"> Uma instância da classe Usuário para receber as informações </param>
+    /// <returns> Realizar a atualização do primeiro login para o status user_firstLogin para "1" e sua atualização de senha </returns>
     public static int UpdateUserFirstLogin(User user)
     {
         try
@@ -93,6 +119,13 @@ public class UserBD
         }
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na UpdateUser <--
+    /// 
+    /// </summary>
+    /// <param name="user"> Uma instância da classe Usuário para receber as informações</param>
+    /// <returns> realizar a atualização dos dados do usuário </returns>
     public static int UpdateUser(User user)
     {
         try
@@ -122,8 +155,12 @@ public class UserBD
         }
     }
 
-
-
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na ListCollaborator <--
+    /// 
+    /// </summary>
+    /// <returns> Retorna todos os usuários cujo são colaboradores </returns>
     public static DataSet SelectAll()
     {
         DataSet ds = new DataSet();
@@ -141,15 +178,21 @@ public class UserBD
         return ds;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Dashboard do Analista <--
+    /// 
+    /// </summary>
+    /// <returns> Retorna a quantidade de colaboradores cadastrados no sistema </returns>
     public String SelectQuantityPerson()
     {
         User obj = new User();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(user_id) TOTAL FROM user WHERE user_typeAccess =1", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(user_id) TOTAL FROM user WHERE user_typeAccess =1", objConection);
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
@@ -158,13 +201,20 @@ public class UserBD
         }
         string resultado = Convert.ToString(obj.UserId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo utilizado na ListCollaborator <--
+    /// 
+    /// </summary>
+    /// <param name="user"> Uma instância da classe Usuário para receber as informações </param>
+    /// <returns> Cadastra as informações do usuário (colaborador) </returns>
     public static int Insert(User user)
     {
         try

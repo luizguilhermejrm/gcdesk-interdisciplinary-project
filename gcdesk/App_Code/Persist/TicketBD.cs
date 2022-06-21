@@ -109,23 +109,23 @@ public class TicketBD
     {
         Ticket obj = new Ticket();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=2", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=2", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
             obj.TicketId = Convert.ToInt32(objDataReader["TOTAL"]);
-   
+
         }
-        string resultado = Convert.ToString( obj.TicketId);
+        string resultado = Convert.ToString(obj.TicketId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
@@ -134,11 +134,11 @@ public class TicketBD
     {
         Ticket obj = new Ticket();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=1", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=1", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
@@ -148,9 +148,9 @@ public class TicketBD
         }
         string resultado = Convert.ToString(obj.TicketId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
@@ -158,11 +158,11 @@ public class TicketBD
     {
         Ticket obj = new Ticket();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=0", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE user_id =?id AND tic_status=0", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
@@ -172,9 +172,9 @@ public class TicketBD
         }
         string resultado = Convert.ToString(obj.TicketId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
@@ -182,11 +182,11 @@ public class TicketBD
     {
         Ticket obj = new Ticket();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL from ticket where ana_analisty_id =?id AND tic_status=1", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL from ticket where ana_analisty_id =?id AND tic_status=1", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
@@ -196,9 +196,9 @@ public class TicketBD
         }
         string resultado = Convert.ToString(obj.TicketId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
@@ -206,11 +206,11 @@ public class TicketBD
     {
         Ticket obj = new Ticket();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL from ticket where ana_analisty_id =?id AND tic_status=2", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL from ticket where ana_analisty_id =?id AND tic_status=2", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
@@ -220,9 +220,9 @@ public class TicketBD
         }
         string resultado = Convert.ToString(obj.TicketId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
@@ -231,11 +231,11 @@ public class TicketBD
     {
         Ticket obj = new Ticket();
 
-        System.Data.IDbConnection objConexao;
+        System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
-        objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE tic_status=0", objConexao);
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT count(tic_id) TOTAL FROM ticket WHERE tic_status=0", objConection);
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
@@ -244,9 +244,9 @@ public class TicketBD
         }
         string resultado = Convert.ToString(obj.TicketId);
         objDataReader.Close();
-        objConexao.Close();
+        objConection.Close();
         objCommand.Dispose();
-        objConexao.Dispose();
+        objConection.Dispose();
         objDataReader.Dispose();
         return resultado;
     }
@@ -255,18 +255,18 @@ public class TicketBD
         DataSet ds = new DataSet();
         Ticket ticket = new Ticket();
 
-        IDbConnection objConexao;
+        IDbConnection objConection;
         IDbCommand objCommand;
         IDataAdapter objAdapter;
-        objConexao = Mapped.Connection();
+        objConection = Mapped.Connection();
         string sql = "SELECT * FROM ticket WHERE tic_id=?cod;";
-        objCommand = Mapped.Command(sql, objConexao);
+        objCommand = Mapped.Command(sql, objConection);
         objAdapter = Mapped.Adapter(objCommand);
         objCommand.Parameters.Add(Mapped.Parameter("?cod", ticketID));
         objAdapter.Fill(ds);
         objCommand.Dispose();
-        objConexao.Close();
-        objConexao.Dispose();
+        objConection.Close();
+        objConection.Dispose();
         return ds;
     }
 
@@ -321,5 +321,85 @@ public class TicketBD
         {
             return -2;
         }
+    }
+
+    public int InsertNotificationStatusProgress(int idTicket, string timeMessage)
+    {
+        try
+        {
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage) 
+                        VALUES ('O seu chamado foi aceito, a partir de agora está sendo desenvolvido pelo analista',
+                                'Chamado em Andamento', ?tic_id, ?timeMessage);";
+
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?timeMessage", timeMessage));
+            dbCommand.Parameters.Add(Mapped.Parameter("?tic_id", idTicket));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+
+
+    }
+    public int InsertNotificationStatusFinished(int idTicket, string timeMessage)
+    {
+        try
+        {
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage) 
+                        VALUES ('O seu chamado foi finalizado, poderia nos enviar uma avaliação por favor.',
+                                'Chamado Finalizado', ?tic_id, ?timeMessage);";
+
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?timeMessage", timeMessage));
+            dbCommand.Parameters.Add(Mapped.Parameter("?tic_id", idTicket));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+
+    }
+    public int InsertNotificationStatusCreate(int idTicket, string timeMessage)
+    {
+        try
+        {
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage) 
+                        VALUES ('O seu chamado foi criado com sucesso.',
+                                'Chamado Criado', ?tic_id, ?timeMessage);";
+
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?timeMessage", timeMessage));
+            dbCommand.Parameters.Add(Mapped.Parameter("?tic_id", idTicket));
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+            return 0;
+        }
+        catch (Exception e)
+        {
+            return -2;
+        }
+
     }
 }

@@ -72,6 +72,10 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
                                    </div>
                                 </div> ";
 
+
+
+            //TicketBD.InsertNotificationStatusCreate();
+
         }
         else
         {

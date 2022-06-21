@@ -74,10 +74,13 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         User user = (User)Session["USER_BD"];
         TicketBD ticket = new TicketBD();
         UserBD userBD = new UserBD();
+
         int ID = user.UserId;
+        string timeMessage = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
+
         int codigoTicket = Convert.ToInt32(e.CommandArgument.ToString());
         Convert.ToString(ticket.UpdateTicketAnaSt(ID, codigoTicket));
-
+        ticket.InsertNotificationStatusProgress(codigoTicket, timeMessage);
 
         lblMsg.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                   <div class='toast'>

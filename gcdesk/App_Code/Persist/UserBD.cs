@@ -40,31 +40,32 @@ public class UserBD
         objDataReader.Dispose();
         return obj;
     }
-    public User Select(int id)
+    public String SelectNavbarUser(int id)
     {
-        User obj = null;
+        User obj = new User();
+
         System.Data.IDbConnection objConexao;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
         objConexao = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT * FROM user WHERE user_id = ?id",
-        objConexao);
+        objCommand = Mapped.Command("SELECT user_name FROM user WHERE user_id=?id", objConexao);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
-            obj = new User();
-            obj.UserId = Convert.ToInt32(objDataReader["user_id"]);
-            obj.Email = Convert.ToString(objDataReader["user_email"]);
-            obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
-            obj.FirstLogin = Convert.ToInt32(objDataReader["user_firstLogin"]);
+            //obj.Name = Convert.ToString(objDataReader["user_name"]);
+           // obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
+            obj.Name = Convert.ToString(objDataReader["user_name"]);
         }
+
+        string nome = obj.Name;
+
         objDataReader.Close();
         objConexao.Close();
         objCommand.Dispose();
         objConexao.Dispose();
         objDataReader.Dispose();
-        return obj;
+        return nome;
     }
 
     public static int UpdateUserFirstLogin(User user)

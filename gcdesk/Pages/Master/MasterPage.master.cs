@@ -11,18 +11,23 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         User user = (User)Session["USER_BD"];
-        lblLogado.Text = user.Email;
-
-        if (user.TypeAccess == 0)
-        {
-            lblLogadoType.Text = "Analista";
-        } else
-        {
-            lblLogadoType.Text = "Colaborador";
-        }
+        UserBD userBD = new UserBD();   
 
         if (user != null)
         {
+            int ID = user.UserId;
+      
+           string nomeUsuario = Convert.ToString(userBD.SelectNavbarUser(ID));
+            lblLogado.Text = nomeUsuario;
+
+            if (user.TypeAccess == 0)
+            {
+            lblLogadoType.Text = "Analista";
+            } else
+            {
+               lblLogadoType.Text = "Colaborador";
+            }
+
             if (!IsPostBack)
             {
                 if (user.FirstLogin == 0)

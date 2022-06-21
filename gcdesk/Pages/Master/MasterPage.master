@@ -25,13 +25,13 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-4 my-2 my-md-0 ">
                 <div class="input-group">
-                    <div class="border rounded-start" style="width: 45px">
+                    <div class="border rounded-start" style="width: 52px">
                         <img src="../../../image/person.png" class="img-fluid rounded-start" />
                     </div>
                     <div class="form-control border">
                         <div class="row">
-                            <asp:Label ID="lblLogado" runat="server" Style="font-size: 10px;" Text=""></asp:Label>
-                            <asp:Label ID="lblLogadoType" runat="server" CssClass="text-black-50" Style="font-size: 10px;" Text=""></asp:Label>
+                            <asp:Label ID="lblLogado" runat="server" Style="font-size: 13px;" Text=""></asp:Label>
+                            <asp:Label ID="lblLogadoType" runat="server" CssClass="text-black-50" Style="font-size: 12px;" Text=""></asp:Label>
                         </div>
                     </div>
                 </div>

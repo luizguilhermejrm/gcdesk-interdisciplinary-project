@@ -4,11 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Data;
 
+
 /// <summary>
-/// Summary description for TicketBD
+/// 
+/// Nesta classe contém métodos relacionado a ações dos Chamados:
+///     - Selects em geral, Inserts, Updates e Autenticação.
+///     
 /// </summary>
 public class TicketBD
 {
+    /// <summary>
+    ///  --> Metodo sendo utilizado na  <--
+    /// </summary>
+    /// <returns>Retorna os Chamados que estao em aberto</returns>
     public static DataSet SelectTicketOpen()
     {
         DataSet ds = new DataSet();
@@ -26,6 +34,12 @@ public class TicketBD
         return ds;
     }
 
+    /// <summary>
+    ///
+    /// --> Metodo sendo utilizado na page AllTicket  <--
+    /// 
+    /// </summary>
+    /// <returns>Retorna todos os tickets para os Analistas</returns>
     public static DataSet SelectTicketAllAnalyst()
     {
         DataSet ds = new DataSet();
@@ -43,6 +57,13 @@ public class TicketBD
         return ds;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Colaborador  <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Retorna todos os tickets que o Usuario criou</returns>
     public static DataSet SelectTicketCollaborator(int id)
     {
         DataSet ds = new DataSet();
@@ -61,6 +82,13 @@ public class TicketBD
         return ds;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado nos Chamados dos Analistas  <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Retorna os chamados que o Analista aceitou</returns>
     public static DataSet SelectTicketAna(int id)
     {
         DataSet ds = new DataSet();
@@ -79,6 +107,13 @@ public class TicketBD
         return ds;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Colaborador <--
+    /// 
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns>Insere no banco de dados o chamado</returns>
     public static int Insert(Ticket t)
     {
         try
@@ -105,6 +140,13 @@ public class TicketBD
         }
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Analista  <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Retorna a quantidade de chamados Finalizados</returns>
     public String SelectFinished(int id)
     {
         Ticket obj = new Ticket();
@@ -130,6 +172,13 @@ public class TicketBD
         return resultado;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public String SelectProgress(int id)
     {
         Ticket obj = new Ticket();
@@ -154,6 +203,14 @@ public class TicketBD
         objDataReader.Dispose();
         return resultado;
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Analista <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Retorna a quantidade de Chamados que estao em aberto</returns>
     public String SelectOpen(int id)
     {
         Ticket obj = new Ticket();
@@ -178,6 +235,14 @@ public class TicketBD
         objDataReader.Dispose();
         return resultado;
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Retorna a quantidade de chamados que estao em Progresso</returns>
     public String SelectProgressAnalyst(int id)
     {
         Ticket obj = new Ticket();
@@ -202,6 +267,14 @@ public class TicketBD
         objDataReader.Dispose();
         return resultado;
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Analista  <--
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Retorna a quantidade de chamados que estao finalizados</returns>
     public String SelectFinishedAnalyst(int id)
     {
         Ticket obj = new Ticket();
@@ -227,6 +300,12 @@ public class TicketBD
         return resultado;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Analista  <--
+    /// 
+    /// </summary>
+    /// <returns>Retorna a quantidade dos chamados que estao em Aberto</returns>
     public String SelectAllOpen()
     {
         Ticket obj = new Ticket();
@@ -250,6 +329,14 @@ public class TicketBD
         objDataReader.Dispose();
         return resultado;
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Default <--
+    /// 
+    /// </summary>
+    /// <param name="ticketID"></param>
+    /// <returns></returns>
     public DataSet SelectOne(String ticketID)
     {
         DataSet ds = new DataSet();
@@ -270,6 +357,15 @@ public class TicketBD
         return ds;
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na <--
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="idTicket"></param>
+    /// <param name="closeTime"></param>
+    /// <returns></returns>
     public static int UpdateTicket(int value, int idTicket, string closeTime)
     {
         try
@@ -296,6 +392,14 @@ public class TicketBD
         }
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Analista <--
+    /// 
+    /// </summary>
+    /// <param name="anaid"></param>
+    /// <param name="idTicket"></param>
+    /// <returns>Atualiza no banco de dados o ticket do Analista</returns>
     public int UpdateTicketAnaSt(int anaid, int idTicket)
     {
         try
@@ -323,6 +427,14 @@ public class TicketBD
         }
     }
 
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na Index do Analista <--
+    /// 
+    /// </summary>
+    /// <param name="idTicket"></param>
+    /// <param name="timeMessage"></param>
+    /// <returns>Insere no banco a notificacao para o chamado que ele foi aceito pelo Analista</returns>
     public int InsertNotificationStatusProgress(int idTicket, string timeMessage)
     {
         try
@@ -350,6 +462,15 @@ public class TicketBD
 
 
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na  AnalystTicke<--
+    /// 
+    /// </summary>
+    /// <param name="idTicket"></param>
+    /// <param name="timeMessage"></param>
+    /// <returns>Insere no banco o status de finalizado para o chamado</returns>
     public int InsertNotificationStatusFinished(int idTicket, string timeMessage)
     {
         try
@@ -376,6 +497,15 @@ public class TicketBD
         }
 
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado nat <--
+    /// 
+    /// </summary>
+    /// <param name="idTicket"></param>
+    /// <param name="timeMessage"></param>
+    /// <returns>Insere no banco um novo status de Notificacao para o chamado</returns>
     public int InsertNotificationStatusCreate(int idTicket, string timeMessage)
     {
         try

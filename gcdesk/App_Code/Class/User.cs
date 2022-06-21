@@ -16,7 +16,7 @@ public class User
 
     public int StatusUser { get; set; }
 
-    public int TypeAnalist { get; set; }
+    public string TypeAnalist { get; set; }
 
     public string Email { get; set; }
 

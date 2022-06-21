@@ -37,10 +37,16 @@ public class UserBD
         {
             obj = new User();
             obj.UserId = Convert.ToInt32(objDataReader["user_id"]);
+            obj.Name = Convert.ToString(objDataReader["user_name"]);
+            obj.Position = Convert.ToString(objDataReader["user_position"]);
+            obj.StatusUser = Convert.ToInt32(objDataReader["user_status"]);
+            obj.TypeAnalist = Convert.ToString(objDataReader["user_typeAnalyst"]);
             obj.Email = Convert.ToString(objDataReader["user_email"]);
+            obj.Password = objDataReader["user_password"].ToString();
             obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
             obj.FirstLogin = Convert.ToInt32(objDataReader["user_firstLogin"]);
-            obj.Password = objDataReader["user_password"].ToString();
+            obj.DepartId = Convert.ToInt32(objDataReader["dep_id"]);
+            obj.Image = Convert.ToString(objDataReader["user_image"]);
         }
 
         objDataReader.Close();
@@ -53,69 +59,49 @@ public class UserBD
 
     /// <summary>
     /// 
-    /// --> Metodo sendo utilizado na MasterPage <--
+    /// --> Metodo sendo utilizado na UpdateUser <--
     /// 
     /// </summary>
-    /// <param name="id"> Recebe a informação pela Sessão o id do usuario logado </param>
-    /// <returns>Ele retorna o nome do usuário</returns>
-    public String SelectNavbarUser(int id)
+    /// <param name="id"> Recebe a informação pela Sessão o id do usuario selecionado na tabela </param>
+    /// <returns>Ele retorna os dados do usuario</returns>
+    public User SelectUserTable(int id)
     {
-        User obj = new User();
+        User obj = null;
 
         System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
         objConection = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT user_name FROM user WHERE user_id=?id", objConection);
+        objCommand = Mapped.Command("SELECT * FROM user WHERE user_id=?id", objConection);
         objCommand.Parameters.Add(Mapped.Parameter("?id", id));
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
+            obj.UserId = Convert.ToInt32(objDataReader["user_id"]);
             obj.Name = Convert.ToString(objDataReader["user_name"]);
-        }
-
-        string nome = obj.Name;
-
-        objDataReader.Close();
-        objConection.Close();
-        objCommand.Dispose();
-        objConection.Dispose();
-        objDataReader.Dispose();
-        return nome;
-    }
-
-    /// <summary>
-    /// 
-    /// --> Metodo sendo utilizado na MasterPage <--
-    /// 
-    /// </summary>
-    /// <param name="id"> Recebe a informação pela Sessão o id do usuario logado </param>
-    /// <returns>Ele retorna a imagem do usuário</returns>
-    public String SelectNavbarUserImage(int id)
-    {
-        User obj = new User();
-
-        System.Data.IDbConnection objConection;
-        System.Data.IDbCommand objCommand;
-        System.Data.IDataReader objDataReader;
-        objConection = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT user_image FROM user WHERE user_id=?id", objConection);
-        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
-        objDataReader = objCommand.ExecuteReader();
-        while (objDataReader.Read())
-        {
+            obj.Position = Convert.ToString(objDataReader["user_position"]);
+            obj.StatusUser = Convert.ToInt32(objDataReader["user_status"]);
+            obj.TypeAnalist = Convert.ToString(objDataReader["user_typeAnalyst"]);
+            obj.Email = Convert.ToString(objDataReader["user_email"]);
+            obj.Password = objDataReader["user_password"].ToString();
+            obj.TypeAccess = Convert.ToInt32(objDataReader["user_typeAccess"]);
+            obj.FirstLogin = Convert.ToInt32(objDataReader["user_firstLogin"]);
+            obj.DepartId = Convert.ToInt32(objDataReader["dep_id"]);
             obj.Image = Convert.ToString(objDataReader["user_image"]);
         }
 
-        string image = obj.Image;
 
         objDataReader.Close();
         objConection.Close();
         objCommand.Dispose();
         objConection.Dispose();
         objDataReader.Dispose();
-        return image;
+        return obj;
     }
+
+   
+
+   
 
     /// <summary>
     /// 
@@ -299,36 +285,5 @@ public class UserBD
 
     }
 
-    /// <summary>
-    /// 
-    /// --> Metodo utilizado na MasterPage <--
-    /// 
-    /// </summary>
-    /// <param name="userId">Parametro utilizado da Sessao do Usuario</param>
-    /// <returns>Retorna o Status do usuario Logado</returns>
-    public int SelectStatusUser(int userId)
-    {
-        User obj = new User();
-
-        System.Data.IDbConnection objConection;
-        System.Data.IDbCommand objCommand;
-        System.Data.IDataReader objDataReader;
-        objConection = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT user_status FROM user WHERE (user_id = ?userId);", objConection);
-        objCommand.Parameters.Add(Mapped.Parameter("?userId", userId));
-        objDataReader = objCommand.ExecuteReader();
-        while (objDataReader.Read())
-        {
-            obj.StatusUser = Convert.ToInt32(objDataReader["user_status"]);
-        }
-
-        int userStatus = obj.StatusUser;
-
-        objDataReader.Close();
-        objConection.Close();
-        objCommand.Dispose();
-        objConection.Dispose();
-        objDataReader.Dispose();
-        return userStatus;
-    }
+   
 }

@@ -16,19 +16,14 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
 
         if (user != null)
         {
-            int ID = user.UserId;
 
-            string nomeUsuario = Convert.ToString(userBD.SelectNavbarUser(ID));
-            lblLogado.Text = Convert.ToString(nomeUsuario);
+            lblLogado.Text = user.Name;
 
-            string foto = Convert.ToString(userBD.SelectNavbarUserImage(ID));
 
-            int userStatus = Convert.ToInt32(userBD.SelectStatusUser(ID));
-            
 
             if (!IsPostBack)
             {
-                if(userStatus == 1)
+                if(user.StatusUser == 1)
                 {
                     if (user.FirstLogin == 0)
                     {
@@ -37,7 +32,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
                               " myModal.show();" +
                               "};", true);
                     }
-                    ImgLogado.Text = "<img src='" + ConfigurationManager.AppSettings["uploadHTTP"] + foto + "' style='width:50px' />";
+                    ImgLogado.Text = "<img src='" + ConfigurationManager.AppSettings["uploadHTTP"] + user.Image + "' style='width:50px' />";
 
 
                     if (user.TypeAccess == 0)

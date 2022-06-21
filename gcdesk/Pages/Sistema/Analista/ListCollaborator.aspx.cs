@@ -140,8 +140,8 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
         {
             case "Update":
                 id = Convert.ToInt32(e.CommandArgument);
-                Session["USER_ID"] = id;
-                Response.Redirect("/Pages/Sistema/Analista/UpdateUser.aspx");
+                Session["USER_SELECT_TABLE"] = id;
+                Response.Redirect("UpdateUser.aspx");
                 break;
             case "Delete":
                 id = Convert.ToInt32(e.CommandArgument);

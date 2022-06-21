@@ -463,73 +463,7 @@ public class TicketBD
 
     }
 
-    /// <summary>
-    /// 
-    /// --> Metodo sendo utilizado na  AnalystTicke<--
-    /// 
-    /// </summary>
-    /// <param name="idTicket"></param>
-    /// <param name="timeMessage"></param>
-    /// <returns>Insere no banco o status de finalizado para o chamado</returns>
-    public int InsertNotificationStatusFinished(int idTicket, string timeMessage)
-    {
-        try
-        {
-            IDbConnection dbConnection;
-            IDbCommand dbCommand;
-            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage, not_status) 
-                        VALUES ('O seu chamado foi finalizado, poderia nos enviar uma avaliação por favor.',
-                                'Chamado Finalizado', ?tic_id, ?timeMessage, '2');";
+   
 
-            dbConnection = Mapped.Connection();
-            dbCommand = Mapped.Command(sql, dbConnection);
-            dbCommand.Parameters.Add(Mapped.Parameter("?timeMessage", timeMessage));
-            dbCommand.Parameters.Add(Mapped.Parameter("?tic_id", idTicket));
-            dbCommand.ExecuteNonQuery();
-            dbConnection.Close();
-            dbCommand.Dispose();
-            dbConnection.Dispose();
-            return 0;
-        }
-        catch (Exception e)
-        {
-            return -2;
-        }
-
-    }
-
-    /// <summary>
-    /// 
-    /// --> Metodo sendo utilizado nat <--
-    /// 
-    /// </summary>
-    /// <param name="idTicket"></param>
-    /// <param name="timeMessage"></param>
-    /// <returns>Insere no banco um novo status de Notificacao para o chamado</returns>
-    public int InsertNotificationStatusCreate(int idTicket, string timeMessage)
-    {
-        try
-        {
-            IDbConnection dbConnection;
-            IDbCommand dbCommand;
-            string sql = @"INSERT INTO notification (not_description, not_title, tic_id, not_timeMensage) 
-                        VALUES ('O seu chamado foi criado com sucesso.',
-                                'Chamado Criado', ?tic_id, ?timeMessage);";
-
-            dbConnection = Mapped.Connection();
-            dbCommand = Mapped.Command(sql, dbConnection);
-            dbCommand.Parameters.Add(Mapped.Parameter("?timeMessage", timeMessage));
-            dbCommand.Parameters.Add(Mapped.Parameter("?tic_id", idTicket));
-            dbCommand.ExecuteNonQuery();
-            dbConnection.Close();
-            dbCommand.Dispose();
-            dbConnection.Dispose();
-            return 0;
-        }
-        catch (Exception e)
-        {
-            return -2;
-        }
-
-    }
+   
 }

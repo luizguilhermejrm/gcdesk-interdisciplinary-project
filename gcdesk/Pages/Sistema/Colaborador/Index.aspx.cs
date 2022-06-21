@@ -49,6 +49,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
     {
         User user = (User)Session["USER_BD"];
         int ID = user.UserId;
+        NotificationBD notificationBD = new NotificationBD();
 
         Ticket tic = new Ticket();
         tic.Description = txtProblem.Text;
@@ -74,7 +75,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 
 
 
-            //TicketBD.InsertNotificationStatusCreate();
+           // notificationBD.InsertNotificationStatusCreate();
 
         }
         else

@@ -76,6 +76,7 @@ public partial class Pages_Sistema_Analista_AnalystTickets_Default : System.Web.
     {
         User user = (User)Session["USER_BD"];
         TicketBD ticketBD = new TicketBD();
+        NotificationBD notificationBD = new NotificationBD();
 
         int idTicket = Convert.ToInt32(e.CommandArgument.ToString());
         int status = 0;
@@ -108,7 +109,7 @@ public partial class Pages_Sistema_Analista_AnalystTickets_Default : System.Web.
                                    </div>
                                 </div> ";
 
-        ticketBD.InsertNotificationStatusFinished(idTicket, closeTime);
+        notificationBD.InsertNotificationStatusFinished(idTicket, closeTime);
 
         if (TicketBD.UpdateTicket(status, idTicket, closeTime) == 0)
         {

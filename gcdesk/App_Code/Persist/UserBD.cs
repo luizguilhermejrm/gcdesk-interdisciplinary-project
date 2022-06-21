@@ -88,6 +88,39 @@ public class UserBD
     /// 
     /// --> Metodo sendo utilizado na MasterPage <--
     /// 
+    /// </summary>
+    /// <param name="id"> Recebe a informação pela Sessão o id do usuario logado </param>
+    /// <returns>Ele retorna a imagem do usuário</returns>
+    public String SelectNavbarUserImage(int id)
+    {
+        User obj = new User();
+
+        System.Data.IDbConnection objConection;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT user_image FROM user WHERE user_id=?id", objConection);
+        objCommand.Parameters.Add(Mapped.Parameter("?id", id));
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj.Image = Convert.ToString(objDataReader["user_image"]);
+        }
+
+        string image = obj.Image;
+
+        objDataReader.Close();
+        objConection.Close();
+        objCommand.Dispose();
+        objConection.Dispose();
+        objDataReader.Dispose();
+        return image;
+    }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na MasterPage <--
+    /// 
     /// Após o usuário realizar a troca de senha obrigatória, caso o status do firstLogin esteja "0",
     /// ele muda o status para "1", atualizando no banco de dados a sua nova senha.
     /// 

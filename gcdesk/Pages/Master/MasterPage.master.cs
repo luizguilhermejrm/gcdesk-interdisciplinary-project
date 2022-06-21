@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
 {
@@ -16,16 +17,22 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
         if (user != null)
         {
             int ID = user.UserId;
-      
-           string nomeUsuario = Convert.ToString(userBD.SelectNavbarUser(ID));
-            lblLogado.Text = nomeUsuario;
+
+            string nomeUsuario = Convert.ToString(userBD.SelectNavbarUser(ID));
+            lblLogado.Text = Convert.ToString(nomeUsuario);
+
+            string foto = Convert.ToString(userBD.SelectNavbarUserImage(ID));
+
+            ImgLogado.Text = "<img src='" + ConfigurationManager.AppSettings["uploadHTTP"] + foto + "' style='width:50px' />";
+
 
             if (user.TypeAccess == 0)
             {
-            lblLogadoType.Text = "Analista";
-            } else
+                lblLogadoType.Text = "Analista";
+            }
+            else
             {
-               lblLogadoType.Text = "Colaborador";
+                lblLogadoType.Text = "Colaborador";
             }
 
             if (!IsPostBack)

@@ -70,7 +70,7 @@
                         <asp:ListItem Text="Setor Comercial" Value="4" />
                         <asp:ListItem Text="Tecnologia da Informação" Value="5" />
                     </asp:DropDownList>
-                    <asp:FileUpload id="FileUpload1" runat="server"/>
+                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control mt-3"/>
                 </div>
                 <div class="modal-footer border-0">
                     <asp:Button ID="btnCollaborator" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnCollaborator_Click" />

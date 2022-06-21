@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Page
 {
@@ -40,7 +41,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             if (FileUpload1.PostedFile.ContentLength <= 1024000)
             {
                 string arquivo = FileUpload1.FileName;
-                FileUpload1.SaveAs(@"D:\Faculdade\4 Semestre\gcdesk-interdisciplinary-project\gcdesk\image\" + arquivo);
+                FileUpload1.SaveAs(ConfigurationManager.AppSettings["uploadServer"] + arquivo);
 
                 User user = new User();
                 user.Name = txtName.Text;
@@ -87,12 +88,34 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             }
             else
             {
-                //lblMensagem.Text = "Foto muito grande.";
+                lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Foto muito grande.
+                                      </div>
+                                   </div>
+                                </div> ";
             }
         }
         else
         {
-            //lblMensagem.Text = "Não há foto selecionada.";
+            lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                        Não há foto selecionada.
+                                      </div>
+                                   </div>
+                                </div> ";
         }
     }
 

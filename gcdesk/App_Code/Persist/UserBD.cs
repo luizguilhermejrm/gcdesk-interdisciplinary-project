@@ -274,4 +274,61 @@ public class UserBD
             return -2;
         }
     }
+
+    /// <summary>
+    /// 
+    /// --> Metodo utilizado na ListCollaborator <--
+    /// -- Metodo que impletementa um SoftDelete, onde desabilita o status do usuario
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Faz um update do status do usuario para 0 </returns>
+    public bool DeleteUser(int id)
+    {
+        IDbConnection dbConnection;
+        IDbCommand dbCommand;
+        string sql = "UPDATE user SET user_status = 0 WHERE (user_id = ?userId);";
+        dbConnection = Mapped.Connection();
+        dbCommand = Mapped.Command(sql, dbConnection);
+        dbCommand.Parameters.Add(Mapped.Parameter("?userId", id));
+
+        dbCommand.ExecuteNonQuery();
+        dbConnection.Close();
+        dbCommand.Dispose();
+        dbConnection.Dispose();
+        return true;
+
+    }
+
+    /// <summary>
+    /// 
+    /// --> Metodo utilizado na MasterPage <--
+    /// 
+    /// </summary>
+    /// <param name="userId">Parametro utilizado da Sessao do Usuario</param>
+    /// <returns>Retorna o Status do usuario Logado</returns>
+    public int SelectStatusUser(int userId)
+    {
+        User obj = new User();
+
+        System.Data.IDbConnection objConection;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataReader objDataReader;
+        objConection = Mapped.Connection();
+        objCommand = Mapped.Command("SELECT user_status FROM user WHERE (user_id = ?userId);", objConection);
+        objCommand.Parameters.Add(Mapped.Parameter("?userId", userId));
+        objDataReader = objCommand.ExecuteReader();
+        while (objDataReader.Read())
+        {
+            obj.StatusUser = Convert.ToInt32(objDataReader["user_status"]);
+        }
+
+        int userStatus = obj.StatusUser;
+
+        objDataReader.Close();
+        objConection.Close();
+        objCommand.Dispose();
+        objConection.Dispose();
+        objDataReader.Dispose();
+        return userStatus;
+    }
 }

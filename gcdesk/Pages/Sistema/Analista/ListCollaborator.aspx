@@ -36,9 +36,14 @@
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_name" HeaderText="Nome" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_email" HeaderText="Email" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
-                                        <asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Atualizar">
+                                            <ItemTemplate >
+                                                <asp:LinkButton  ID="lbUpdate" runat="server" CommandName="Update" CommandArgument='<%# Bind("user_id")%>' ><i class="fa-solid fa-pen-to-square py-3 px-3 "></i></asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Deletar">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Update" CommandArgument='<%# Bind("user_id")%>' >Alterar</asp:LinkButton>
+                                                <asp:LinkButton ID="lbDelete" runat="server" CommandName="Delete" CommandArgument='<%# Bind("user_id")%>' ><i class="fa-solid fa-user-slash"></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

@@ -12,12 +12,18 @@ public partial class _Default : System.Web.UI.Page
        if(Request.QueryString!=null)
         {
             string fromPage = Request.QueryString["from"];
+
             if (fromPage == "logout")
             {
                 MensageExitToast();
+            }else if (fromPage == "accessdenied")
+            {
+                MensageAccessDenied();
             }
+
+
         }
-       
+
     }
 
     private bool IsComplete(string str)
@@ -141,7 +147,24 @@ public partial class _Default : System.Web.UI.Page
                                                   </div>
                                                </div>
                                             </div> ";
-        
+
+    }
+
+    public void MensageAccessDenied()
+    {
+
+        lblExit.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                              <div class='toast'>
+                                                 <div class='toast-header'>
+                                                    <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                                    <strong class='me-auto'>Acesso Negado!</strong>
+                                                    <small>Agora</small>
+                                                  </div>
+                                                  <div class='toast-body'>
+                                                    Acesso Negado, entre em contato com Analista do Sistema!
+                                                  </div>
+                                               </div>
+                                            </div> ";
 
     }
 

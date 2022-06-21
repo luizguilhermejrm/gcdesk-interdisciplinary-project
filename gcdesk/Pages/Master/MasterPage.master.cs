@@ -23,70 +23,79 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
 
             string foto = Convert.ToString(userBD.SelectNavbarUserImage(ID));
 
-            ImgLogado.Text = "<img src='" + ConfigurationManager.AppSettings["uploadHTTP"] + foto + "' style='width:50px' />";
-
-
-            if (user.TypeAccess == 0)
-            {
-                lblLogadoType.Text = "Analista";
-            }
-            else
-            {
-                lblLogadoType.Text = "Colaborador";
-            }
+            int userStatus = Convert.ToInt32(userBD.SelectStatusUser(ID));
+            
 
             if (!IsPostBack)
             {
-                if (user.FirstLogin == 0)
+                if(userStatus == 1)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('ModalFirstLogin'), {});" +
-                          "document.onreadystatechange = function () {" +
-                          " myModal.show();" +
-                          "};", true);
+                    if (user.FirstLogin == 0)
+                    {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "script", "var myModal = new bootstrap.Modal(document.getElementById('ModalFirstLogin'), {});" +
+                              "document.onreadystatechange = function () {" +
+                              " myModal.show();" +
+                              "};", true);
+                    }
+                    ImgLogado.Text = "<img src='" + ConfigurationManager.AppSettings["uploadHTTP"] + foto + "' style='width:50px' />";
+
+
+                    if (user.TypeAccess == 0)
+                    {
+                        lblLogadoType.Text = "Analista";
+                    }
+                    else
+                    {
+                        lblLogadoType.Text = "Colaborador";
+                    }
+
+                    if (IsAnalisty(user.TypeAccess))
+                    {
+                        lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
+                                              <a class='nav-link p-2' href='/Pages/Sistema/Analista/Index.aspx'>
+                                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
+                                                 <span class='text-light'><b>Dashboard</b></span>
+                                              </a>
+                                            </div>
+                                            <div class='nav rounded m-3' style='background-color: #F5F9FF'>
+                                              <a class='nav-link p-2' href='/Pages/Sistema/Analista/AnalystTickets.aspx'>
+                                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6' style='color: #3381E2'></i></div>
+                                                 <span style='color: #3381E2'><b>Meus Chamados</b></span>
+                                              </a>
+                                            </div>
+                                            <div class='nav rounded m-3' style='background-color: #F5F9FF'>
+                                              <a class='nav-link p-2' href='/Pages/Sistema/Analista/AllTickets.aspx'>
+                                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6' style='color: #3381E2'></i></div>
+                                                 <span style='color: #3381E2'><b>Todos Chamados</b></span>
+                                              </a>
+                                            </div>
+                                            <div class='nav rounded m-3' style='background-color: #F5F9FF'>
+                                              <a class='nav-link p-2' href='/Pages/Sistema/Analista/ListCollaborator.aspx'>
+                                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-table mx-2 fs-6' style='color: #3381E2'></i></div>
+                                                 <span style='color: #3381E2; font-size:15px'><b>Tab. Colaboradores</b></span>
+                                              </a>
+                                            </div>";
+                    }
+                    else if (!IsAnalisty(user.TypeAccess))
+                    {
+                        lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
+                                              <a class='nav-link p-2' href='/Pages/Sistema/Colaborador/Index.aspx'>
+                                                 <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
+                                                 <span class='text-light'><b>Dashboard</b></span>
+                                              </a>
+                                            </div>";
+                    }
+                    else
+                    {
+                        Response.Redirect("../PageError/Error404.aspx");
+                    }
                 }
+                else
+                {
+                    Response.Redirect("../../../Default.aspx?from=accessdenied");
+                }
+                
             }
-
-            if (IsAnalisty(user.TypeAccess))
-            {
-                lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/Index.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'><b>Dashboard</b></span>
-                                      </a>
-                                    </div>
-                                    <div class='nav rounded m-3' style='background-color: #F5F9FF'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AnalystTickets.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-headset mx-2 fs-6' style='color: #3381E2'></i></div>
-                                         <span style='color: #3381E2'><b>Meus Chamados</b></span>
-                                      </a>
-                                    </div>
-                                    <div class='nav rounded m-3' style='background-color: #F5F9FF'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/AllTickets.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-message mx-2 fs-6' style='color: #3381E2'></i></div>
-                                         <span style='color: #3381E2'><b>Todos Chamados</b></span>
-                                      </a>
-                                    </div>
-                                    <div class='nav rounded m-3' style='background-color: #F5F9FF'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Analista/ListCollaborator.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-table mx-2 fs-6' style='color: #3381E2'></i></div>
-                                         <span style='color: #3381E2; font-size:15px'><b>Tab. Colaboradores</b></span>
-                                      </a>
-                                    </div>";
-            }
-            else if (!IsAnalisty(user.TypeAccess))
-            {
-                lblNavMenu.Text = @"<div class='nav rounded bg-primary m-3'>
-                                      <a class='nav-link p-2' href='/Pages/Sistema/Colaborador/Index.aspx'>
-                                         <div class='sb-nav-link-icon'><i class='fa-solid fa-chart-line mx-2 fs-6 text-light'></i></div>
-                                         <span class='text-light'><b>Dashboard</b></span>
-                                      </a>
-                                    </div>";
-            }
-            else
-            {
-                Response.Redirect("../PageError/Error404.aspx");
-            }
-
 
         }else
         {

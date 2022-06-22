@@ -6,8 +6,8 @@ using System.Data;
 
 /// <summary>
 /// 
-/// Nesta classe contÈm mÈtodos relacionado a aÁıes dos Usu·rios:
-///     - Selects em geral, Inserts, Updates e AutenticaÁ„o.
+/// Nesta classe cont√©m m√©todos relacionado a a√ß√µes dos Usu√°rios:
+///     - Selects em geral, Inserts, Updates e Autentica√ß√£o.
 ///     
 /// </summary>
 public class UserBD
@@ -17,9 +17,9 @@ public class UserBD
     ///  --> Metodo sendo utilizado na Default <--
     /// 
     /// </summary>
-    /// <param name="email"> Recebe a informaÁ„o pela Sess„o o email do usuario logado </param>
-    /// <param name="password"> Recebe a informaÁ„o pela Sess„o a senha do usuario logado </param>
-    /// <returns> Autentica o tipo do usuario (se È analista ou colaborador) e verifica se È o seu primeiro login. </returns>
+    /// <param name="email"> Recebe a informa√ß√£o pela Sess√£o o email do usuario logado </param>
+    /// <param name="password"> Recebe a informa√ß√£o pela Sess√£o a senha do usuario logado </param>
+    /// <returns> Autentica o tipo do usuario (se √© analista ou colaborador) e verifica se √© o seu primeiro login. </returns>
     public User Authenticate(string email, string password)
     {
         User obj = null;
@@ -62,7 +62,7 @@ public class UserBD
     /// --> Metodo sendo utilizado na UpdateUser <--
     /// 
     /// </summary>
-    /// <param name="id"> Recebe a informaÁ„o pela Sess„o o id do usuario selecionado na tabela </param>
+    /// <param name="id"> Recebe a informa√ß√£o pela Sess√£o o id do usuario selecionado na tabela </param>
     /// <returns>Ele retorna os dados do usuario</returns>
     public User SelectUserTable(int id)
     {
@@ -108,12 +108,12 @@ public class UserBD
     /// 
     /// --> Metodo sendo utilizado na MasterPage <--
     /// 
-    /// ApÛs o usu·rio realizar a troca de senha obrigatÛria, caso o status do firstLogin esteja "0",
+    /// Ap√≥s o usu√°rio realizar a troca de senha obrigat√≥ria, caso o status do firstLogin esteja "0",
     /// ele muda o status para "1", atualizando no banco de dados a sua nova senha.
     /// 
     /// </summary>
-    /// <param name="user"> Uma inst‚ncia da classe Usu·rio para receber as informaÁıes </param>
-    /// <returns> Realizar a atualizaÁ„o do primeiro login para o status user_firstLogin para "1" e sua atualizaÁ„o de senha </returns>
+    /// <param name="user"> Uma inst√¢ncia da classe Usu√°rio para receber as informa√ß√µes </param>
+    /// <returns> Realizar a atualiza√ß√£o do primeiro login para o status user_firstLogin para "1" e sua atualiza√ß√£o de senha </returns>
     public static int UpdateUserFirstLogin(User user)
     {
         try
@@ -144,15 +144,15 @@ public class UserBD
     /// --> Metodo sendo utilizado na UpdateUser <--
     /// 
     /// </summary>
-    /// <param name="user"> Uma inst‚ncia da classe Usu·rio para receber as informaÁıes</param>
-    /// <returns> realizar a atualizaÁ„o dos dados do usu·rio </returns>
+    /// <param name="user"> Uma inst√¢ncia da classe Usu√°rio para receber as informa√ß√µes</param>
+    /// <returns> realizar a atualiza√ß√£o dos dados do usu√°rio </returns>
     public bool UpdateUser(User user)
     {
         try
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst='Colaborador',user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=0, dep_id=?depId, user_image=?image WHERE user_id=2;";
+            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst='Colaborador',user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=0, dep_id=?depId, user_image=?image WHERE user_id=userId;";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);
@@ -161,8 +161,8 @@ public class UserBD
             dbCommand.Parameters.Add(Mapped.Parameter("?email", user.Email));
             dbCommand.Parameters.Add(Mapped.Parameter("?password", user.Password));
             dbCommand.Parameters.Add(Mapped.Parameter("?depId", user.DepartId));
-            dbCommand.Parameters.Add(Mapped.Parameter("?userId", user.UserId));
             dbCommand.Parameters.Add(Mapped.Parameter("?image", user.Image));
+            dbCommand.Parameters.Add(Mapped.Parameter("?userId", user.UserId));
             dbCommand.ExecuteNonQuery();
             dbConnection.Close();
             dbCommand.Dispose();
@@ -181,7 +181,7 @@ public class UserBD
     /// --> Metodo sendo utilizado na ListCollaborator <--
     /// 
     /// </summary>
-    /// <returns> Retorna todos os usu·rios cujo s„o colaboradores e estao ativos no sistema </returns>
+    /// <returns> Retorna todos os usu√°rios cujo s√£o colaboradores e estao ativos no sistema </returns>
     public static DataSet SelectAllActive()
     {
         DataSet ds = new DataSet();
@@ -204,7 +204,7 @@ public class UserBD
     /// --> Metodo sendo utilizado na ListCollaborator <--
     /// 
     /// </summary>
-    /// <returns> Retorna todos os usu·rios cujo s„o colaboradores e estao ativos no sistema </returns>
+    /// <returns> Retorna todos os usu√°rios cujo s√£o colaboradores e estao ativos no sistema </returns>
     public static DataSet SelectAllInactive()
     {
         DataSet ds = new DataSet();
@@ -257,8 +257,8 @@ public class UserBD
     /// --> Metodo utilizado na ListCollaborator <--
     /// 
     /// </summary>
-    /// <param name="user"> Uma inst‚ncia da classe Usu·rio para receber as informaÁıes </param>
-    /// <returns> Cadastra as informaÁıes do usu·rio (colaborador) </returns>
+    /// <param name="user"> Uma inst√¢ncia da classe Usu√°rio para receber as informa√ß√µes </param>
+    /// <returns> Cadastra as informa√ß√µes do usu√°rio (colaborador) </returns>
     public static int Insert(User user)
     {
         try

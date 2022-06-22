@@ -77,6 +77,7 @@ public class UserBD
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {
+            obj = new User();
             obj.UserId = Convert.ToInt32(objDataReader["user_id"]);
             obj.Name = Convert.ToString(objDataReader["user_name"]);
             obj.Position = Convert.ToString(objDataReader["user_position"]);
@@ -151,7 +152,7 @@ public class UserBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst=teste,user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=1, dep_id=?depId WHERE user_id=?userId;";
+            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst=Colaborador,user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=0, dep_id=?depId WHERE user_id=?userId;";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);

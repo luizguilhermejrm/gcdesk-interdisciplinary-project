@@ -161,7 +161,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
         {
             int Userid = Convert.ToInt32(e.CommandArgument);
             Session["USER_SELECT_TABLE"] = Userid;
-            Response.Redirect("UpdateUser.aspx");
+            Response.Redirect("/Pages/Sistema/Analista/UpdateUser.aspx");
         }
         else if (e.CommandName == "Deletar")
         {
@@ -169,7 +169,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             UserBD userbd = new UserBD();
             if (userbd.DeleteUser(Userid))
             {
-                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999; '>
+                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement' style='z-index:999; '>
                                                   <div class='toast'>
                                                      <div class='toast-header'>
                                                         <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -185,7 +185,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             }
             else
             {
-                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999; '>
+                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement' style='z-index:999; '>
                                                   <div class='toast'>
                                                      <div class='toast-header'>
                                                         <svg class='bi flex-shrink-0 me-2 text-warning' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -215,7 +215,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             UserBD userbd = new UserBD();
             if (userbd.UpdateUserActive(Userid))
             {
-                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999; '>
+                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement' style='z-index:999; '>
                                                   <div class='toast'>
                                                      <div class='toast-header'>
                                                         <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
@@ -231,7 +231,7 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             }
             else
             {
-                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute mt-5 end-0 p-3' id='toastPlacement' style='z-index:999; '>
+                lblMsgDeleteUser.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement' style='z-index:999; '>
                                                   <div class='toast'>
                                                      <div class='toast-header'>
                                                         <svg class='bi flex-shrink-0 me-2 text-warning' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>

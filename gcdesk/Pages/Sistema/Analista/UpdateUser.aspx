@@ -22,7 +22,7 @@
                         <asp:ListItem Text="Tecnologia da Informação" Value="5" />
                     </asp:DropDownList>
                     <div class="col-md-4">
-                        <a href="#" class="btn btn-dark mt-2">Voltar para Tabela Usuarios</a>
+                        <a href="/Pages/Sistema/Analista/ListCollaborator.aspx" class="btn btn-dark mt-2">Voltar para Tabela Usuarios</a>
                     </div>
                     <div class="col-md-6">
                         <asp:Button ID="btnUpdateUser" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnUpdateUser_Click" />

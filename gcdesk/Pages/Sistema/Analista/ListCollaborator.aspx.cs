@@ -11,6 +11,15 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.QueryString != null)
+        {
+            string fromPage = Request.QueryString["from"];
+
+            if (fromPage == "updateUser")
+            {
+                MensageUpdatedUserToast();
+            }
+        }
         User user = (User)Session["USER_BD"];
         UserBD userbd = new UserBD();
 
@@ -28,6 +37,23 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
         {
             Response.Redirect("../Pages/PageError/Error404.aspx");
         }
+    }
+
+    public void MensageUpdatedUserToast()
+    {
+        lblUpdatedUserMsg.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                              <div class='toast'>
+                                                 <div class='toast-header'>
+                                                    <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                                    <strong class='me-auto'>Sucesso!</strong>
+                                                    <small>Agora</small>
+                                                  </div>
+                                                  <div class='toast-body'>
+                                                    Usuario Alterado Com sucesso!
+                                                  </div>
+                                               </div>
+                                            </div> ";
+
     }
 
     protected void btn_Click(object sender, EventArgs e)

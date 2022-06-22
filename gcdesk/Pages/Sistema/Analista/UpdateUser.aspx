@@ -21,6 +21,7 @@
                         <asp:ListItem Text="Setor Comercial" Value="4" />
                         <asp:ListItem Text="Tecnologia da Informação" Value="5" />
                     </asp:DropDownList>
+                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control mt-3" />
                     <div class="col-md-4">
                         <a href="/Pages/Sistema/Analista/ListCollaborator.aspx" class="btn btn-dark mt-2">Voltar para Tabela Usuarios</a>
                     </div>

@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section id="pageHeader">
         <div class="container-fluid">
+            <asp:Label ID="lblUpdatedUserMsg" runat="server" />
             <asp:Label ID="lblMsgDeleteUser" runat="server" />
 
             <div class="row d-flex justify-content-between">

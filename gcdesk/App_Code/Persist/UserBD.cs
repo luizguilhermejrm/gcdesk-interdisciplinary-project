@@ -236,7 +236,7 @@ public class UserBD
         System.Data.IDbCommand objCommand;
         System.Data.IDataReader objDataReader;
         objConection = Mapped.Connection();
-        objCommand = Mapped.Command("SELECT count(user_id) TOTAL FROM user WHERE user_typeAccess =1", objConection);
+        objCommand = Mapped.Command("SELECT count(user_id) TOTAL FROM user WHERE user_typeAccess =1 AND user_status=1", objConection);
         objDataReader = objCommand.ExecuteReader();
         while (objDataReader.Read())
         {

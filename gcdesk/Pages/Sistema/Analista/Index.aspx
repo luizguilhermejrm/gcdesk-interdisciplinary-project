@@ -8,7 +8,7 @@
         <asp:Label ID="lblCdTicket" runat="server" Text=""></asp:Label>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 my-1 d-flex justify-content-center">
+                <div class="col-lg-3 col-md-6 col-12 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
                             <i class="fa-regular fa-circle-question text-secondary"></i>
@@ -20,11 +20,11 @@
                         </div>
                         <div class="card-body">
                             <asp:Label class="card-title mt-3 fs-1" ID="lblFinishedCalls" runat="server" Text="" />
-                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados Finalizados</p>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Chamados Finalizados</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 my-1 d-flex justify-content-center">
+                <div class="col-lg-3 col-md-6 col-12 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
                             <i class="fa-regular fa-circle-question text-secondary"></i>
@@ -36,11 +36,11 @@
                         </div>
                         <div class="card-body">
                             <asp:Label class="card-title mt-3 fs-1" ID="lblProgressCalls" runat="server" Text="" />
-                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Andamento</p>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Chamados em Andamento</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 my-1 d-flex justify-content-center">
+                <div class="col-lg-3 col-md-6 col-12 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
                             <i class="fa-regular fa-circle-question text-secondary"></i>
@@ -52,11 +52,11 @@
                         </div>
                         <div class="card-body">
                             <asp:Label class="card-title mt-3 fs-1" ID="lblOpenCalls" runat="server" Text="" />
-                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Chamados em Aberto (Todos)</p>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Chamados em Aberto (Todos)</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 my-1 d-flex justify-content-center">
+                <div class="col-lg-3 col-md-6 col-12 my-1 d-flex justify-content-center">
                     <div class="card w-75 text-center border-0 shadow pb-4">
                         <div class="card-header border-0 mb-2 text-start bg-transparent">
                             <i class="fa-regular fa-circle-question text-secondary"></i>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="card-body">
                             <asp:Label class="card-title mt-3 fs-1" ID="lblQuantityPerson" runat="server" Text="" />
-                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Total de Colaboradores Ativos</p>
+                            <p class="card-text fs-6 fw-bold text-black-50 mt-3">Colaboradores Ativos</p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
         <div class="container-fluid">
             <div class="row mt-5">
                 <asp:Label ID="lblMsg" runat="server" />
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-12">
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table me-1"></i>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-12">
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table-list me-1"></i>

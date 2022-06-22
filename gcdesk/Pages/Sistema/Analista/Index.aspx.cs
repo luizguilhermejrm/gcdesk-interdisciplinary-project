@@ -20,16 +20,18 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             LoadTickets();
             if (gdvTickets.Rows.Count > 0)
                 gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+            lblOpenCalls.Text = Convert.ToString(ticket.SelectAllOpen());
+            lblProgressCalls.Text = Convert.ToString(ticket.SelectProgressAnalyst(ID));
+            lblFinishedCalls.Text = Convert.ToString(ticket.SelectFinishedAnalyst(ID));
+            lblQuantityPerson.Text = Convert.ToString(userBD.SelectQuantityPerson());
         }
         else
         {
             Response.Redirect("../Pages/PageError/Error404.aspx");
         }
 
-        lblOpenCalls.Text = Convert.ToString(ticket.SelectAllOpen());
-        lblProgressCalls.Text = Convert.ToString(ticket.SelectProgressAnalyst(ID));
-        lblFinishedCalls.Text = Convert.ToString(ticket.SelectFinishedAnalyst(ID));
-        lblQuantityPerson.Text = Convert.ToString(userBD.SelectQuantityPerson());
+      
 
 
     }

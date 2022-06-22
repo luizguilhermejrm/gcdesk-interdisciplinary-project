@@ -41,12 +41,12 @@
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
                                         <asp:TemplateField HeaderText="Atualizar">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Atualizar" CommandArgument='<%#Bind("user_id")%>'><i class="fa-solid fa-pen-to-square py-3 px-3 "></i></asp:LinkButton>
+                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Atualizar" CommandArgument='<%#Bind("user_id")%>'><i class="fa-solid fa-pen-to-square px-3"></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Deletar">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lkbDeletarUser" runat="server" Text="" CommandName="Deletar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-user-slash"></i></asp:LinkButton>
+                                                <asp:LinkButton ID="lkbDeletarUser" runat="server" Text="" CommandName="Deletar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-user-slash px-3"></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

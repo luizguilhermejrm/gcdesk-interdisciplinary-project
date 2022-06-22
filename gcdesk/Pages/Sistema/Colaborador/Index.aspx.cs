@@ -60,6 +60,10 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
 
         if (TicketBD.Insert(tic) == 0)
         {
+            string timeMensagem = DateTime.Now.ToString(@"dd/MM/yyyy HH:mm:ss");
+            notificationBD.InsertNotificationStatusCreate(timeMensagem);
+            
+
             lblCdTicket.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                   <div class='toast'>
                                      <div class='toast-header'>
@@ -72,10 +76,6 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
                                       </div>
                                    </div>
                                 </div> ";
-
-
-
-           // notificationBD.InsertNotificationStatusCreate();
 
         }
         else
@@ -152,7 +152,11 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
-            if (e.Row.Cells[0].Text == "1")
+            if (e.Row.Cells[0].Text == "0")
+            {
+                e.Row.Cells[0].Text = "<i class='text-primary fa fa-spinner'></i>";
+            }
+            else if (e.Row.Cells[0].Text == "1")
             {
                 e.Row.Cells[0].Text = "<i class='text-warning fa fa-clock'></i>";
 

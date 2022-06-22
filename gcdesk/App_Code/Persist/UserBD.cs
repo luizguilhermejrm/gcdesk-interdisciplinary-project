@@ -145,7 +145,7 @@ public class UserBD
     /// </summary>
     /// <param name="user"> Uma instância da classe Usuário para receber as informações</param>
     /// <returns> realizar a atualização dos dados do usuário </returns>
-    public static int UpdateUser(User user)
+    public bool UpdateUser(User user)
     {
         try
         {
@@ -166,11 +166,11 @@ public class UserBD
             dbCommand.Dispose();
             dbConnection.Dispose();
 
-            return 0;
+            return true;
         }
         catch (Exception e)
         {
-            return -2;
+            return false;
         }
     }
 
@@ -179,15 +179,38 @@ public class UserBD
     /// --> Metodo sendo utilizado na ListCollaborator <--
     /// 
     /// </summary>
-    /// <returns> Retorna todos os usuários cujo são colaboradores </returns>
-    public static DataSet SelectAll()
+    /// <returns> Retorna todos os usuários cujo são colaboradores e estao ativos no sistema </returns>
+    public static DataSet SelectAllActive()
     {
         DataSet ds = new DataSet();
         System.Data.IDbConnection objConection;
         System.Data.IDbCommand objCommand;
         System.Data.IDataAdapter objAdapter;
         objConection = Mapped.Connection();
-        string sql = "SELECT * FROM user WHERE user_typeAccess = '1'";
+        string sql = "SELECT * FROM user WHERE user_typeAccess = '1' AND user_status = '1'";
+        objCommand = Mapped.Command(sql, objConection);
+        objAdapter = Mapped.Adapter(objCommand);
+        objAdapter.Fill(ds);
+        objCommand.Dispose();
+        objConection.Close();
+        objConection.Dispose();
+        return ds;
+    }
+
+    /// <summary>
+    /// 
+    /// --> Metodo sendo utilizado na ListCollaborator <--
+    /// 
+    /// </summary>
+    /// <returns> Retorna todos os usuários cujo são colaboradores e estao ativos no sistema </returns>
+    public static DataSet SelectAllInactive()
+    {
+        DataSet ds = new DataSet();
+        System.Data.IDbConnection objConection;
+        System.Data.IDbCommand objCommand;
+        System.Data.IDataAdapter objAdapter;
+        objConection = Mapped.Connection();
+        string sql = "SELECT * FROM user WHERE user_typeAccess = '1' AND user_status = '0'";
         objCommand = Mapped.Command(sql, objConection);
         objAdapter = Mapped.Adapter(objCommand);
         objAdapter.Fill(ds);
@@ -268,22 +291,63 @@ public class UserBD
     /// </summary>
     /// <param name="id"></param>
     /// <returns>Faz um update do status do usuario para 0 </returns>
-    public bool DeleteUser(int id)
+    public bool DeleteUser(int userId)
     {
-        IDbConnection dbConnection;
-        IDbCommand dbCommand;
-        string sql = "UPDATE user SET user_status = 0 WHERE (user_id = ?userId);";
-        dbConnection = Mapped.Connection();
-        dbCommand = Mapped.Command(sql, dbConnection);
-        dbCommand.Parameters.Add(Mapped.Parameter("?userId", id));
+        try
+        {
 
-        dbCommand.ExecuteNonQuery();
-        dbConnection.Close();
-        dbCommand.Dispose();
-        dbConnection.Dispose();
-        return true;
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = "UPDATE user SET user_status = 0 WHERE user_id = ?userId;";
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?userId", userId));
+
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return true;
+        }
 
     }
 
-   
+    /// <summary>
+    /// 
+    /// --> Metodo utilizado na ListCollaborator <--
+    /// -- Metodo que impletementa um SoftDelete, onde habilita o status do usuario
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>Faz um update do status do usuario para 1 </returns>
+    public bool UpdateUserActive(int userId)
+    {
+        try
+        {
+
+            IDbConnection dbConnection;
+            IDbCommand dbCommand;
+            string sql = "UPDATE user SET user_status = 1 WHERE user_id = ?userId;";
+            dbConnection = Mapped.Connection();
+            dbCommand = Mapped.Command(sql, dbConnection);
+            dbCommand.Parameters.Add(Mapped.Parameter("?userId", userId));
+
+            dbCommand.ExecuteNonQuery();
+            dbConnection.Close();
+            dbCommand.Dispose();
+            dbConnection.Dispose();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return true;
+        }
+
+    }
+    
+
+
 }

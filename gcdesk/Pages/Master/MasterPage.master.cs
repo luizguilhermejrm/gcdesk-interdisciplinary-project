@@ -16,10 +16,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
 
         if (user != null)
         {
-
             lblLogado.Text = user.Name;
-
-
 
             if (!IsPostBack)
             {

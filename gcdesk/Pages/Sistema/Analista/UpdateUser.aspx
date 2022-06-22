@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="row">
+            <asp:Label ID="lblMsgUpdateUser" runat="server"/>
             <div class="col-md-12 card">
                 <h5 class="card-title text-center mt-2">Alterar Usuario</h5>
                 <div class="card-body">

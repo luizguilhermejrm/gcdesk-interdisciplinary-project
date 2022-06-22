@@ -5,6 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <section id="pageHeader">
         <div class="container-fluid">
+            <asp:Label ID="lblMsgDeleteUser" runat="server" />
+
             <div class="row d-flex justify-content-between">
                 <div class="col-auto mb-2">
                     <asp:LinkButton ID="btn" CssClass="btn btn-primary  mt-3" OnClick="btn_Click" runat="server"><i class="fa-solid fa-plus mx-1 fs-6 me-3"></i>Criar novo Colaborador</asp:LinkButton>
@@ -27,23 +29,23 @@
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table me-1"></i>
-                            Colaboradores registrados
+                            Colaboradores Ativos
                         </div>
                         <div class="card-body overflow-auto">
                             <div class="table-responsive p-3">
-                                <asp:GridView ID="gdvCollaborator" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
+                                <asp:GridView ID="gdvCollaboratorActive" OnRowCommand="gdvCollaboratorActive_RowCommand" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_name" HeaderText="Nome" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_email" HeaderText="Email" />
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
                                         <asp:TemplateField HeaderText="Atualizar">
-                                            <ItemTemplate >
-                                                <asp:LinkButton  ID="lbUpdate" runat="server" CommandName="Update" CommandArgument='<%# Bind("user_id")%>' ><i class="fa-solid fa-pen-to-square py-3 px-3 "></i></asp:LinkButton>
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Atualizar" CommandArgument='<%#Bind("user_id")%>'><i class="fa-solid fa-pen-to-square py-3 px-3 "></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Deletar">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lbDelete" runat="server" CommandName="Delete" CommandArgument='<%# Bind("user_id")%>' ><i class="fa-solid fa-user-slash"></i></asp:LinkButton>
+                                                <asp:LinkButton ID="lkbDeletarUser" runat="server" Text="" CommandName="Deletar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-user-slash"></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -51,9 +53,32 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <i class="fa-solid fa-table me-1"></i>
+                                Colaboradores Inativos
+                            </div>
+                            <div class="card-body overflow-auto">
+                                <div class="table-responsive p-3">
+                                    <asp:GridView ID="gdvCollaboratorInactive" OnRowCommand="gdvCollaboratorInactive_RowCommand" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
+                                        <Columns>
+                                            <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_name" HeaderText="Nome" />
+                                            <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_email" HeaderText="Email" />
+                                            <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
+                                            <asp:TemplateField HeaderText="Ativar">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lkbActiveUser" runat="server" Text="" CommandName="Ativar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-person-circle-plus"></i></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
     <div class="modal fade" id="exampleModal" tabindex="-1">
         <div class="modal-dialog">
@@ -64,18 +89,18 @@
                 </div>
                 <div class="modal-body">
                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control " placeholder="Insira o nome" TextMode="SingleLine" required />
-                     <asp:TextBox ID="txtPosition" runat="server" CssClass="form-control mt-3" placeholder="Insira o Cargo do usuario" TextMode="SingleLine" required />
+                    <asp:TextBox ID="txtPosition" runat="server" CssClass="form-control mt-3" placeholder="Insira o Cargo do usuario" TextMode="SingleLine" required />
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3" placeholder="Insira o email" TextMode="Email" required />
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mt-3" placeholder="Insira a senha" TextMode="Password" required />
-                    <asp:DropDownList ID="ddlPositionUser" runat="server" CssClass="form-control mt-3" placeholder="Departamento do Usuario" TextMode="SingleLine" >
-                        <asp:ListItem Text="Escolha o Departamento do Usuario" Disabled="true" Selected="True"/>
-                        <asp:ListItem Text="Administrativo" Value="1"/>
+                    <asp:DropDownList ID="ddlPositionUser" runat="server" CssClass="form-control mt-3" placeholder="Departamento do Usuario" TextMode="SingleLine">
+                        <asp:ListItem Text="Escolha o Departamento do Usuario" Disabled="true" Selected="True" />
+                        <asp:ListItem Text="Administrativo" Value="1" />
                         <asp:ListItem Text="Financeiro" Value="2" />
                         <asp:ListItem Text="Recursos Humanos" Value="3" />
                         <asp:ListItem Text="Setor Comercial" Value="4" />
                         <asp:ListItem Text="Tecnologia da Informação" Value="5" />
                     </asp:DropDownList>
-                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control mt-3"/>
+                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control mt-3" />
                 </div>
                 <div class="modal-footer border-0">
                     <asp:Button ID="btnCollaborator" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnCollaborator_Click" />
@@ -83,6 +108,7 @@
             </div>
         </div>
     </div>
+
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />

@@ -34,6 +34,7 @@
                         </div>
                         <div class="card-body overflow-auto">
                             <div class="table-responsive p-3">
+                                <asp:Label ID="lblTableNull" runat="server"></asp:Label>
                                 <asp:GridView ID="gdvCollaboratorActive" OnRowCommand="gdvCollaboratorActive_RowCommand" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_name" HeaderText="Nome" />
@@ -62,6 +63,7 @@
                             </div>
                             <div class="card-body overflow-auto">
                                 <div class="table-responsive p-3">
+                                    <asp:Label ID="lblTableNullInactive" runat="server"></asp:Label>
                                     <asp:GridView ID="gdvCollaboratorInactive" OnRowCommand="gdvCollaboratorInactive_RowCommand" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0">
                                         <Columns>
                                             <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_name" HeaderText="Nome" />

@@ -161,6 +161,10 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             gdvCollaboratorActive.HeaderRow.TableSection = TableRowSection.TableHeader;
             gdvCollaboratorActive.Visible = true;
         }
+        else
+        {
+            lblTableNull.Text = @"<div class='alert alert-info text-center' role='alert'>Sem Colaboradores Ativos!</div>";
+        }
     }
 
     void LoadCollaboratorInactive()
@@ -174,6 +178,10 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
             gdvCollaboratorInactive.DataBind();
             gdvCollaboratorInactive.HeaderRow.TableSection = TableRowSection.TableHeader;
             gdvCollaboratorInactive.Visible = true;
+        }
+        else
+        {
+            lblTableNullInactive.Text = @"<div class='alert alert-info text-center' role='alert'>Sem Colaboradores Inativos!</div>";
         }
     }
 

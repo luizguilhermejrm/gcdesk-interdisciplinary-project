@@ -36,6 +36,10 @@ public partial class Pages_Sistema_Analista_AllTickets_Default : System.Web.UI.P
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
             gdvTickets.Visible = true;
         }
+        else
+        {
+            lblTableNull.Text = @"<div class='alert alert-info text-center' role='alert'>Sem Chamados em Aberto!</div>";
+        }
     }
 
     protected void gdvTickets_RowDataBound(object sender, GridViewRowEventArgs e)

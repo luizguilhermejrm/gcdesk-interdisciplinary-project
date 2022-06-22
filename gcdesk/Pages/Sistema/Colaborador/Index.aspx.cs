@@ -129,6 +129,10 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
             gdvTickets.Visible = true;
         }
+        else
+        {
+            lblTableNull.Text = @"<div class='alert alert-info text-center' role='alert'>Nenhum chamado em aberto!</div>";
+        }
     }
     void LoadNotification()
     {
@@ -145,6 +149,10 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             gdvNotification.DataBind();
             gdvNotification.HeaderRow.TableSection = TableRowSection.TableHeader;
             gdvNotification.Visible = true;
+        }
+        else
+        {
+            lblTableNullNotification.Text = @"<div class='alert alert-info text-center' role='alert'>Nenhuma notificação em aberto!</div>";
         }
     }
 

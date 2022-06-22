@@ -84,6 +84,7 @@
                         </div>
                         <div class="card-body overflow-auto" style="height: 400px">
                             <div class="table-responsive p-3">
+                                <asp:Label ID="lblTableNull" runat="server"></asp:Label>
                                 <asp:GridView ID="gdvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-hover datatable-plugin border-top-0 border-start-0 border-end-0" OnRowDataBound="gdvTickets_RowDataBound">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="tic_description" HeaderText="Descrição" />
@@ -104,6 +105,7 @@
                         </div>
                         <div class="card-body overflow-auto" style="height: 400px">
                             <div class="table-responsive p-3">
+                                <asp:Label ID="lblTableNullNotification" runat="server"></asp:Label>
                                 <asp:GridView ID="gdvNotification" runat="server" HeaderStyle-CssClass="d-none" AutoGenerateColumns="false" CssClass="table table-borderless table-hover border-start-0 border-end-0"  OnRowDataBound="gdvNotification_RowDataBound">
                                     <Columns>
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50 border-top" DataField="not_status"/>

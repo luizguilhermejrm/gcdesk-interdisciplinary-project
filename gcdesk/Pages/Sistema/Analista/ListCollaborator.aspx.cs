@@ -242,7 +242,6 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
 
     protected void gdvCollaboratorInactive_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        int UserId = 0;
         if (e.CommandName == "Ativar")
         {
             int Userid = Convert.ToInt32(e.CommandArgument);

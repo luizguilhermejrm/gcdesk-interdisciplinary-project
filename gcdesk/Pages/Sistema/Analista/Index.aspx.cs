@@ -18,6 +18,7 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
         if (user != null)
         {
             LoadTickets();
+            LoadNotification();
             if (gdvTickets.Rows.Count > 0)
                 gdvTickets.HeaderRow.TableSection = TableRowSection.TableHeader;
 
@@ -62,7 +63,46 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
             lblTableNull.Text = @"<div class='alert alert-info text-center' role='alert'>Sem Chamados em Aberto!</div>";
         }
     }
+    void LoadNotification()
+    {
+        User user = (User)Session["USER_BD"];
+        UserBD userBD = new UserBD();
+        int ID = user.UserId;
 
+        DataSet dsNotification = NotificationBD.SelectNotificationAnalisty(ID);
+        int qtd = dsNotification.Tables[0].Rows.Count;
+        gdvNotification.Visible = false;
+        if (qtd > 0)
+        {
+            gdvNotification.DataSource = dsNotification.Tables[0].DefaultView;
+            gdvNotification.DataBind();
+            gdvNotification.HeaderRow.TableSection = TableRowSection.TableHeader;
+            gdvNotification.Visible = true;
+        }
+        else
+        {
+            lblTableNullNotification.Text = @"<div class='alert alert-info text-center' role='alert'>Nenhuma notificação em aberto!</div>";
+        }
+    }
+    protected void gdvNotification_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (e.Row.Cells[0].Text == "0")
+            {
+                e.Row.Cells[0].Text = "<i class='text-primary fa fa-spinner'></i>";
+            }
+            else if (e.Row.Cells[0].Text == "1")
+            {
+                e.Row.Cells[0].Text = "<i class='text-warning fa fa-clock'></i>";
+
+            }
+            else if (e.Row.Cells[0].Text == "2")
+            {
+                e.Row.Cells[0].Text = "<i class='text-success fa fa-check'></i>";
+            }
+        }
+    }
     protected void gdvTickets_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow)

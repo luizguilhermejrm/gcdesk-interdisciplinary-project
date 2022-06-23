@@ -104,71 +104,27 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6 col-md-12">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
                             <i class="fa-solid fa-table-list me-1"></i>
                             Notificações recentes
                         </div>
                         <div class="card-body overflow-auto" style="height: 400px">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="mt-3" style="width: 70px; height: 70px;">
-                                                    <img class="rounded-circle" src="https://picsum.photos/70" />
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row mx-0">
-                                                    <p class="fw-bold">Assunto<span class="badge bg-primary rounded-pill ms-3">Novo</span></p>
-                                                    <p class="d-inline-block" style="white-space: nowrap; width: 40em; overflow: hidden; text-overflow: ellipsis;">
-                                                        Praeterea iterest quasdam iterest quasdam iterest quasdam iterest iterest quasdam iterest.
-                                                    </p>
-                                                    <span class="text-muted">há 1 min</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="mt-3" style="width: 70px; height: 70px;">
-                                                    <img class="rounded-circle" src="https://picsum.photos/70" />
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row mx-0">
-                                                    <p class="fw-bold">Assunto<span class="badge bg-primary rounded-pill ms-3">Novo</span></p>
-                                                    <p class="d-inline-block" style="white-space: nowrap; width: 40em; overflow: hidden; text-overflow: ellipsis;">
-                                                        Praeterea iterest quasdam iterest quasdam iterest quasdam iterest iterest quasdam iterest.
-                                                    </p>
-                                                    <span class="text-muted">há 1 min</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="mt-3" style="width: 70px; height: 70px;">
-                                                    <img class="rounded-circle" src="https://picsum.photos/70" />
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row mx-0">
-                                                    <p class="fw-bold">Assunto<span class="badge bg-primary rounded-pill ms-3">Novo</span></p>
-                                                    <p class="d-inline-block" style="white-space: nowrap; width: 40em; overflow: hidden; text-overflow: ellipsis;">
-                                                        Praeterea iterest quasdam iterest quasdam iterest quasdam iterest iterest quasdam iterest.
-                                                    </p>
-                                                    <span class="text-muted">há 1 min</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="table-responsive p-3">
+                                <asp:Label ID="lblTableNullNotification" runat="server"></asp:Label>
+                                <asp:GridView ID="gdvNotification" runat="server" HeaderStyle-CssClass="d-none" AutoGenerateColumns="false" CssClass="table table-borderless table-hover border-start-0 border-end-0"  OnRowDataBound="gdvNotification_RowDataBound">
+                                    <Columns>
+                                        <asp:BoundField ItemStyle-CssClass="py-4 text-black-50 border-top" DataField="not_status"/>
+                                        <asp:BoundField ItemStyle-CssClass="py-4 text-black-50 border-top" DataField="not_title"/>
+                                        <asp:BoundField ItemStyle-CssClass="py-4 text-black-50 border-top" DataField="tic_description"/>
+                                        <asp:BoundField ItemStyle-CssClass="py-4 text-black-50 border-top" DataField="not_description"/>
+                                        <asp:BoundField ItemStyle-CssClass="py-4 text-black-50 border-top" DataField="not_timeMensage"/>
+                                    </Columns>
+                                </asp:GridView>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </section>

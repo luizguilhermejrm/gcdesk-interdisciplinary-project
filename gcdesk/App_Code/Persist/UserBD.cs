@@ -152,7 +152,7 @@ public class UserBD
         {
             IDbConnection dbConnection;
             IDbCommand dbCommand;
-            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst='Colaborador',user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=0, dep_id=?depId, user_image=?image WHERE user_id=userId;";
+            string sql = @"UPDATE user SET user_name=?name,user_position=?position,user_status=1,user_typeAnalyst='Colaborador',user_email=?email,user_password=?password,user_typeAccess=1,user_firstLogin=0, dep_id=?depId, user_image=?image WHERE user_id=?userId";
 
             dbConnection = Mapped.Connection();
             dbCommand = Mapped.Command(sql, dbConnection);

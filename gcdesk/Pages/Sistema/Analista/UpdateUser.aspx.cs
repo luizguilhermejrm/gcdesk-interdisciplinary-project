@@ -11,8 +11,6 @@ public partial class Pages_Sistema_Analista_UpdateUser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
-
         if (!IsPostBack)
         {
             UserBD userbd = new UserBD();
@@ -21,6 +19,7 @@ public partial class Pages_Sistema_Analista_UpdateUser : System.Web.UI.Page
             txtName.Text = user.Name;
             txtPassword.Text = user.Password;
             txtPosition.Text = user.Position;
+            ImgLogado.Text = "<img class='img-thumbnail rounded-circle' src='" + ConfigurationManager.AppSettings["uploadHTTP"] + user.Image + "' style='width:200px; height: 200px;' />";
         }
     }
 

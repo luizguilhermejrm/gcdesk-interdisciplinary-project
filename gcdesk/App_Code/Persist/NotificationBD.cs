@@ -26,6 +26,23 @@ public class NotificationBD
         objConection.Dispose();
         return ds;
     }
+    public static DataSet SelectNotificationAnalisty(int id)
+    {
+        DataSet ds = new DataSet();
+        IDbConnection objConection;
+        IDbCommand objCommand;
+        IDataAdapter objAdapter;
+        objConection = Mapped.Connection();
+        string sql = "SELECT * FROM notification A INNER JOIN ticket B ON A.tic_id = B.tic_id WHERE ana_analisty_id =?cod AND not_status!=0 ORDER BY not_id DESC";
+        objCommand = Mapped.Command(sql, objConection);
+        objAdapter = Mapped.Adapter(objCommand);
+        objCommand.Parameters.Add(Mapped.Parameter("?cod", id));
+        objAdapter.Fill(ds);
+        objCommand.Dispose();
+        objConection.Close();
+        objConection.Dispose();
+        return ds;
+    }
 
     /// <summary>
     /// 

@@ -64,11 +64,50 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
           "};", true);
     }
 
+    private bool IsComplete(string str)
+    {
+        bool retorno = false;
+        if (str != string.Empty)
+        {
+            retorno = true;
+        }
+        return retorno;
+    }
+
     protected void btnCollaborator_Click(object sender, EventArgs e)
     {
-        if (FileUpload1.HasFile)
+        string name = txtName.Text.Trim();
+        string position = txtPosition.Text.Trim();
+        string email = txtEmail.Text.Trim();
+        string password = txtPassword.Text.Trim();
+        string department = ddlPositionUser.Text.Trim();
+        string file = FileUpload1.FileName.Trim();
+
+        if (!IsComplete(name) || !IsComplete(position) || !IsComplete(email) || !IsComplete(password) || !IsComplete(department) || !IsComplete(file))
         {
-            if (FileUpload1.PostedFile.ContentLength <= 1024000)
+            lblValidator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-warning' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                         Há campos vazios que devem ser preenchidos!
+                                      </div>
+                                   </div>
+                                </div> ";
+            txtName.Focus();
+            txtPosition.Focus();
+            txtEmail.Focus();
+            txtPassword.Focus();
+            ddlPositionUser.Focus();
+            FileUpload1.Focus();
+            return;
+        }
+        else
+        {
+            if (FileUpload1.PostedFile.ContentLength <= 800000)
             {
                 string arquivo = FileUpload1.FileName;
                 FileUpload1.SaveAs(ConfigurationManager.AppSettings["uploadServer"] + arquivo);
@@ -112,40 +151,25 @@ public partial class Pages_Sistema_Analista_ListCollaborator : System.Web.UI.Pag
                                       </div>
                                    </div>
                                 </div> ";
-
                 }
 
             }
             else
             {
-                lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+
+                lblValidator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
                                   <div class='toast'>
                                      <div class='toast-header'>
-                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <svg class='bi flex-shrink-0 me-2 text-success' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
                                         <strong class='me-auto'>Aviso!</strong>
                                         <small>Agora</small>
                                       </div>
                                       <div class='toast-body'>
-                                        Foto muito grande.
+                                         O tamanho do arquivo de imagem deve ser menor!
                                       </div>
                                    </div>
                                 </div> ";
             }
-        }
-        else
-        {
-            lblCdCollaborator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
-                                  <div class='toast'>
-                                     <div class='toast-header'>
-                                        <svg class='bi flex-shrink-0 me-2 text-danger' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
-                                        <strong class='me-auto'>Aviso!</strong>
-                                        <small>Agora</small>
-                                      </div>
-                                      <div class='toast-body'>
-                                        Não há foto selecionada.
-                                      </div>
-                                   </div>
-                                </div> ";
         }
     }
 

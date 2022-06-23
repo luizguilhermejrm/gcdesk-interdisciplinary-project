@@ -45,8 +45,42 @@ public partial class Pages_Sistema_Colaborador_Index : System.Web.UI.Page
            "};", true);
     }
 
+    private bool IsComplete(string str)
+    {
+        bool retorno = false;
+        if (str != string.Empty)
+        {
+            retorno = true;
+        }
+        return retorno;
+    }
+
     protected void btnTicket_Click(object sender, EventArgs e)
     {
+        string description = txtProblem.Text.Trim();
+        string type = ddlTypeTicket.Text.Trim();
+        string localization = txtLocal.Text.Trim();
+
+        if (!IsComplete(description) || !IsComplete(type) || !IsComplete(localization))
+        {
+            lblValidator.Text = @"<div class='toast-container position-absolute top-0 end-0 p-3' id='toastPlacement'>
+                                  <div class='toast'>
+                                     <div class='toast-header'>
+                                        <svg class='bi flex-shrink-0 me-2 text-warning' width='24' height='24' role='img' aria-label='Warning: '><use xlink:href='#exclamation-triangle-fill'/></svg>
+                                        <strong class='me-auto'>Aviso!</strong>
+                                        <small>Agora</small>
+                                      </div>
+                                      <div class='toast-body'>
+                                         Há campos vazios que devem ser preenchidos!
+                                      </div>
+                                   </div>
+                                </div> ";
+            txtProblem.Focus();
+            ddlTypeTicket.Focus();
+            txtLocal.Focus();
+            return;
+        }
+
         User user = (User)Session["USER_BD"];
         int ID = user.UserId;
         NotificationBD notificationBD = new NotificationBD();

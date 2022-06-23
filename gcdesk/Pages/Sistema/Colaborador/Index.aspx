@@ -10,7 +10,9 @@
                 <div class="col-auto mb-2">
                     <asp:LinkButton ID="btn" CssClass="btn btn-primary  mt-3" OnClick="btn_Click" runat="server"><i class="fa-solid fa-plus mx-1 fs-6 me-3"></i>Criar chamado</asp:LinkButton>
                 </div>
-
+                <div class="col-auto">
+                    <asp:Label ID="lblValidator"  runat="server"></asp:Label>
+                </div>
                 <hr />
                 <p class="fs-3 mb-5 text-primary">
                     Resumo
@@ -132,7 +134,7 @@
                 <div class="modal-body">
                     <asp:TextBox ID="txtProblem" runat="server" CssClass="form-control" placeholder="Descreva a sua solicitação" TextMode="SingleLine" />
                     <asp:DropDownList ID="ddlTypeTicket" runat="server" CssClass="form-control mt-3" placeholder="Qual o tipo de ticket" TextMode="SingleLine">
-                        <asp:ListItem Text="Escolha qual o tipo de ticket" Value="Escolha qual o tipo de ticket" Disabled="true" Selected="True" />
+                        <asp:ListItem Text="Escolha qual o tipo de ticket" Disabled="True" Selected="True" Value=""/>
                         <asp:ListItem Text="Manutenção" Value="Manutenção" />
                         <asp:ListItem Text="Redes" Value="Redes" />
                         <asp:ListItem Text="Software" Value="Software" />

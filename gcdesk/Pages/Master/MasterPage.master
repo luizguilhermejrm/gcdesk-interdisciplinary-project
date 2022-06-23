@@ -40,13 +40,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle border rounded bg-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Configuração</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
                         <li>
                             <asp:LinkButton ID="btn" CssClass="dropdown-item" OnClick="lbExit_click" runat="server">Sair</asp:LinkButton></li>
-
                     </ul>
                 </li>
             </ul>
@@ -86,7 +81,7 @@
                     <div class="modal-body">
                         <div class="input-group mb-4">
                             <div class="input-group-text bg-white text-primary"><i class="fa-solid fa-envelope"></i></div>
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control bg-primary bg-opacity-25" placeholder="Insira seu email" TextMode="Email" />
+                            <asp:Label ID="lblEmail" runat="server" CssClass="form-control bg-primary bg-opacity-25" Disable="True"/>
                         </div>
                         <div class="input-group mb-4">
                             <div class="input-group-text bg-white text-primary"><i class="fa-solid fa-key"></i></div>

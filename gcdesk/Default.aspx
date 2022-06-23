@@ -42,11 +42,6 @@
                                     <asp:Button ID="Button1" runat="server" Text="Entrar"
                                         CssClass="btn btn-primary w-100" OnClick="btnLogin_Click" />
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-check text-center">
-                                        <a href="#" class="text-decoration-none">Esqueceu a senha?</a>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>

@@ -12,11 +12,13 @@
                 <div class="col-auto mb-2">
                     <asp:LinkButton ID="btn" CssClass="btn btn-primary  mt-3" OnClick="btn_Click" runat="server"><i class="fa-solid fa-plus mx-1 fs-6 me-3"></i>Criar novo Colaborador</asp:LinkButton>
                 </div>
-
+                <div class="col-auto">
+                    <asp:Label ID="lblValidator"  runat="server"></asp:Label>
+                </div>
                 <hr />
-                <p class="fs-3 mb-5 text-primary">
-                    Tabela de Colaboradores
-                </p>
+                    <p class="fs-3 mb-5 text-primary">
+                        Tabela de Colaboradores 
+                    </p>
             </div>
         </div>
     </section>
@@ -42,12 +44,12 @@
                                         <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
                                         <asp:TemplateField HeaderText="Atualizar">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Atualizar" CommandArgument='<%#Bind("user_id")%>'><i class="fa-solid fa-pen-to-square px-3"></i></asp:LinkButton>
+                                                <asp:LinkButton ID="lbUpdate" runat="server" CommandName="Atualizar" CommandArgument='<%#Bind("user_id")%>'><i class="fa-solid fa-pen-to-square px-3 py-3"></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Deletar">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="lkbDeletarUser" runat="server" Text="" CommandName="Deletar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-user-slash px-3"></i></asp:LinkButton>
+                                                <asp:LinkButton ID="lkbDeletarUser" runat="server" Text="" CommandName="Deletar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-user-slash px-3 py-3"></i></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -71,7 +73,7 @@
                                             <asp:BoundField ItemStyle-CssClass="py-4 text-black-50" DataField="user_position" HeaderText="Posição" />
                                             <asp:TemplateField HeaderText="Ativar">
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="lkbActiveUser" runat="server" Text="" CommandName="Ativar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-person-circle-plus"></i></asp:LinkButton>
+                                                    <asp:LinkButton ID="lkbActiveUser" runat="server" Text="" CommandName="Ativar" CommandArgument='<% #Bind("user_id") %>'><i class="fa-solid fa-person-circle-plus px-3 py-3"></i></asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -91,12 +93,12 @@
                     <h5 class="modal-title text-center text-primary fw-bold fs-2 py-1 mx-auto" id="exampleModalLabel">Criar novo Colaborador</h5>
                 </div>
                 <div class="modal-body">
-                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control " placeholder="Insira o nome" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtPosition" runat="server" CssClass="form-control mt-3" placeholder="Insira o Cargo do usuario" TextMode="SingleLine" required />
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3" placeholder="Insira o email" TextMode="Email" required />
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mt-3" placeholder="Insira a senha" TextMode="Password" required />
+                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control " placeholder="Insira o nome" TextMode="SingleLine" />
+                    <asp:TextBox ID="txtPosition" runat="server" CssClass="form-control mt-3" placeholder="Insira o Cargo do usuario" TextMode="SingleLine" />
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control mt-3" placeholder="Insira o email" TextMode="Email" />
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mt-3" placeholder="Insira a senha" TextMode="Password" />
                     <asp:DropDownList ID="ddlPositionUser" runat="server" CssClass="form-control mt-3" placeholder="Departamento do Usuario" TextMode="SingleLine">
-                        <asp:ListItem Text="Escolha o Departamento do Usuario" Disabled="true" Selected="True" />
+                        <asp:ListItem Text="Escolha o Departamento do Usuario" Disabled="true" Selected="True" Value="" />
                         <asp:ListItem Text="Administrativo" Value="1" />
                         <asp:ListItem Text="Financeiro" Value="2" />
                         <asp:ListItem Text="Recursos Humanos" Value="3" />
@@ -105,6 +107,7 @@
                     </asp:DropDownList>
                     <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control mt-3" />
                 </div>
+
                 <div class="modal-footer border-0">
                     <asp:Button ID="btnCollaborator" runat="server" Text="Enviar" CssClass="btn btn-primary w-100" OnClick="btnCollaborator_Click" />
                 </div>

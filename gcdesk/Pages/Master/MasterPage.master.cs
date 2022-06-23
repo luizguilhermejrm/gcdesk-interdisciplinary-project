@@ -94,6 +94,7 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
             Response.Redirect("../PageError/Error404.aspx");
         }
 
+        lblEmail.Text = user.Email;
 
     }
 
@@ -112,7 +113,6 @@ public partial class Pages_Master_MasterPage : System.Web.UI.MasterPage
         UserBD userBd = new UserBD();
         User user = (User)Session["USER_BD"];
 
-        user.Email = txtEmail.Text;
         user.Password = Function.HashText(txtPassword.Text);
         user.RetypePassword = Function.HashText(txtRetypePassword.Text);
 

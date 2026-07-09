@@ -260,3 +260,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# User uploaded files (keep .gitkeep, ignore actual uploads)
+uploads/user/*
+!uploads/user/.gitkeep

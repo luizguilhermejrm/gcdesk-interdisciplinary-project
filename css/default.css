@@ -1,0 +1,57 @@
+﻿.bg-primary-low {
+    background-color: #dae9ff;
+    /*Azul fraco*/
+}
+
+.bg-success-low {
+    background-color: #8cc3aa;
+    /*Alert Verde*/
+}
+
+.bg-danger-low {
+    background-color: #ee9aa2;
+    /*Alert Vermelho*/
+}
+
+.bg-warning-low {
+    background-color: #ffe083;
+    /*Alert Amarelo*/
+}
+
+html, body { height: 100%; }
+
+#layoutSidenav { display: flex; min-height: calc(100vh - 56px); }
+
+#layoutSidenav_nav {
+    flex: 0 0 250px;
+    overflow-y: auto;
+}
+
+#layoutSidenav_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#layoutSidenav_content .content-body {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sb-topnav { height: 56px; }
+
+@media (max-width: 992px) {
+    #layoutSidenav_nav { flex-basis: 100%; display: none; }
+    .sb-sidenav-toggled #layoutSidenav_nav { display: block; }
+}
+
+.card { border-radius: 0.5rem; }
+
+.card .card-header:first-child { border-radius: 0.5rem 0.5rem 0 0; }
+
+.table th { font-weight: 600; white-space: nowrap; }
+
+.table td { vertical-align: middle; }
+
+.modal .form-control:focus { box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15); }
